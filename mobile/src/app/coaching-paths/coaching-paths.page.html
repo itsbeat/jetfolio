@@ -1,0 +1,66 @@
+<ion-header no-border>
+  <ion-toolbar class="elan-toolbar">
+    <ion-buttons slot="primary">
+      <ion-button (click)="goToProfile()">
+        <ion-icon slot="start" name="contact"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Percorsi di Coaching</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!isLoading" class="p-5 h-100 w-100 flex-cont-col">
+    <div class="flex-1 h-center flex-cont-col scroll">
+      <p class="m-auto" *ngIf="plans.length == 0">
+        Non ci sono piani di coaching
+      </p>
+      <div
+        *ngFor="let plan of plans; let i = index"
+        [class.active]="plan.status.code == 'active'"
+        [class.idle]="plan.status.code == 'idle'"
+        [class.ok]="plan.status.code == 'done'"
+        class="box w-100 my-2 flex-cont-row v-center selected"
+        (click)="showPlanDetails(plan.id)"
+      >
+        <div class="flex-cont-col v-center flex-1">
+          <p class="m-0 tx-tertiary">Piano #{{ i + 1 }}</p>
+          <div
+            *ngIf="plan.status.code != 'done'"
+            class="status-badge tx-center mg-t-5 mr-auto"
+            [class.active]="plan.status.code == 'active'"
+            [class.idle]="plan.status.code == 'idle'"
+            [class.ok]="plan.status.code == 'done'"
+          >
+            <span>{{ plan.status.name | uppercase }}</span>
+          </div>
+        </div>
+        <div class="flex-cont-row">
+          <div
+            class="ball-icon tx-tertiary"
+            [ngClass]="{
+              'tx-white bg-secondary': plan.status.code === 'done',
+              border: plan.status.code !== 'done'
+            }"
+            [ngSwitch]="plan.status.code"
+          >
+            <ion-icon name="checkmark" *ngSwitchCase="'done'"> </ion-icon>
+            <ion-icon src="assets/icon/svg/arrow_forward.svg" class="size-m" *ngSwitchDefault> </ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <ion-button fill="solid" color="primary" class="choose-coach-button" [disabled]="!canProceed" (click)="addPlan()">
+        Aggiungi Piano
+      </ion-button>
+    </div>
+  </div>
+  <div *ngIf="isLoading" class="flex-cont-col v-center h-center h-100">
+    <div class="flex-cont-col v-center h-center">
+      <ion-spinner></ion-spinner>
+      <span>Caricamento...</span>
+    </div>
+  </div>
+</ion-content>

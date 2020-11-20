@@ -1,0 +1,48 @@
+<ion-header no-border>
+  <ion-toolbar class="elan-toolbar">
+    <ion-buttons slot="primary">
+      <ion-button (click)="pop()">
+        <ion-icon slot="start" name="close"></ion-icon>
+        Chiudi
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Profilo Utente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="p-5 h-100 w-100 flex-cont-col">
+    <div class="flex-1 h-center flex-cont-col scroll">
+      <div class="user-avatar mt-5" (click)="presentActionSheet()">
+        <div>
+          <ion-icon *ngIf="!fileUrl && !authUser.avatar" name="person"></ion-icon>
+          <img *ngIf="fileUrl || authUser.avatar" src="{{ fileUrl ? fileUrl : authUser.avatar }}" />
+        </div>
+      </div>
+      <div class="user-name mt-5 tx-bold tx-primary">
+        {{ authUser.name }}
+        {{ authUser.surname }}
+      </div>
+      <div class="mt-4">
+        {{ authUser.email }}
+      </div>
+      <div class="user-role mt-4">
+        <div class="tx-bold" [style.color]="authUser.role.color">
+          {{ authUser.role.name }}
+        </div>
+      </div>
+    </div>
+    <div>
+      <ion-button fill="solid" color="secondary" (click)="upload()" class="my-2">
+        <span *ngIf='!saving'>Salva</span>
+        <div *ngIf='saving' class='flex-cont-row v-center'>
+          <span> Salvataggio in corso...</span>
+          <ion-spinner class="mx-3"></ion-spinner>
+        </div>
+      </ion-button>
+      <ion-button fill="solid" color="primary" class="choose-coach-button" (click)="logout()">
+        Logout
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

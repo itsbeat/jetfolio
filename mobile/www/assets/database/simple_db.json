@@ -1,0 +1,123 @@
+[
+  {
+    "id": 1,
+    "status": "done",
+    "coach_agreement": {
+      "approved": true,
+      "approvedDate": "02/16/2019",
+      "sessionsNumber": 3,
+      "goals": [
+        {
+          "id": 1,
+          "name": "Goal 1",
+          "description": "Questo è il goal 1"
+        },
+        {
+          "id": 1,
+          "name": "Goal 2",
+          "description": "Questo è il goal 2"
+        },
+        {
+          "id": 1,
+          "name": "Goal 3",
+          "description": "Questo è il goal 3"
+        }
+      ],
+      "kpi_measure": {
+        "detail": "Cras quis purus quam. In tempus tellus non nisi bibendum lobortis. Nunc nec nisl ultricies, eleifend neque sed, scelerisque est. Suspendisse gravida viverra sem ac ullamcorper. Etiam ac facilisis erat. Aenean rutrum sollicitudin sapien. Aenean porttitor magna dolor, eget auctor tortor vestibulum nec. Aliquam nec tempor quam, sit amet suscipit velit. Nulla eget ultrices enim. Proin finibus mauris eu tincidunt viverra. Aliquam erat volutpat. Suspendisse faucibus convallis orci at suscipit. Duis lobortis vestibulum nunc, nec tincidunt tellus ultricies id. Etiam sagittis mauris purus, eu sollicitudin turpis tincidunt vitae. Sed imperdiet ac risus vel pellentesque. Fusce suscipit gravida molestie."
+      }
+    },
+    "sessions": [
+      {
+        "id": 1,
+        "status": "done",
+        "report": "true",
+        "reportNote": "Nota per il report",
+        "reportDate": "02/16/2019",
+        "hours": [
+          {
+            "day": "02/16/2019",
+            "hour": "12:00-14.00"
+          }
+        ],
+        "action_plan": [
+          {
+            "note": "Creare uno stile di vita di coach perfetto",
+            "deadline": "04/10/2019",
+            "done": "ok"
+          },
+          {
+            "note": "Creare uno stile di vita di coach perfetto",
+            "deadline": "04/11/2019",
+            "done": "ok"
+          },
+          {
+            "note": "Creare uno stile di vita di coach perfetto",
+            "deadline": "04/11/2019",
+            "done": "no"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "status": "done",
+        "report": "true",
+        "reportNote": "Nota per il report",
+        "reportDate": "02/16/2019",
+        "hours": [
+          {
+            "day": "02/17/2019",
+            "hour": "09:00-11.00"
+          }
+        ],
+        "action_plan": [
+          {
+            "note": "Creare uno stile di vita di coach perfetto",
+            "deadline": "04/10/2019",
+            "done": "ok"
+          },
+          {
+            "note": "Creare uno stile di vita di coach perfetto",
+            "deadline": "04/11/2019",
+            "done": "ok"
+          },
+          {
+            "note": "Creare uno stile di vita di coach perfetto",
+            "deadline": "04/11/2019",
+            "done": "no"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "status": "done",
+        "report": "true",
+        "reportNote": "Nota per il report",
+        "reportDate": "02/16/2019",
+        "hours": [
+          {
+            "day": "03/10/2019",
+            "hour": "09:00-11.00"
+          }
+        ],
+        "action_plan": [
+          {
+            "note": "Creare uno stile di vita di coach perfetto",
+            "deadline": "05/12/2019",
+            "done": "ok"
+          },
+          {
+            "note": "Creare uno stile di vita di coach perfetto",
+            "deadline": "05/13/2019",
+            "done": "ok"
+          },
+          {
+            "note": "Creare uno stile di vita di coach perfetto",
+            "deadline": "04/11/2019",
+            "done": "no"
+          }
+        ]
+      }
+    ]
+  }
+]

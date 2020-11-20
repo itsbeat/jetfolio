@@ -1,0 +1,8 @@
+{
+  "name": "Elan - Coaching App",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "85fa088c"
+}

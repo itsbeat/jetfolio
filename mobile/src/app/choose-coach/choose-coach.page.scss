@@ -1,0 +1,48 @@
+ion-icon {
+  font-size: 30px;
+  color: var(--ion-color-primary);
+}
+
+.slider-cont {
+  padding: 0px 15%;
+}
+
+p {
+  font-family: 'ElanFont2', sans-serif;
+  font-size: 20px;
+  color: var(--ion-color-primary);
+}
+
+.coach-avatar {
+  width: 130px;
+  height: 130px;
+  min-width: 130px;
+  min-height: 130px;
+  border-radius: 50%;
+  background-color: #c2baba;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.c-general-info {
+  font-family: 'ElanFont2', sans-serif;
+  font-size: 20px;
+  color: var(--ion-color-primary);
+}
+
+.coach-container p {
+  font-size: 18px;
+  margin: 3px 0px;
+}
+
+.c-bio,
+.c-curriculum {
+  margin: 10px 0px;
+  padding: 5px;
+  font-family: 'ElanFont2';
+}
+
+.c-bio {
+  margin-top: 30px;
+}

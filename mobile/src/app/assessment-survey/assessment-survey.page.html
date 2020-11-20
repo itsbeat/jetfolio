@@ -1,0 +1,84 @@
+<ion-header no-border>
+  <ion-toolbar background="primary" class="elan-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Questionario
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!isLoading && !error" class="p-5 h-100 w-100 flex-cont-col">
+    <div *ngIf="questions && questions.length > 0">
+      <div class="tx-r15 pb-3">
+        <span class="tx-bold tx-primary">
+          Area:
+        </span>
+        {{ areaNames[questions[currentQuestionIndex].area] }}
+      </div>
+      <div class="title">
+        <span class="tx-bold tx-primary tx-r12"> {{ currentQuestionIndex + 1 }}. </span>
+        {{ questions[currentQuestionIndex].text }}
+      </div>
+    </div>
+    <div class="flex-1 h-center v-center flex-cont-col">
+      <div class="answer-cont flex-cont-row v-center w-100" *ngIf="questions.length > 0">
+        <div *ngFor="let answerValue of [1, 2, 3, 4]" class="flex-1 flex-cont-col v-center h-center">
+          <div
+            [ngClass]="'answer-value-' + answerValue"
+            [class.selected]="answers[currentQuestionIndex].value == answerValue"
+            (click)="selectAnswer(answerValue)"
+            class="answer-btn"
+          >
+            <span class="flex-cont-col v-center h-center">
+              {{ answerValue }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="answer-cont flex-cont-col v-center w-100" *ngIf="!questions || questions.length == 0">
+        <h2>Il questionario non è ancora stato completato dal tuo Coach.</h2>
+        <h2 class="my-2">Non è possibile quindi proseguire con la creazione del piano.</h2>
+        <h3 class="my-2">Verrai avvisato quando il questionario sarà disponibile.</h3>
+      </div>
+    </div>
+    <div class="flex-cont-row v-center" *ngIf="questions && questions.length > 0">
+      <ion-button
+        fill="solid"
+        color="tertiary"
+        class="choose-coach-button mr-3"
+        [disabled]="currentQuestionIndex == 0"
+        (click)="prevQuestion()"
+      >
+        Indietro
+      </ion-button>
+      <ion-button
+        fill="solid"
+        color="primary"
+        class="choose-coach-button"
+        [disabled]="answers[currentQuestionIndex].value == -1"
+        (click)="nextQuestion()"
+      >
+        {{ currentQuestionIndex == questions.length - 1 ? 'Salva' : 'Prossima' }}
+      </ion-button>
+    </div>
+    <div *ngIf="!questions || questions.length == 0">
+      <ion-button fill="solid" color="tertiary" class="choose-coach-button" (click)="goHome()">
+        Torna ai tuoi Piani
+      </ion-button>
+    </div>
+  </div>
+  <div *ngIf="isLoading && !error" class="flex-cont-col v-center h-center h-100">
+    <div class="flex-cont-col v-center h-center">
+      <ion-spinner></ion-spinner>
+      <span>Caricamento...</span>
+    </div>
+  </div>
+  <div *ngIf="!isLoading && error" class="flex-cont-col v-center h-center h-100">
+    <div class="flex-cont-col v-center h-center">
+      <span class="tx-tertiary"> Errore: {{ error | json }} </span>
+    </div>
+  </div>
+</ion-content>

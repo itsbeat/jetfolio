@@ -1,0 +1,177 @@
+<ion-header no-border>
+  <ion-toolbar class="elan-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="goToPlanDetails()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Dettaglio Sessione
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="false">
+  <div
+    *ngIf="!isLoading"
+    class="p-5 flex-cont-col h-100">
+    <div
+      class="flex-1 flex-cont-col scroll w-100"
+      *ngIf="session">
+      <h1
+        *ngIf="session.coaching_plan.approved == null"
+        class="m-0 mb-2 tx-center tx-primary">
+        Sessione Iniziale
+      </h1>
+      <h1
+        *ngIf="session.coaching_plan.approved"
+        class="m-0 mb-2 tx-center tx-primary">
+        Sessione {{ session.index }} di {{ session.sessions_number }}
+      </h1>
+      <h1
+        *ngIf="session.status.code == 'cancelled'"
+        class="m-0 mb-2 tx-center tx-primary">
+        Sessione Cancellata
+      </h1>
+      <div
+        *ngIf="session.date"
+        class="flex-cont-col h-center">
+        <span class="tx-secondary">
+          Data: {{ session.date | date: 'dd/MM/yyyy HH:mm' }}
+        </span>
+      </div>
+      <div
+        *ngIf="!session.date && session.proposed_date_1"
+        class="flex-cont-col h-center">
+        <span class="tx-secondary mb-2">
+          Date proposte:
+        </span>
+        <span class="tx-secondary">
+          {{ session.proposed_date_1 | date: 'dd/MM/yyyy HH:mm' }}
+        </span>
+        <span class="tx-secondary">
+          {{ session.proposed_date_2 | date: 'dd/MM/yyyy HH:mm' }}
+        </span>
+        <span class="tx-secondary">
+          {{ session.proposed_date_3 | date: 'dd/MM/yyyy HH:mm' }}
+        </span>
+      </div>
+      <div
+        *ngIf="!session.date && !session.proposed_date_1"
+        class="flex-cont-col h-center">
+        La sessione è stata posticipata.
+        <button
+          (click)="chooseDates()"
+          class="btn mt-2">
+          Scegli nuove date
+        </button>
+      </div>
+      <div class="flex-cont-col flex-1">
+        <h2 class="tx-tertiary mg-t-30 mg-b-10 tx-bold">
+          Piano d'azione sessione
+        </h2>
+        <div *ngFor="let actionIndex of actionPlanTemplateItems">
+          <div
+            class="flex-cont-row v-center box mb-2 selected"
+            [class.tertiary]="action.result == null"
+            [class.ok]="action.result == 1"
+            [class.no]="action.result == 0"
+            (click)="goToActionDetails(actionIndex)"
+            *ngIf="session.actions[actionIndex]; let action"
+          >
+            <p
+              [class.tx-tertiary]="action.result == null"
+              [class.ok]="action.result == 1"
+              [class.no]="action.result == 0"
+              class="m-2"
+            >
+              Azione {{ actionIndex + 1 }}
+            </p>
+            <p class="tx-lightgrey flex-1 tx-center m-2">
+              {{ action.deadline | date: 'dd/MM/yyyy' }}
+            </p>
+            <div
+              class="flex-cont-row"
+              *ngIf="action.result == null">
+              <div class="ball-icon border tx-tertiary bg-white">
+                <ion-icon name="help"></ion-icon>
+              </div>
+            </div>
+            <div
+              *ngIf="action.result != null"
+              class="flex-cont-row">
+              <div
+                *ngIf="action.result == 1"
+                class="ball-icon tx-white bg-secondary"
+              >
+                <ion-icon name="checkmark"></ion-icon>
+              </div>
+              <div
+                *ngIf="action.result == 0"
+                class="ball-icon tx-white bg-red ml-2"
+              >
+                <ion-icon name="close"> </ion-icon>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex-cont-row v-center h-center box mb-2 to-choose"
+            (click)="goToActionDetails(actionIndex)"
+            *ngIf="
+              !session.actions[actionIndex] && !session.report;
+              let action
+            ">
+            <span class="box-icon-bg">
+              <ion-icon class="box-icon" name="add">
+              </ion-icon>
+            </span>
+            <p class="m-0">
+              Aggiungi Azione
+            </p>
+          </div>
+        </div>
+        <div
+          class="flex-1 flex-cont-col h-center v-center tx-center tx-danger"
+          *ngIf="actionPlanTemplateItems.length == 0">
+          <ion-icon
+            class="mb-3"
+            size="large"
+            name="alert">
+          </ion-icon>
+          <span class="tx-bold tx-r11">
+            {{ infoMessage }}
+          </span>
+        </div>
+        <div
+          class="flex-cont-col flex-1 v-center"
+          *ngIf="session.report_date">
+          <h3 class="mb-2 mt-3 tx-bold tx-tertiary">
+            Note
+          </h3>
+          <p>{{ session.report_note ? session.report_note : 'Nessuna nota inserita' }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 flex-cont-col scroll mb-3" *ngIf="!session">
+      <p>Nessuna sessione definita</p>
+    </div>
+    <div class="pt-5 w-100 flex-cont-col v-center h-center" *ngIf="session">
+      <ion-button
+        *ngIf="!session.report"
+        fill="solid"
+        color="primary"
+        class="choose-coach-button not-fixed"
+        [disabled]="!canProceed || session.report_date != null"
+        (click)="generateReport()"
+      >
+        Genera Report
+      </ion-button>
+    </div>
+  </div>
+  <div *ngIf="isLoading" class="flex-cont-col v-center h-center h-100">
+    <div class="flex-cont-col v-center h-center">
+      <ion-spinner></ion-spinner>
+      <span>Caricamento...</span>
+    </div>
+  </div>
+</ion-content>

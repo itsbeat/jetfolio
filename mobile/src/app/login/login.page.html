@@ -1,0 +1,46 @@
+<ion-content scroll-y="true" fullscreen="true">
+  <div *ngIf="!loading" class="p-5">
+    <div class="logo-cont"></div>
+    <form class="flex-1 flex-cont-col" #loginForm="ngForm" (ngSubmit)="login()">
+      <div class="flex-1 h-center flex-cont-col v-center">
+        <div class="w-100">
+          <div class="error-cont" *ngIf="loginError">
+            Username o password non corretti
+            <br />
+          </div>
+
+          <label>Username</label>
+          <ion-input
+            required
+            email
+            name="username"
+            type="email"
+            placeholder="Username"
+            [(ngModel)]="username"
+          >
+          </ion-input>
+          <label>Password</label>
+          <ion-input
+            required
+            type="password"
+            name="password"
+            placeholder="Password"
+            [(ngModel)]="password"
+          >
+          </ion-input>
+        </div>
+      </div>
+      <div class="pt-5 w-100 flex-cont-col v-center h-center">
+        <ion-button [disabled]="loginForm.invalid" class="not-fixed" fill="solid" color="primary" (click)="login()">
+          Login
+        </ion-button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="loading" class="flex-cont-col v-center h-center h-100">
+    <div class="flex-cont-col v-center h-center">
+      <ion-spinner *ngIf="loading"></ion-spinner>
+      <span>Caricamento...</span>
+    </div>
+  </div>
+</ion-content>

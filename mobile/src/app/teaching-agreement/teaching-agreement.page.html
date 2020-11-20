@@ -1,0 +1,103 @@
+<ion-header no-border>
+  <ion-toolbar class="elan-toolbar" translucent="true">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Patto di Coaching</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="false">
+  <div *ngIf="!isLoading" class="p-5 flex-cont-col h-100">
+    <div class="pr-3 flex-1 flex-cont-col w-100 scroll">
+      <div class="agreement-date-info flex-cont-col v-center mb-3" *ngIf="coachingAgreement.approved">
+        <h3 class="tx-tertiary tx-bold">Approvato il </h3>
+        <p class="tx-r11">{{ coachingAgreement.approved | date: 'dd/MM/yyyy' }}</p>
+      </div>
+      <div class="goals-cont mb-3">
+        <h3 class="mb-5 tx-tertiary tx-bold">Obiettivi</h3>
+        <div class="my-2">
+          <ion-input
+            *ngIf="!coachingAgreement.approved"
+            [(ngModel)]="coachingAgreement.goal_1"
+            class="mg-tb-15 tx-dark"
+            placeholder="Obiettivo 1"
+            (input)="validate()"
+          >
+          </ion-input>
+          <li class="ml-1 tx-r11" *ngIf="coachingAgreement.approved">
+            {{ coachingAgreement.goal_1 }}
+          </li>
+          <ion-input
+            *ngIf="!coachingAgreement.approved"
+            [(ngModel)]="coachingAgreement.goal_2"
+            class="mg-tb-15 tx-dark"
+            placeholder="Obiettivo 2"
+            (input)="validate()"
+          >
+          </ion-input>
+          <li class="ml-1 tx-r11" *ngIf="coachingAgreement.approved">
+            {{ coachingAgreement.goal_2 }}
+          </li>
+          <ion-input
+            *ngIf="!coachingAgreement.approved"
+            [(ngModel)]="coachingAgreement.goal_3"
+            class="mg-tb-15 tx-dark"
+            placeholder="Obiettivo 3"
+            (input)="validate()"
+          >
+          </ion-input>
+          <li class="ml-1 tx-r11" *ngIf="coachingAgreement.approved">
+            {{ coachingAgreement.goal_3 }}
+          </li>
+        </div>
+      </div>
+      <div class="sessions-number-cont mb-3">
+        <div class="flex-cont-col">
+          <h3 class="tx-tertiary tx-bold">Numero di sessioni</h3>
+          <h3 class="my-2 ml-1 tx-r11" *ngIf="coachingAgreement.approved">#{{ coachingAgreement.sessions_number }}</h3>
+        </div>
+        <div *ngIf="!coachingAgreement.approved" class="flex-cont-row tx-tertiary v-center">
+          <ion-icon (click)="removeSession()" class="size-l" name="remove-circle-outline"> </ion-icon>
+          <span style="min-width: 50px" class="tx-center mx-3 tx-r12">
+            {{ coachingAgreement.sessions_number }}
+          </span>
+          <ion-icon (click)="addSession()" class="size-l" name="add-circle-outline"> </ion-icon>
+        </div>
+      </div>
+      <div class="mb-2">
+        <h3 class="tx-bold tx-tertiary mt-3">KPI di Misurazione</h3>
+        <ion-textarea
+          *ngIf="!coachingAgreement.approved"
+          class="min-h-100 my-2"
+          [(ngModel)]="coachingAgreement.kpi_measure"
+          (input)="validate()"
+          placeholder="Inserisci i KPI di misurazione per questo Piano di Coaching"
+        >
+        </ion-textarea>
+        <p *ngIf="coachingAgreement.approved" class="my-2 ml-1 tx-r11">
+          {{ coachingAgreement.kpi_measure }}
+        </p>
+      </div>
+    </div>
+    <div class="pt-5 w-100 flex-cont-col v-center h-center">
+      <ion-button
+        *ngIf="!coachingAgreement.approved"
+        fill="solid"
+        class="new-session-button not-fixed"
+        (click)="saveTeachingAgreement()"
+        [disabled]="!canProceed"
+      >
+        Salva
+      </ion-button>
+    </div>
+  </div>
+  <div *ngIf="isLoading" class="flex-cont-col v-center h-center h-100">
+    <div class="flex-cont-col v-center h-center">
+      <ion-spinner></ion-spinner>
+      <span>Caricamento...</span>
+    </div>
+  </div>
+</ion-content>

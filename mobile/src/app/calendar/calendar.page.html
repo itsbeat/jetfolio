@@ -1,0 +1,128 @@
+<ion-header no-border>
+  <ion-toolbar class="elan-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Fissa Data & Ora</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    *ngIf="!isLoading"
+    class="p-5 flex-cont-col h-100">
+    <div class="calendar-picker flex-cont-col flex-3">
+      <div class="month-chooser flex-cont-row v-center mb-3">
+        <div
+          (click)="prevMonth()"
+          [class.bg-primary]="today.getMonth() < date.date.getMonth()"
+          [class.bg-light-grey]="today.getMonth() >= date.date.getMonth()"
+          class="ball-icon tx-white bg-primary">
+          <ion-icon
+            class="box-icon"
+            name="arrow-dropleft">
+          </ion-icon>
+        </div>
+        <div class="mx-auto tx-r15">
+          {{ this.monthName }}
+          {{ this.year }}
+        </div>
+        <div
+          (click)="nextMonth()"
+          class="ball-icon tx-white bg-primary">
+          <ion-icon
+            class="box-icon"
+            name="arrow-dropright">
+          </ion-icon>
+        </div>
+      </div>
+      <div class="calendar-array flex-cont-col flex-1">
+        <div
+          *ngFor="let week of weeks"
+          class="calendar-week flex-cont-row flex-1">
+          <div
+            *ngFor="let day of week"
+            (click)="selectDate(day)"
+            [class.disabled]="day.disabled"
+            [class.free]="day.hasAvailable"
+            [class.legend]="day.legend"
+            [class.selected]="day.timestamp == dateSelected.date && day.timestamp != -1"
+            class="caledar-day">
+            <div>
+              <span class="flex-cont-col v-center h-center">
+                {{ day.value != -1 ? day.value : "" }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="hour-picker flex-1 flex-cont-col my-3"
+      *ngIf='show_hours'>
+      <div
+        class="tx-grey flex-1 flex-cont-col v-center h-center"
+        *ngIf="dateSelected.date == -1">
+        <ion-icon
+          class="mb-3"
+          name="calendar"
+          size="large"></ion-icon>
+        Seleziona una data
+      </div>
+      <div
+        class="flex-1 flex-cont-col"
+        *ngIf="dateSelected.date != -1">
+        <div class="flex-1 flex-cont-row mb-4">
+          <div
+            [class.free]="dateSelected.hours[1]?.available"
+            [class.selected]="dateSelected.hour == 1"
+            (click)="selectHour(1)"
+            class="flex-1 flex-cont-row v-center h-center mr-4 hour-cont">
+            08:00 - 10:00
+          </div>
+          <div
+            [class.free]="dateSelected.hours[2]?.available"
+            [class.selected]="dateSelected.hour == 2"
+            (click)="selectHour(2)"
+            class="flex-1 flex-cont-row v-center h-center hour-cont">
+            10:00 - 12:00
+          </div>
+        </div>
+        <div class="flex-1 flex-cont-row">
+          <div
+            [class.free]="dateSelected.hours[3]?.available"
+            [class.selected]="dateSelected.hour == 3"
+            (click)="selectHour(3)"
+            class="flex-1 flex-cont-row v-center h-center mr-4 hour-cont">
+            14:00 - 16:00
+          </div>
+          <div
+            [class.free]="dateSelected.hours[4]?.available"
+            [class.selected]="dateSelected.hour == 4"
+            (click)="selectHour(4)"
+            class="flex-1 flex-cont-row v-center h-center hour-cont">
+            16:00 - 18:00
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <ion-button
+        fill="solid"
+        color="primary"
+        class="not-fixed"
+        [disabled]="dateSelected.hour == -1 || dateSelected.date == -1"
+        (click)="saveDate()">
+        Salva Data
+      </ion-button>
+    </div>
+  </div>
+  <div
+    *ngIf="isLoading"
+    class="flex-cont-col v-center h-center h-100">
+    <div class="flex-cont-col v-center h-center">
+      <ion-spinner></ion-spinner>
+      <span>Caricamento...</span>
+    </div>
+  </div>
+</ion-content>

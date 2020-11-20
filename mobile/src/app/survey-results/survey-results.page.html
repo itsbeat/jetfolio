@@ -1,0 +1,57 @@
+<ion-header no-border>
+  <ion-toolbar
+    background='primary'
+    class="elan-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Risultati Questionario
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    *ngIf="survey"
+    class="p-5 flex-cont-col v-center h-center h-100">
+    <div class="flex-1 flex-cont-col py-5 w-100">
+      <div
+        *ngFor="let areaIndex of [1,2,3, 4]"
+        class="area-result flex-1 w-100 flex-cont-col v-center">
+        <div class="flex-cont-col tx-r15">
+          <div class="flex-cont-row pb-2">
+            Area {{ areaIndex }}
+            <span
+              [ngClass]="getTextColorFromValue(areaIndex)"
+              class="ml-auto">
+              {{ getAreaResult(areaIndex) }} su 4
+            </span>
+          </div>
+          <div>
+            <div class="answer-cont flex-cont-row v-center w-100">
+              <div
+                *ngFor="let spotIndex of [1,2,3,4,5,6,7,8]"
+                class="flex-1 flex-cont-col v-center h-center">
+                <div
+                  [ngClass]="'answer-value-' + getSpotColorClass(spotIndex)"
+                  [class.selected]="getSpotIsSelected(areaIndex, spotIndex)"
+                  class="answer-btn">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-100">
+      <ion-button
+        fill="solid"
+        color="primary"
+        class="choose-coach-button"
+        (click)="nextStep()">
+         Scegli Coach
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

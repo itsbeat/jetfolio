@@ -1,0 +1,697 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+$font_size: 16;
+$spacer: 0.25 * $font_size;
+
+* {
+  font-family: 'ElanFont2', sans-serif;
+  font-size: $font-size + 'vw';
+}
+
+.tx-center {
+  text-align: center;
+  display: block;
+}
+
+.tx-bold {
+  font-weight: bold;
+}
+
+.tx-small {
+  font-size: 4vw;
+}
+
+.tx-grey {
+  color: var(--ion-color-tertiary) !important;
+}
+
+.tx-light {
+  color: var(--ion-color-light) !important;
+}
+
+.tx-dark {
+  color: var(--ion-color-dark) !important;
+}
+
+.tx-primary {
+  color: var(--ion-color-primary);
+}
+
+.tx-secondary {
+  color: var(--ion-color-secondary);
+}
+
+.tx-tertiary {
+  color: var(--ion-color-tertiary);
+}
+
+.tx-rose {
+  color: var(--ion-color-rose);
+}
+
+.tx-lightgrey {
+  color: var(--ion-color-light-grey);
+}
+
+.tx-red {
+  color: var(--ion-color-red);
+}
+
+.tx-danger {
+  color: #ffc107 !important;
+}
+
+.tx-r11 {
+  font-size: 1.05rem;
+}
+
+.tx-r12 {
+  font-size: 1.2rem;
+}
+
+.tx-r15 {
+  font-size: 1.5rem;
+}
+
+.elan-toolbar {
+  --color: var(--ion-color-primary, 'black');
+  box-shadow: none;
+}
+
+.elan-toolbar ion-title {
+  font-family: 'ElanFont2Bold' !important;
+  font-size: 1.3rem;
+}
+
+.fxb-row-sb {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fxb-row-sc {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.fxb-col-cc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+@for $i from 0 through 5 {
+  .p-#{$i} {
+    padding-top: #{$spacer * $i}px;
+    padding-bottom: #{$spacer * $i}px;
+    padding-left: #{$spacer * $i}px;
+    padding-right: #{$spacer * $i}px;
+  }
+
+  .p-0 {
+    padding: 0;
+  }
+
+  .pt-#{$i} {
+    padding-top: #{$spacer * $i}px !important;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: #{$spacer * $i}px !important;
+  }
+
+  .pl-#{$i} {
+    padding-left: #{$spacer * $i}px !important;
+  }
+
+  .pr-#{$i} {
+    padding-right: #{$spacer * $i}px !important;
+  }
+
+  .px-#{$i} {
+    padding-left: #{$spacer * $i}px;
+    padding-right: #{$spacer * $i}px;
+  }
+
+  .py-#{$i} {
+    padding-top: #{$spacer * $i}px;
+    padding-bottom: #{$spacer * $i}px;
+  }
+
+  .mt-#{$i} {
+    margin-top: #{$spacer * $i}px;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: #{$spacer * $i}px;
+  }
+
+  .ml-#{$i} {
+    margin-left: #{$spacer * $i}px;
+  }
+
+  .mr-#{$i} {
+    margin-right: #{$spacer * $i}px;
+  }
+
+  .mx-#{$i} {
+    margin-right: #{$spacer * $i}px;
+    margin-left: #{$spacer * $i}px;
+  }
+
+  .my-#{$i} {
+    margin-top: #{$spacer * $i}px;
+    margin-bottom: #{$spacer * $i}px;
+  }
+
+  .m-#{$i} {
+    margin: #{$spacer * $i}px;
+  }
+
+  .m-0 {
+    margin: 0;
+  }
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.mx-auto {
+  margin: 0 auto;
+}
+
+.my-auto {
+  margin: auto 0;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+@each $size in 1, 3, 5, 10, 15, 20, 25, 30 {
+  .mg-r-#{$size} {
+    margin-right: #{$size}px;
+  }
+
+  .mg-l-#{$size} {
+    margin-left: #{$size}px;
+  }
+
+  .mg-t-#{$size} {
+    margin-top: #{$size}px;
+  }
+
+  .mg-b-#{$size} {
+    margin-bottom: #{$size}px;
+  }
+
+  .mg-lr-#{$size} {
+    margin-right: #{$size}px;
+    margin-right: #{$size}px;
+  }
+
+  .mg-tb-#{$size} {
+    margin-top: #{$size}px;
+    margin-bottom: #{$size}px;
+  }
+}
+
+.scroll {
+  overflow-y: auto;
+}
+
+/*
+ion-content .flex-cont-col:first-child {
+  overflow-y: hidden;
+}
+
+ion-content .flex-cont-col .flex-cont-col {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+*/
+
+.flex-cont-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-cont-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-cont-row.v-center,
+.flex-cont-col.h-center {
+  align-items: center;
+}
+
+.flex-cont-col.v-center,
+.flex-cont-row.h-center {
+  justify-content: center;
+}
+
+@for $i from 1 through 10 {
+  .flex-#{$i} {
+    flex: #{$i};
+  }
+  .w-#{$i*10} {
+    width: #{$i * 10 + '%'};
+  }
+  .h-#{$i*10} {
+    height: #{$i * 10 + '%'};
+  }
+  .min-h-#{$i*10} {
+    min-height: #{$i * 10 + '%'};
+  }
+}
+
+.to-choose {
+  border: 2px dashed var(--ion-color-tertiary);
+  color: var(--ion-color-tertiary);
+}
+
+.choosed {
+  border: 2px solid var(--ion-color-secondary);
+  color: var(--ion-color-secondary);
+}
+
+.fxb-col-sc p {
+  margin: 3px 0px;
+}
+
+ion-content h2 {
+  color: var(--ion-color-primary);
+}
+
+ion-icon.size-m {
+  font-size: 25px;
+}
+
+ion-icon.size-l {
+  font-size: 35px;
+}
+
+.dashed-cont {
+  padding: 7px 10px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+h2,
+h3 {
+  margin: 0px;
+}
+
+h1 {
+  font-size: 7vw;
+}
+
+h2 {
+  font-size: 6vw;
+}
+
+h3 {
+  font-size: 5vw;
+}
+
+p {
+  font-size: 5vw;
+}
+
+ion-input {
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  padding: 15px 10px;
+  margin: 5px 0px;
+  margin-bottom: 20px;
+  height: 50px;
+}
+
+ion-button {
+  width: 100%;
+  height: 45px;
+  --box-shadow: none;
+  --border-radius: 5px;
+  --padding: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+ion-button,
+ion-input,
+.form-err {
+  font-family: 'ElanFont2', sans-serif;
+}
+
+.answer-cont .answer-btn {
+  box-sizing: content-box;
+  width: 70%;
+  padding-bottom: 70%;
+  border-radius: 100%;
+  border: 3px solid;
+  height: 0;
+  font-size: 1.7rem;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.answer-btn span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.answer-btn.selected {
+  font-family: 'ElanFont2Bold';
+}
+
+.answer-value-4 {
+  color: var(--ion-color-primary);
+}
+
+.answer-value-4.selected {
+  color: white;
+  background-color: var(--ion-color-primary);
+  border-color: var(--ion-color-primary) !important;
+}
+
+.answer-value-3 {
+  color: var(--ion-color-secondary);
+}
+
+.answer-value-3.selected {
+  color: white;
+  background-color: var(--ion-color-secondary);
+  border-color: var(--ion-color-secondary) !important;
+}
+
+.answer-value-2 {
+  color: var(--ion-color-rose);
+}
+
+.answer-value-2.selected {
+  color: white;
+  background-color: var(--ion-color-rose);
+  border-color: var(--ion-color-rose) !important;
+}
+
+.answer-value-1 {
+  color: var(--ion-color-red);
+}
+
+.answer-value-1.selected {
+  color: white;
+  background-color: var(--ion-color-red);
+  border-color: var(--ion-color-red) !important;
+}
+
+.ball-icon {
+  border-radius: 100%;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ball-icon.border {
+  border: 2px solid;
+}
+
+@each $color in primary, secondary, rose, red, white, light-grey {
+  .ball-icon.tx-#{$color} {
+    color: var(--ion-color-#{$color});
+  }
+
+  .ball-icon.border.tx-#{$color} {
+    border-color: var(--ion-color-#{$color});
+  }
+
+  .tx-#{$color} {
+    color: var(--ion-color-#{$color});
+  }
+
+  .ball-icon.bg-#{$color} {
+    background-color: var(--ion-color-#{$color});
+  }
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  min-height: 70px;
+  max-width: 70px;
+  max-height: 70px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+.box {
+  position: relative;
+  border-style: dashed;
+  padding: 12px 10px;
+  min-height: 70px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.box.to-choose {
+  border: 2px dashed var(--ion-color-tertiary);
+  color: var(--ion-color-tertiary);
+}
+
+.box.selected.ok {
+  border: 2px solid var(--ion-color-secondary);
+  color: var(--ion-color-secondary);
+}
+
+.box.selected.cancelled {
+  border: 2px solid var(--ion-color-cancelled);
+  color: var(--ion-color-cancelled);
+}
+
+.box.selected.no {
+  border: 2px solid var(--ion-color-rose);
+  color: var(--ion-color-rose);
+}
+
+.box.selected.tertiary {
+  border: 2px solid var(--ion-color-tertiary);
+  color: var(--ion-color-tertiary);
+}
+
+.box.selected.active {
+  border: 2px solid var(--ion-color-active);
+  color: var(--ion-color-active);
+}
+
+.box.selected.primary {
+  border: 2px solid var(--ion-color-primary);
+  color: var(--ion-color-primary);
+}
+
+.box .box-icon-bg {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5%;
+  margin: auto;
+  border: 2px solid;
+}
+
+.box .box-icon-bg.right {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 5%;
+  left: initial;
+  margin: auto;
+  border: 2px solid;
+}
+
+.box.to-choose {
+  .box-icon {
+    color: var(--ion-color-tertiary);
+  }
+
+  .box-icon-bg {
+    background-color: white;
+    border-color: var(--ion-color-tertiary);
+  }
+}
+
+.box.selected.done {
+  .box-icon {
+    color: white;
+  }
+
+  .box-icon-bg {
+    background-color: var(--ion-color-secondary);
+  }
+}
+
+.box.selected.idle {
+  border-style: solid;
+  border-color: var(--ion-color-idle);
+}
+
+ion-textarea {
+  border: 1px solid;
+  border-color: var(--ion-color-tertiary);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+ion-textarea textarea {
+  padding: 0 !important;
+}
+
+.status-badge {
+  padding: 1px 8px;
+  border-radius: 8px;
+  margin-top: 6px;
+}
+
+.status-badge.idle {
+  color: white;
+  background-color: var(--ion-color-idle);
+}
+
+.status-badge.active {
+  color: white;
+  background-color: orange;
+}
+
+.status-badge.done {
+  color: white;
+  background-color: var(--ion-color-secondary);
+}
+
+.status-badge.cancelled {
+  color: white;
+  background-color: var(--ion-color-cancelled);
+}
+
+.status-badge span {
+  font-size: 12px;
+}
+
+.error-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: #f5c6cb;
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.user-avatar {
+  height: 0;
+  padding-bottom: 40%;
+  position: relative;
+  width: 40%;
+  border-radius: 50%;
+  background-color: var(--ion-color-primary);
+  color: white;
+}
+
+.user-avatar.tiny {
+  padding-bottom: 20%;
+  width: 20%;
+}
+
+.user-avatar > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-avatar ion-icon {
+  width: 40%;
+  height: 40%;
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 0;
+}
+
+.swiper-slide {
+  padding-bottom: 25px;
+}
+
+.swiper-pagination-bullet {
+  background-color: var(--ion-color-primary);
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--ion-color-idle);
+}
+
+.btn {
+  outline: 0;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: var(--ion-color-primary);
+  color: white;
+}
+
+.btn:active,
+.btn:focus {
+  outline: 0;
+}

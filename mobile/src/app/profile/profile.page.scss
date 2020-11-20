@@ -1,0 +1,15 @@
+.session-cont {
+  border: 2px solid var(--ion-color-secondary);
+  border-radius: 10px;
+}
+
+h2,
+p,
+small {
+  color: var(--ion-color-tertiary);
+}
+
+h3,
+.session-cont ion-icon {
+  color: var(--ion-color-secondary);
+}

@@ -1,0 +1,142 @@
+{
+  "actions": {
+    "crud": {
+    },
+    "custom": []
+  },
+  "className": "App\\Models\\Role",
+  "config": {
+    "admin": {
+      "canCreate": true,
+      "canDelete": false,
+      "canEdit": true,
+      "canImport": true,
+      "canView": true
+    },
+    "hr": {
+      "canCreate": false,
+      "canDelete": false,
+      "canEdit": false,
+      "canImport": false,
+      "canView": true
+    },
+    "hrhead": {
+      "canCreate": false,
+      "canDelete": false,
+      "canEdit": false,
+      "canImport": false,
+      "canView": true
+    },
+    "superadmin": {
+      "canCreate": true,
+      "canDelete": true,
+      "canEdit": true,
+      "canImport": true,
+      "canView": true
+    }
+  },
+  "groupBy": [
+    "roles.id"
+  ],
+  "headers": [
+    {
+      "text": "",
+      "edit": {
+        "type": "field",
+        "value": "id"
+      },
+      "massive": {
+        "key": "id",
+        "text": "ID",
+        "validators": "nullable|numeric"
+      },
+      "type": "id",
+      "value": "id",
+      "visible": {
+        "detail": true,
+        "edit": false,
+        "list": true
+      }
+    },
+    {
+      "text": "Codice",
+      "class": "h-left flex-3",
+      "edit": {
+        "type": "field",
+        "value": "code"
+      },
+      "massive": {
+        "key": "code",
+        "text": "Codice",
+        "validators": "required"
+      },
+      "placeholder": "Inserisci il codice di questo ruolo",
+      "type": "field",
+      "validators": "",
+      "value": "code",
+      "visible": {
+        "edit": true,
+        "list": true,
+        "view": true
+      }
+    },
+    {
+      "text": "Nome",
+      "class": "h-left flex-3",
+      "edit": {
+        "type": "field",
+        "value": "name"
+      },
+      "massive": {
+        "key": "name",
+        "text": "Nome",
+        "validators": "required"
+      },
+      "placeholder": "Inserisci il nome del ruolo",
+      "type": "field",
+      "validators": "required",
+      "value": "name",
+      "visible": {
+        "edit": true,
+        "list": true,
+        "view": true
+      }
+    },
+    {
+      "text": "Colore",
+      "class": "h-left flex-3",
+      "edit": {
+        "type": "color",
+        "value": "color"
+      },
+      "massive": {
+        "key": "color",
+        "text": "Colore",
+        "validators": "required"
+      },
+      "placeholder": "Inserisci il colore del ruolo",
+      "type": "field",
+      "validators": "required",
+      "value": "color",
+      "visible": {
+        "edit": true,
+        "list": true,
+        "view": true
+      }
+    }
+  ],
+  "massiveImportIdField": "id",
+  "name": "roles",
+  "orderBy": [],
+  "preFilters": [],
+  "roleBasedFilters": {
+    "admin": [
+    ]
+  },
+  "subFields": [],
+  "template": {
+    "code": "",
+    "color": "",
+    "name": ""
+  }
+}

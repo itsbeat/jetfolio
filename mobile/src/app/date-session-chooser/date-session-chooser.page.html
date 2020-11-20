@@ -1,0 +1,62 @@
+<ion-header no-border>
+  <ion-toolbar class="elan-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="tx-bold">Sessioni</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="false">
+  <div class="p-5 flex-cont-col h-100">
+    <h3 class="tx-tertiary mb-5">
+      Scegli date per la sessione
+    </h3>
+    <div class="flex-1 flex-cont-col w-100 scroll v-center">
+      <div
+        *ngFor='let date of dates; let i = index'
+        class='mb-4'>
+        <div
+          *ngIf='date.date == -1; else dateIsValid'
+          class='flex-cont-row h-center v-center box to-choose'
+          (click)="addDate(i)">
+          <span class="box-icon-bg">
+            <ion-icon
+              class="box-icon"
+              name="add">
+            </ion-icon>
+          </span>
+          <p class='m-0'>
+            Aggiungi Data {{ i + 1 }}
+          </p>
+        </div>
+        <ng-template #dateIsValid>
+          <div
+            (click)="addDate(i)"
+            class='flex-cont-row h-center box selected ok'>
+            <span class="box-icon-bg">
+              <ion-icon
+                class="box-icon"
+                name="checkmark">
+              </ion-icon>
+            </span>
+            <div class="flex-cont-col v-center">
+              <p class="m-0">{{ date.date | date: 'dd/MM/yyyy' }}</p>
+              <p class="m-0">{{ hourSlots[date.hour] }}</p>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="pt-5 w-100 flex-cont-col v-center h-center">
+      <ion-button
+        fill="solid"
+        color="primary"
+        class="choose-coach-button"
+        [disabled]="choosenDates < dates.length || false"
+        (click)="saveRequest()">
+         Salva Richiesta
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

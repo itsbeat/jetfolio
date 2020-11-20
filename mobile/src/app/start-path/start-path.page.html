@@ -1,0 +1,43 @@
+<ion-header no-border>
+  <ion-toolbar class="elan-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crea Percorso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="p-5 h-100 w-100 flex-cont-col">
+    <h2>
+      Inizia il tuo piano di coaching
+    </h2>
+    <div class="flex-1 flex-cont-col scroll">
+      <p>Per creare il tuo piano di coaching, sono necessari pochi semplici passaggi:</p>
+      <div class="mt-5 steps-cont flex-1 flex-cont-col scroll">
+        <div
+          *ngFor="let step of steps; let i = index"
+          class="step-cont mb-4">
+          <h3
+            class="mb-3"
+            [ngClass]="'tx-' + step.color">
+            {{ i + 1 }}.
+            {{ step.title }}
+          </h3>
+          <p class="m-0">
+            {{ step.text }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="pt-5">
+      <ion-button
+        fill="solid"
+        color="primary"
+        class="choose-coach-button"
+        (click)="startCoachingPathCreation()">
+        Crea Piano
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

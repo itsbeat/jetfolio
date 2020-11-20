@@ -1,0 +1,78 @@
+.cal-month-view .cal-cell-top {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.caledar-day {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.caledar-day div {
+  color: #333;
+  box-sizing: content-box;
+  height: 0;
+  border-radius: 100%;
+  width: 80%;
+  padding-bottom: 80%;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.caledar-day.disabled div {
+  color: var(--ion-color-light-grey);
+}
+
+.caledar-day.legend div {
+  background-color: var(--ion-color-secondary);
+  border-color: var(--ion-color-secondary);
+  color: white;
+  font-family: 'ElanFont2Bold';
+}
+
+.caledar-day.free div {
+  border: 2px solid;
+  color: var(--ion-color-primary);
+  border-color: var(--ion-color-primary);
+  background-color: white;
+}
+
+.caledar-day.selected div {
+  border: 2px solid;
+  background-color: var(--ion-color-primary);
+  border-color: var(--ion-color-primary);
+  color: white;
+}
+
+.caledar-day div span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.hour-picker .hour-cont {
+  border-radius: 10px;
+  border: 2px solid;
+  background-color: var(--ion-color-rose);
+  border-color: var(--ion-color-rose);
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.hour-picker .hour-cont.free {
+  border-color: var(--ion-color-primary);
+  color: var(--ion-color-primary);
+  background-color: white;
+}
+
+.hour-picker .hour-cont.selected {
+  border-color: var(--ion-color-primary);
+  background-color: var(--ion-color-primary);
+  color: white;
+}

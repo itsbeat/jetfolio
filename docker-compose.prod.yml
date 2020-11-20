@@ -1,0 +1,74 @@
+version: '3.5'
+
+services:
+  mobile:
+    build:
+      context: ./mobile
+      dockerfile: Dockerfile
+    image: jetfolio-prod-mobile:latest
+    environment:
+      - VIRTUAL_HOST=
+      - VIRTUAL_PORT=80
+    networks:
+      - proxynet
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.prod
+    image: jetfolio-prod-web
+    environment:
+      - VIRTUAL_HOST=jetfolio.it
+      - VIRTUAL_PORT=8080
+    volumes:
+      - avatars:/var/www/avatars
+    links:
+      - client
+      - server
+    networks:
+      - proxynet
+      - default
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    image: jetfolio-prod-client
+    networks:
+      - default
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.prod
+    image: jetfolio-prod-server
+    links:
+      - db:db
+    environment:
+      - DB_NAME=jetfolio
+      - DB_USER=jetfolio
+      - DB_PASSWORD=jetfolio_db_password
+      - DB_HOST=db
+      - DB_PORT=3306
+    networks:
+      - default
+  db:
+    image: mysql:5.6
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "jetfolio", "-pjetfolio_db_password"]
+      timeout: 20s
+      retries: 10
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_ROOT_USER=root
+      - MYSQL_DATABASE=jetfolio
+      - MYSQL_USER=jetfolio
+      - MYSQL_PASSWORD=jetfolio_db_password
+
+volumes:
+  mysql-data:
+    driver: local
+
+networks:
+  proxynet:
+    external:
+      name: proxy_network

@@ -1,0 +1,24 @@
+.login-cont {
+  min-height: 80vh;
+  // height: 100%;
+  overflow-y: scroll;
+}
+
+.logo-cont {
+    height: 26vh;
+    margin: 2vh 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background: url(../../assets/images/elan-coaching-app-logo.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.form-err {
+    color: red;
+}

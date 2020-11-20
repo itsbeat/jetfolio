@@ -1,0 +1,182 @@
+<ion-header no-border>
+  <ion-toolbar class="elan-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="goToPlanList()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Dettaglio Piano</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="false">
+  <div *ngIf="!isLoading" class="p-5 flex-cont-col h-100">
+    <div class="flex-1 flex-cont-col w-100 scroll">
+      <h3 class="mb-3 tx-bold">Patto di coaching</h3>
+      <div
+        class="box v-center flex-cont-col to-choose"
+        [class.selected]="plan.approved || plan.change_requested || plan.approval_required"
+        [class.ok]="plan.approved"
+        [class.active]="plan.approval_required"
+        [class.tertiary]="plan.change_requested || plan.approved == null"
+      >
+        <div
+          *ngIf="!plan.approved && !plan.approval_required && !plan.change_requested"
+          (click)="createCoachingPact()"
+          class="flex-cont-row v-center"
+        >
+          <ion-icon name="add-circle-outline" class="size-m"> </ion-icon>
+          <p class="m-0 flex-1 tx-center">
+            Aggiungi
+          </p>
+        </div>
+        <div *ngIf="plan.approved" class="flex-cont-row v-center" (click)="goToCoachingPact()">
+          <ion-icon name="checkmark" class="size-m"></ion-icon>
+          <p class="m-0 flex-1 tx-center">
+            Approvato
+          </p>
+          <ion-icon src="assets/icon/svg/arrow_forward.svg" class="size-m"> </ion-icon>
+        </div>
+        <div *ngIf="plan.approval_required" class="flex-cont-row v-center">
+          <ion-icon name="hourglass" class="size-m"> </ion-icon>
+          <p class="m-0 flex-1 tx-center">
+            In Approvazione
+          </p>
+        </div>
+        <div *ngIf="plan.change_requested" class="flex-cont-row v-center" (click)="goToCoachingPact()">
+          <ion-icon name="alert" class="size-m"> </ion-icon>
+          <p class="m-0 flex-1 tx-center">
+            Modifiche Richieste
+          </p>
+          <ion-icon src="assets/icon/svg/arrow_forward.svg" class="size-m"> </ion-icon>
+        </div>
+      </div>
+      <h3 class="mb-3 mt-5 tx-bold">
+        Coach
+      </h3>
+      <div class="flex-cont-row v-center">
+        <div
+          *ngIf="plan.coach.avatar"
+          [ngStyle]="{
+            'background-image': 'url(' + avatarUrl + plan.coach.avatar + ')'
+          }"
+          class="avatar mr-5">
+        </div>
+        <div
+          *ngIf="!plan.coach.avatar"
+          class="user-avatar mr-5 tiny">
+          <div>
+            <ion-icon name="person"></ion-icon>
+          </div>
+        </div>
+        <div class="flex-1">
+          <div class="tx-r11 tx-secondary">{{ plan.coach.name }} {{ plan.coach.surname }}</div>
+          <div class="tx-light-grey">{{ plan.coach.email }}</div>
+        </div>
+      </div>
+      <h3 class="mb-3 mt-5 tx-bold">
+        Lista Sessioni
+      </h3>
+      <ng-template [ngIf]="sessions.length !== 0" [ngIfElse]="noSessions">
+        <div
+          *ngFor="let session of sessions; let i = index"
+          class="box flex-cont-row v-center selected mb-2"
+          [class.ok]="session.status.code == 'done'"
+          [class.cancelled]="session.status.code == 'cancelled'"
+          [class.idle]="session.status.code == 'idle'"
+          [class.active]="session.status.code == 'active'"
+          (click)="goToSessionDetails(session)"
+        >
+          <div class="fxb-col-sc tx-tertiary">
+            <h3 *ngIf="session.status.code != 'cancelled' && plan.approved > 0">
+              Sessione {{ session.index  }} di {{ plan.sessions_number }}
+            </h3>
+            <h3 *ngIf="session.status.code != 'cancelled' && !plan.approved">
+              Sessione Iniziale
+            </h3>
+            <h3 *ngIf="session.status.code == 'cancelled'">
+              Sessione Cancellata
+            </h3>
+            <div
+              class="status-badge tx-center"
+              [class.active]="session.status.code == 'active'"
+              [class.cancelled]="session.status.code == 'cancelled'"
+              [class.idle]="session.status.code == 'idle'"
+              [class.done]="session.status.code == 'done'"
+            >
+              <span>{{ session.status.name | uppercase }}</span>
+            </div>
+          </div>
+          <div
+            *ngIf="!session.date && session.proposed_date_1 != null && session.status.code != 'cancelled'"
+            class="flex-cont-col h-center v-center flex-1">
+            <p class="tx-small m-0">
+              {{ session.proposed_date_1 | date: 'dd/MM/yyyy HH:mm' }}
+            </p>
+            <p class="tx-small m-0">
+              {{ session.proposed_date_2 | date: 'dd/MM/yyyy HH:mm' }}
+            </p>
+            <p class="tx-small m-0">
+              {{ session.proposed_date_3 | date: 'dd/MM/yyyy HH:mm' }}
+            </p>
+          </div>
+          <div *ngIf="session.date" class="flex-cont-col h-center v-center flex-1">
+            <p class="tx-small m-0">
+              {{ session.date | date: 'dd/MM/yyyy HH:mm' }}
+            </p>
+          </div>
+          <div *ngIf="!session.date
+            && !session.proposed_date_1
+            && session.status.code != 'cancelled'"
+            class="flex-cont-col h-center v-center flex-1">
+            <div class="flex-cont-row v-center tx-danger">
+              <ion-icon
+                class="mr-1"
+                name="alert">
+              </ion-icon>
+              <p class="tx-danger tx-small m-0">
+                Posticipata
+              </p>
+            </div>
+          </div>
+          <ion-icon
+            *ngIf="session.status.code != 'cancelled'"
+            src="assets/icon/svg/arrow_forward.svg"
+            class="size-m tx-tertiary">
+          </ion-icon>
+        </div>
+      </ng-template>
+      <ng-template #noSessions>
+        <p>Non è definita alcuna sessione</p>
+      </ng-template>
+    </div>
+    <div class="pt-5 w-100 flex-cont-col v-center h-center">
+      <ion-button
+        *ngIf="!canClosePlan"
+        fill="solid"
+        color="primary"
+        [disabled]="!canCreateNewSession"
+        class="new-session-button not-fixed"
+        (click)="createSession()"
+      >
+        Nuova Sessione
+      </ion-button>
+      <ion-button
+        *ngIf="canClosePlan"
+        fill="solid"
+        color="primary"
+        class="new-session-button not-fixed"
+        [disabled]="plan.status.code == 'done'"
+        (click)="closePlan()"
+      >
+        Chiudi Piano
+      </ion-button>
+    </div>
+  </div>
+  <div *ngIf="isLoading" class="flex-cont-col v-center h-center h-100">
+    <div class="flex-cont-col v-center h-center">
+      <ion-spinner></ion-spinner>
+      <span>Caricamento...</span>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,7 @@
+export PROJECT_SLUG=jetfolio
+export PROJECT_TEAM=jetfolio
+export DB_PROBE_PORT=3307 
+export PROD_MOBILE_URL=
+export PROD_APP_URL=jetfolio.it
+export STAGE_APP_URL=stage.jetfolio.it
+export DEV_MAIL=its.jetfolio@gmail.com

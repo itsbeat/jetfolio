@@ -1,0 +1,55 @@
+<ion-header no-border>
+  <ion-toolbar class="elan-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="tx-bold">Dettaglio Azione</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="false">
+  <div class="p-5 flex-cont-col h-100" *ngIf='!isLoading'>
+    <div class="flex-1 flex-cont-col w-100 scroll">
+      <h2 class="tx-tertiary tx-bold mg-b-10">
+        Nota
+      </h2>
+      <ion-textarea
+        [readonly]="action.result != null"
+        placeholder="Inserisci la nota per questa nuova azione"
+        [(ngModel)]="action.note"
+        (input)="validate()"
+        (change)="validate()">
+      </ion-textarea>
+      <h2 class="tx-tertiary tx-bold m-t-20 mg-t-20">
+        Deadline
+      </h2>
+      <div
+        class="box mg-b-15 flex-cont-col h-center v-center"
+        [ngClass]="{
+          'to-choose': !action.deadline,
+          'selected primary': action.deadline
+        }"
+        (click)="setDate()">
+        {{ action.deadline ? (action.deadline | moment) : 'Seleziona la deadline' }}
+      </div>
+    </div>
+    <div
+      class="pt-5 w-100 flex-cont-col v-center h-center"
+      *ngIf='!action.done'>
+      <ion-button
+        fill="solid"
+        class="save-teaching-agrement not-fixed"
+        [disabled]="!canProceed || action.result != null"
+        (click)="save()">
+        Salva
+      </ion-button
+      >
+    </div>
+  </div>
+  <div *ngIf="isLoading" class="flex-cont-col v-center h-center h-100">
+    <div class="flex-cont-col v-center h-center">
+      <ion-spinner></ion-spinner>
+      <span>Caricamento...</span>
+    </div>
+  </div>
+</ion-content>

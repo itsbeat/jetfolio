@@ -1,0 +1,19 @@
+.goals-cont ion-input {
+    border: 1px solid var(--ion-color-tertiary);
+    --padding-top: 10px;
+    --padding-end: 8px;
+    --padding-bottom: 10px;
+    --padding-start: 10px;
+    border-radius: 7px;
+    height: 60px;
+}
+
+.goals-cont h3,
+.kpi-cont h3 {
+    color: var(--ion-color-tertiary);
+    margin-bottom: 10px;
+}
+
+ion-input {
+    font-family: 'ElanFont2', sans-serif;
+}

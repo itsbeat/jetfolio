@@ -1,0 +1,28 @@
+<ion-header no-border>
+  <ion-toolbar background='primary' class="elan-toolbar">
+    <ion-title>Lista Template</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list list='none'>
+    <ion-card
+      *ngFor="let page of pages"
+      class="welcome-card"
+      [routerLink]="[page.link]">
+      <ion-card-header>
+        <ion-card-subtitle>
+          {{ page.title }}
+        </ion-card-subtitle>
+        <ion-card-title>
+          {{ page.title }}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>
+          {{ page.text }}
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

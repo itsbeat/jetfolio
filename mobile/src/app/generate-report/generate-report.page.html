@@ -1,0 +1,78 @@
+<ion-header no-border>
+  <ion-toolbar class="elan-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="tx-bold">
+      Genera Report Sessione
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="false">
+  <div class="p-5 flex-cont-col h-100">
+    <div class="flex-1 flex-cont-col mb-3 scroll">
+      <h3 class="mb-3 tx-bold tx-tertiary">
+        Lista Azioni
+      </h3>
+      <div class="action-plan-cont" *ngIf='session'>
+        <div
+          *ngFor="let action of session.actions; let i = index"
+          [class.tertiary]="action.result == null"
+          [class.ok]="action.result == 1"
+          [class.no]="action.result == 0"
+          class="box selected flex-cont-row v-center mb-2"
+        >
+          <p>
+            Azione {{ i + 1 }}
+          </p>
+          <p class="flex-1 tx-center tx-lightgrey">
+            {{ action.deadline | date }}
+          </p>
+          <div class="flex-cont-row">
+            <div
+              (click)="tickAction(true, i)"
+              [class.tx-white]="action.result == 1"
+              [class.bg-secondary]="action.result == 1"
+              [class.tx-secondary]="action.result == null || action.result != 1"
+              [class.bg-white]="action.result == null || action.result != 1"
+              [class.border]="action.result == null || action.result != 1"
+              class="ball-icon"
+            >
+              <ion-icon name="checkmark"></ion-icon>
+            </div>
+            <div
+              (click)="tickAction(false, i)"
+              [class.tx-white]="action.result == 0"
+              [class.bg-red]="action.result == 0"
+              [class.tx-red]="action.result == null || action.result != 0"
+              [class.bg-white]="action.result == null || action.result != 0"
+              [class.border]="action.result == null || action.result != 0"
+              class="ball-icon tx-red bg-white ml-2"
+            >
+              <ion-icon name="close"> </ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3 class="mb-2 mt-3 tx-bold tx-tertiary">
+        Note
+      </h3>
+      <ion-textarea
+        [(ngModel)]="note"
+        class="flex-1"
+        placeholder="Inserisci una nota relativamente all'Action Plan di questa sessione"
+      >
+      </ion-textarea>
+    </div>
+    <ion-button
+      fill="solid"
+      color="primary"
+      class="choose-coach-button not-fixed"
+      (click)="saveReport()"
+      [disabled]="!canProceed"
+    >
+      Salva
+    </ion-button>
+  </div>
+</ion-content>

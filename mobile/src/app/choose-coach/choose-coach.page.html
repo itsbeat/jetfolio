@@ -1,0 +1,63 @@
+<ion-header no-border>
+  <ion-toolbar class="elan-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="tx-bold">Scegli il Coach</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen padding scroll-y="false">
+  <ion-row class="flex-cont-col h-center">
+    <div class="fxb-row-sb slider-cont w-100">
+      <ion-icon name="arrow-dropleft-circle" (click)="prevCoach()"> </ion-icon>
+      <p class="m-0">Coach</p>
+      <ion-icon name="arrow-dropright-circle" (click)="nextCoach()"> </ion-icon>
+    </div>
+  </ion-row>
+  <ion-slides [options]="sliderConfig" pager="true" class="h-80" #slider>
+    <ion-slide *ngFor="let coach of coaches">
+      <div class="h-100 coach-container flex-cont-col scroll h-center flex-1 w-100">
+        <div
+          [ngStyle]="{
+            'background-image': 'url(' + coach.avatar + ')'
+          }"
+          class="coach-avatar mg-tb-15"
+        ></div>
+        <div class="c-general-info my-3">
+          <span class="mg-r-3">
+            {{ coach.name }}
+          </span>
+          <span class="mg-l-3">
+            {{ coach.surname }}
+          </span>
+        </div>
+        <div class="c-bio my-3">
+          <h2 class="tx-center tx-grey">
+            Biografia
+          </h2>
+          <p class="my-2" *ngIf="coach.bio">{{ coach.bio }}</p>
+          <p class="my-2 tx-dark" *ngIf="!coach.bio">Nessuna biografia</p>
+        </div>
+        <div class="c-curriculum my-3">
+          <h2 class="tx-center tx-grey">
+            Carriera
+          </h2>
+          <p class="my-2" *ngIf="coach.career">{{ coach.career }}</p>
+          <p class="my-2 tx-dark" *ngIf="!coach.career">Nessuna carriera</p>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <div class="pt-5 w-100 flex-cont-col v-center h-center">
+    <ion-button fill="solid" class="choose-coach-button" color="primary" (click)="chooseCoach()">
+      Scegli
+    </ion-button>
+  </div>
+  <div *ngIf="isLoading" class="flex-cont-col v-center h-center h-100">
+    <div class="flex-cont-col v-center h-center">
+      <ion-spinner></ion-spinner>
+      <span>Caricamento...</span>
+    </div>
+  </div>
+</ion-content>

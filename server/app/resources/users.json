@@ -1,0 +1,269 @@
+{
+  "actions": {
+    "crud": {
+    },
+    "custom": [
+      {
+        "code": "init_coachee",
+        "roles": ["admin"],
+        "modes": ["create"]
+      },
+      {
+        "code": "reset_password",
+        "text": "Reset Password",
+        "visible": true,
+        "roles": ["admin"],
+        "modes": ["event"]
+      }
+    ]
+  },
+  "className": "App\\Models\\User",
+  "config": {
+    "admin": {
+      "canCreate": true,
+      "canDelete": false,
+      "canEdit": true,
+      "canImport": false,
+      "canView": true
+    },
+    "coach": {
+      "canCreate": false,
+      "canDelete": false,
+      "canEdit": false,
+      "canImport": false,
+      "canView": true
+    },
+    "coachee": {
+      "canCreate": false,
+      "canDelete": false,
+      "canEdit": false,
+      "canImport": false,
+      "canView": true
+    }
+  },
+  "groupBy": [
+    "users.id"
+  ],
+  "headers": [
+    {
+      "text": "Avatar",
+      "class": "h-left flex-1",
+      "edit": {
+        "type": "avatar",
+        "value": "avatar"
+      },
+      "visible": {
+        "view": true,
+        "list": true,
+        "edit": false
+      },
+      "placeholder": "",
+      "type": "avatar",
+      "validators": "",
+      "value": ""
+    },
+    {
+      "text": "",
+      "class": "",
+      "edit": {
+        "type": "field",
+        "value": "id"
+      },
+      "massive": {
+        "key": "id",
+        "text": "ID",
+        "validators": "nullable|numeric"
+      },
+      "visible": {
+        "view": false,
+        "list": false,
+        "edit": false
+      },
+      "type": "id",
+      "value": "id"
+    },
+    {
+      "text": "Nome",
+      "class": "h-left flex-3",
+      "edit": {
+        "type": "text",
+        "value": "name"
+      },
+      "massive": {
+        "key": "name",
+        "text": "Nome",
+        "validators": "required"
+      },
+      "visible": {
+        "list": false,
+        "view": true,
+        "edit": true
+      },
+      "placeholder": "Inserisci il nome dell'utente",
+      "type": "field",
+      "validators": "required",
+      "value": "name"
+    },
+    {
+      "text": "Cognome",
+      "class": "h-left flex-3",
+      "edit": {
+        "type": "text",
+        "value": "surname"
+      },
+      "massive": {
+        "key": "surname",
+        "text": "Cognome",
+        "validators": "required"
+      },
+      "visible": {
+        "list": false,
+        "view": true,
+        "edit": true
+      },
+      "placeholder": "Inserisci il cognome dell'utente",
+      "type": "field",
+      "validators": "required",
+      "value": "surname"
+    },
+    {
+      "text": "Nome & Cognome",
+      "class": "h-left flex-3",
+      "edit": {
+        "type": null,
+        "value": null
+      },
+      "visible": {
+        "list": true,
+        "view": false,
+        "edit": false
+      },
+      "type": "field",
+      "validators": "",
+      "value": "full_name"
+    },
+    {
+      "text": "Email",
+      "class": "h-left flex-4",
+      "edit": {
+        "type": "text",
+        "value": "email"
+      },
+      "visible": {
+        "list": true,
+        "view": true,
+        "edit": true
+      },
+      "massive": {
+        "key": "email",
+        "text": "Email",
+        "validators_create": "required|email|unique:users",
+        "validators_edit": "required|email"
+      },
+      "placeholder": "Inserisci la mail",
+      "type": "email",
+      "validators": "required|email",
+      "value": "email"
+    },
+    {
+      "text": "Password",
+      "createOnly": true,
+      "edit": {
+        "type": "text",
+        "value": "password"
+      },
+      "visible": {
+        "list": false,
+        "edit": false,
+        "add": true,
+        "view": false
+      },
+      "massive": {
+        "exportHidden": true,
+        "exportModes": [
+          "template",
+          "data"
+        ],
+        "key": "password",
+        "text": "Password",
+        "validators_create": "",
+        "validators_edit": ""
+      },
+      "placeholder": "Inserisci la password di primo accesso",
+      "value": "password"
+    },
+    {
+      "text": "Ruolo",
+      "class": "h-center",
+      "edit": {
+        "type": "select",
+        "value": "role"
+      },
+      "field_name": "name",
+      "option": {
+        "options": {
+          "filter": "",
+          "resource": "roles"
+        },
+        "text": "name",
+        "value": "id"
+      },
+      "visible": {
+        "view": true,
+        "list": true,
+        "edit": true
+      },
+      "placeholder": "Inserisci un ruolo",
+      "type": "tag",
+      "validators": "required",
+      "value": "role"
+    },
+    {
+      "text": "Piani di Coching",
+      "class": "h-center tx-center flex-2",
+      "edit": {
+        "type": null,
+        "value": null
+      },
+      "visible": {
+        "view": true,
+        "list": true,
+        "edit": false
+      },
+      "placeholder": "Inserisci un ruolo",
+      "type": "resource_length",
+      "value": "coaching_plans"
+    }
+  ],
+  "massiveImportIdField": "id",
+  "name": {
+    "singular": "utente",
+    "plural": "utenti"
+  },
+  "orderBy": [
+  ],
+  "preFilters": [
+    "coachees"
+  ],
+  "roleBasedFilters": {
+    "coach": [
+      [
+        "users.id",
+        "IN",
+        "_getCoachedUsers"
+      ]
+    ]
+  },
+  "subFields": [
+    "role",
+    "coaching_plans"
+  ],
+  "template": {
+    "coaching_plans": "",
+    "email": "",
+    "name": "",
+    "surname": "",
+    "role": "",
+    "password": ""
+  }
+}
