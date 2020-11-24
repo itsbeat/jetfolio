@@ -1,4 +1,4 @@
-# Progetto_E-portfolio
+# Progetto_Jetfolio
 
 ## Scopo
 
@@ -6,14 +6,25 @@ Una webapp social esclusiva per gli e-portfolio, usufruibile da chiunque voglia 
 L’app permette di condividere e promuovere i progetti che siano finiti o in corso tra i vari utenti registrati sulla piattaforma.
 La webapp avrà una Homepage che mostrerà gli e-portfolio/progetti sulla base degli interessi dell’utente.
 Sarà presente un’area personale dove ogni utente potrà modificare le sue informazioni ed inserire i suoi progetti.
-L’utente avrà la possibilità di interagire con i progetti degli altri, inoltre avrà anche la possibilità di promuovere i propri progetti ed il proprio e-portfolio attraverso gli altri social.
+L’utente potrà interagire con i progetti degli altri, inoltre avrà anche la possibilità di promuovere i propri progetti ed il proprio e-portfolio attraverso gli altri social.
 
-## [Obiettivi](https://docs.google.com/document/d/1u4wE9PFuHRaZn4Bp_wmlIfIRmJ0_Qaa0eHaigsupCDY/edit?usp=sharing)
+## Obiettivi
 
-Far conoscere agli altri utilizzatori la propria attività ed i propri progetti.
-Creare una rete social dedicata a progetti ed e-portfolio.
+    - Far conoscere agli altri utilizzatori la propria attività ed i propri progetti.
+    - Creare una rete social dedicata a progetti ed e-portfolio.
 
-### [Project workflow](https://docs.google.com/document/d/1mPmhuB_QV7V_ULKW2CJ9hnl6fLb-0GJg7Lxsc_GMklQ/edit?usp=sharing)
+## Descrizione
 
-### Documentation
-##### [api](https://docs.google.com/document/d/1UiWQZa6p_S54jESK9jSryYK-umfbpRUmg15G5QfLLps/edit?usp=sharing)
+Applicazione realizzata in Laravel e VueJS con database SQL.
+
+## Istruzioni:
+### Primo download repo
+- Digitare comando
+    git clone git@github.com:itsbeat/jetfolio.git
+- Aggiungi file .env dentro alla cartella server con il comando:
+    cp .env.example .env
+
+### Per scaricare aggiornamenti
+- Digitare comando:
+    git pull
+
