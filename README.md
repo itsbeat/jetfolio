@@ -21,8 +21,7 @@ Applicazione realizzata in Laravel e VueJS con database SQL.
 ### Primo download repo
 - Digitare comando
     git clone git@github.com:itsbeat/jetfolio.git
-- Aggiungi file .env dentro alla cartella server con il comando:
-    cp .env.example .env
+- Seguire la wiki dedicata all'avvio dell'applicazione
 
 ### Per scaricare aggiornamenti
 - Digitare comando:
