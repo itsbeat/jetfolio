@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserFollowerTable extends Migration
+class CreateUserFollowersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserFollowerTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_follower', function (Blueprint $table) {
+        Schema::create('user_followers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateUserFollowerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_follower');
+        Schema::dropIfExists('user_followers');
     }
 }
