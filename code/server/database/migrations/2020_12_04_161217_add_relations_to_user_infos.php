@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjectLikerTable extends Migration
+class AddRelationsToUserInfos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateProjectLikerTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_liker', function (Blueprint $table) {
-            $table->id();
-            $table->id('liker_id');
-            $table->id('project_id');
-            $table->timestamps();
+        Schema::table('user_infos', function (Blueprint $table) {
+            //
         });
     }
 
@@ -28,6 +25,8 @@ class CreateProjectLikerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_liker');
+        Schema::table('user_infos', function (Blueprint $table) {
+            //
+        });
     }
 }

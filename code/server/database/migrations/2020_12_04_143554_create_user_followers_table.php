@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjectContentTable extends Migration
+class CreateUserFollowerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateProjectContentTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_content', function (Blueprint $table) {
+        Schema::create('user_follower', function (Blueprint $table) {
             $table->id();
-            $table->string('image_url');
-            $table->integer('order');
-            $table->boolean('is_thumbnail');
-            $table->id('project_id');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateProjectContentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_content');
+        Schema::dropIfExists('user_follower');
     }
 }
