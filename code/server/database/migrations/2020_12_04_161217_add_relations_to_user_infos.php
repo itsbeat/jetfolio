@@ -14,7 +14,12 @@ class AddRelationsToUserInfos extends Migration
     public function up()
     {
         Schema::table('user_infos', function (Blueprint $table) {
-            //
+            $table->bigInteger("user_id")->unsigned()->nullable();
+            $table
+                ->foreign("user_id")
+                ->references("id")
+                ->on("users")
+                ->onDelete("cascade");
         });
     }
 
@@ -26,7 +31,8 @@ class AddRelationsToUserInfos extends Migration
     public function down()
     {
         Schema::table('user_infos', function (Blueprint $table) {
-            //
+            $table->dropForeign(["users_id"]);
+            $table->dropColumn(["users_id"]);
         });
     }
 }
