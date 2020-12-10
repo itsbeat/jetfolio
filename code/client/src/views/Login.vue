@@ -1,15 +1,15 @@
 <template>
-<div class="wrapper">
-  <body class="bg-gray-200 font-sans text-gray-700">
+<div class="wrapper flex h-screen">
+  <div class="w-2/4 bg-gray-200 font-sans text-gray-700">
     <div class="container mx-auto p-8 flex">
         <div class="max-w-md w-full mx-auto">
-            <h1 class="text-4xl text-center mb-12 font-thin">Login</h1>
             <div class="bg-white rounded-lg overflow-hidden shadow-2xl">
                 <div class="p-8">
-                  <div class="flex justify-center m-5">
-            <img src="../assets/logo-jet.png" style="width: 100px">
-            </div>
+                  <div class="m-5">
+                 </div>
                     <form method="POST" class="" action="#" onsubmit="return false;">
+                        <h1 class="font-bold text-3xl mb-3">Log in</h1>
+                        <p class="mb-7 text-gray-400">Bentornato<br>Perfavore, accedi al tuo account</p>
                         <div class="mb-5">
                             <label for="email" class="block mb-3 text-md font-medium text-gray-600">Username</label>
 
@@ -29,16 +29,12 @@
 
                     </form>
                 </div>
-                
-                <div class="flex justify-between p-8 text-sm border-t border-gray-300 bg-gray-100">
-                    <a href="#" class="font-medium text-indigo-500">Nuovo? Crea un account.</a>
-
-                    <a href="#" class="text-gray-600">Password dimenticata?</a>
-                </div>
             </div>
         </div>
     </div>
-</body>
+  </div>
+<div class = "w-2/4 body-right" style="background: url('/img/logo-jet.ce57e3e3.png') center no-repeat; background-size: 200px;">
+</div>
 </div>
 </template>
 
