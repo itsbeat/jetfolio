@@ -35,9 +35,13 @@
 
                         <div class="flex justify-between p-2 text-sm bg-white">
 
-                     <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600 z-50" checked><span class="ml-2 text-gray-700">Ricordami</span>
+                          <div class="flex justify-start  p-2 ml-2">
+                              <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600 z-50" checked><span class="ml-2 text-gray-700">Ricordami</span>
+                          </div>
+                          <div class="flex justify-end  p-2 ">
                     <a href="#" class="font-medium text-indigo-500">Password dimenticata?</a>
 
+                </div>
                 </div>
                         <div class="flex justify-center">
                         <button class="w-1/3 p-2 mt-4 bg-indigo-600 text-white text-lg rounded-full shadow">ACCEDI</button>
@@ -81,9 +85,9 @@
                         <input type="text" name="password" placeholder="CONFERMA PASSWORD" class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10">
                         </div>
 
-                        <div class="flex justify-between p-2 text-sm bg-white">
+                        <div class="flex p-2 text-sm bg-white">
 
-                     <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600 z-50" checked><span class="ml-1 text-gray-700">Accetto i <span class="font-medium text-indigo-500 underline">Termini di condizioni d'uso</span></span>
+                     <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600 z-50" checked><span class="ml-3 text-gray-700">Accetto i <span class="font-medium text-indigo-500 underline">Termini di condizioni d'uso</span></span>
 
                 </div>
                         <div class="flex justify-center">
