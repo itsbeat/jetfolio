@@ -31,7 +31,11 @@ Route::put("/users/{id}", [UserController::class, "editUser"]);
 
 // projects api
 Route::get("/projects", [ProjectController::class, "getProjects"]);
+
+Route::get("/projects/popular", [ProjectController::class, "getAllPopularProjects"]);
 Route::get("/projects/popular/{num}", [ProjectController::class, "getPopularProjects"]);
+
+Route::get("/projects/recent", [ProjectController::class, "getAllRecentProjects"]);
 Route::get("/projects/recent/{num}", [ProjectController::class, "getRecentProjects"]);
 
 
