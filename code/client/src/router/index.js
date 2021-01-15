@@ -11,27 +11,42 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta:{
+      label: "Home",
+    }
   },
   {
     path: '/login',
     name: 'Login',
     component: Login,
+    meta: {
+      label: "Login",
+    },
   },
   {
     path: '/profilo',
     name: 'Profilo',
     component: Profilo,
+    meta: {
+      label: "Profilo",
+    },
   },
   {
     path: '/dettaglioportfolio',
     name: 'DettaglioPortfolio',
     component: DettaglioPortfolio,
+    meta:{
+      label: "Dettaglio",
+    }
   },
   {
     path: '/newportfolio',
     name: 'NewPortfolio',
     component: NewPortfolio,
+    meta:{
+      label: "NewPortfolio",
+    }
   },
   {
     path: '*',
