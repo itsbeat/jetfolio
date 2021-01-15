@@ -27,7 +27,5 @@ Route::put("/users/{id}", [UserController::class, "editUser"]);
 
 Route::group(["middleware"=> "auth.api"],function(){
     Route::post("/logout",[AuthController::class,"logout"]);
-    Route::get("/surveys", [SurveyController::class, "list"]);
-    Route::post("/surveys", [SurveyController::class, "create"]);
 });
 
