@@ -1,6 +1,6 @@
 
 <template>
-  <div class="wrapper flex h-screen">
+  <div class="wrapper flex h-screen" v-on:submit.prevent>
     <div class="w-2/4 bg-white font-sans text-gray-700">
       <div class="container mx-auto p-8 flex">
         <div class="max-w-md w-full mx-auto">
@@ -31,6 +31,7 @@
                 onsubmit="return false;"
                 id="login"
                 v-if="currentView === 'login'"
+                @submit.prevent="login()"
               >
                 <h1 class="font-bold text-3xl mb-3">Log In</h1>
                 <p class="mb-7 text-gray-400">
@@ -54,10 +55,12 @@
                   </span>
                   <input
                     type="text"
-                    name="username"
-                    placeholder="USERNAME"
+                    name="email"
+                    placeholder="EMAIL"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
+                    v-model="email"
+                    @focus="resetError()"
                   />
                 </div>
 
@@ -82,6 +85,8 @@
                     placeholder="PASSWORD"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
+                    v-model="password"
+                    @focus="resetError()"
                   />
                 </div>
 
@@ -100,8 +105,13 @@
                   </div>
                 </div>
 
+                 <div class="text-center max-w-lg mx-auto text-red-600 text-sm">
+                  {{ error }}
+                </div>
+
                 <div class="flex justify-center">
                   <button
+                    @click="login()"
                     class="active w-1/3 p-2 mt-4 mb-5 text-white text-lg rounded-full shadow focus:outline-none"
                   >
                     ACCEDI
@@ -420,7 +430,6 @@ export default {
           email: this.email,
           password: this.password,
         });
-        this.$router.push("/");
       } catch (error) {
         this.error = "Email o password errate. Riprova.";
       }

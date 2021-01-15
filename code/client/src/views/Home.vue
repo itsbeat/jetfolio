@@ -20,10 +20,14 @@ export default {
   },
   data(){
       return {
+        error: null,
         projects: []
       }
   },
   methods: {
+    async logout() {
+        return await this.$api.post("/logout");
+      },
     async getProjects() {
       return await this.$api.get('/projects');
     }
