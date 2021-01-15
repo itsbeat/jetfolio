@@ -5,26 +5,32 @@
     <div>
       <button @click="logout()">LOGOUT</button>
     </div>
+    <div>
+      {{projects}}
+    </div>
   </div>
-  
 </template>
 
 <script>
 export default {
-  name: "Home",
-  data() {
-    return {
-      error: null,
-    };
+
+  name: 'Home',
+  components: {
+    
   },
-  mounted() {},
+  data(){
+      return {
+        projects: []
+      }
+  },
   methods: {
-    async logout() {
-      await this.$api.post("/logout", {});
+    async getProjects() {
+      return await this.$api.get('/projects');
     }
   },
-  computed: {},
-};
-
+  mounted() {
+    console.log(this.getProjects());
+  }
+}
 </script>
 
