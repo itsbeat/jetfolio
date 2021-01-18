@@ -36,7 +36,7 @@
                                 <div class="flex justify-between p-2 text-sm bg-white">
 
                                   <div class="flex justify-start  p-2 ml-2">
-                                      <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600 z-50" checked><span class="ml-2 text-gray-700">Ricordami</span>
+                                      <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600 z-50" checked><span class="ml-2 text-gray-700 underlinecd ">Ricordami</span>
                                   </div>
                                   <div class="flex justify-end  p-2 ">
                                     <a href="#" class="color_custom font-medium ">Password dimenticata?</a>
@@ -51,11 +51,12 @@
                           <form method="POST" class="" action="#" onsubmit="return false;" id="registrazione" v-if="currentView === 'registrazione'">
                                 <h1 class="font-bold text-3xl mb-3">Registrati con </h1>
                                 <div class="flex justify-start">
-                                 
-                                   
                                   
                                 </div>
-                                <p class="mb-7 text-gray-400 text-center">oppure continua con</p>
+                                
+                                <p class="color_custom mb-7 text-center font-bold"> Oppure continua con </p>
+                                 <hr>
+                                
                                 <div class="mb-5">
                                     <span class="color_custom z-10 h-full leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3">
                                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
