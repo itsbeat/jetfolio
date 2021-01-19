@@ -1,10 +1,10 @@
 
 <template>
         <div class="wrapper flex h-screen">
-          <div class="w-2/4 bg-white font-sans text-gray-700">
+          <div class="w-2/4 bg-white font-sans text-gray-700 bg-opacity-0">
             <div class="container mx-auto p-8 flex">
                 <div class="max-w-md w-full mx-auto">
-                    <div class="bg-white rounded-lg overflow-hidden "> <!--shadow-2xl-->
+                    <div class="bg-white rounded-lg overflow-hidden"> <!--shadow-2xl-->
                         <div class="p-8">
                           <div class="m-5">
                         </div>
