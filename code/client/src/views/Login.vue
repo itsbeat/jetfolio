@@ -1,7 +1,7 @@
 
 <template>
   <div class="wrapper flex h-screen" v-on:submit.prevent>
-    <div class="w-2/4 bg-white font-sans text-gray-700">
+    <div class="lg:w-2/4 sm:w-full bg-white font-sans text-gray-700">
       <div class="container mx-auto p-8 flex">
         <div class="max-w-md w-full mx-auto">
           <div class="bg-white rounded-lg overflow-hidden">
@@ -10,14 +10,14 @@
               <div class="m-5"></div>
               <div class="flex mb-8">
                 <button
-                  class="w-1/3 p-3 mt-4 mr-3 bg-white text-indigo-600 border border-indigo-600 text-lg rounded-full shadow focus:outline-none"
+                  class="p-3 mt-4 mr-3 bg-white text-indigo-600 border border-indigo-600 text-lg rounded-full shadow focus:outline-none"
                   @click="changeView('registrazione')"
                   v-bind:class="currentView == 'login' ? '' : 'active'"
                 >
                   REGISTRATI
                 </button>
                 <button
-                  class="w-1/3 p-3 mt-4 text-indigo-600 border border-indigo-600 text-lg rounded-full shadow focus:outline-none"
+                  class="p-3 mt-4 text-indigo-600 border border-indigo-600 text-lg rounded-full shadow focus:outline-none"
                   @click="changeView('login')"
                   v-bind:class="currentView == 'login' ? 'active' : ''"
                 >
@@ -39,7 +39,7 @@
                 </p>
                 <div class="mb-5">
                   <span
-                    class="color_custom z-10 h-full leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
+                    class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@
 
                 <div class="mb-5">
                   <span
-                    class="color_custom z-10 h-full leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
+                    class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +112,7 @@
                 <div class="flex justify-center">
                   <button
                     @click="login()"
-                    class="active w-1/3 p-2 mt-4 mb-5 text-white text-lg rounded-full shadow focus:outline-none"
+                    class="active p-2 mt-4 mb-5 text-white text-lg rounded-full shadow focus:outline-none"
                   >
                     ACCEDI
                   </button>
@@ -185,9 +185,14 @@
                 onsubmit="return false;"
                 id="registrazione"
                 v-if="currentView === 'registrazione'"
+  
               >
-                <h1 class="font-bold text-3xl mb-3">Registrati con</h1>
-                <div class="flex justify-center">
+                <h1 class="font-bold text-3xl mb-3">Registrati</h1>
+                <p class="mb-7 text-gray-400">
+                  Benvenuto.<br />Inserisci le credenziali per cominciare.
+                </p>
+                
+                <!-- <div class="flex justify-center">
                   <a href="#">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -244,12 +249,12 @@
                       />
                     </svg>
                   </a>
-                </div>
+                </div> 
 
-                <p class="color_custom divider mb-7">Oppure continua con</p>
+                <p class="color_custom divider mb-7">Oppure continua con</p> -->
                 <div class="mb-5">
                   <span
-                    class="color_custom z-10 h-full leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
+                    class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -269,11 +274,13 @@
                     placeholder="USERNAME"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
+                    v-model="name"
+                    @focus="resetError()"
                   />
                 </div>
                 <div class="mb-5">
                   <span
-                    class="color_custom z-10 h-full leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
+                    class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -294,12 +301,14 @@
                     placeholder="EMAIL"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
+                    v-model="email"
+                    @focus="resetError()"
                   />
                 </div>
 
                 <div class="mb-5">
                   <span
-                    class="color_custom z-10 h-full leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
+                    class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -317,12 +326,14 @@
                     placeholder="PASSWORD"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
+                    v-model="password"
+                    @focus="resetError()"
                   />
                 </div>
 
                 <div class="mb-5">
                   <span
-                    class="color_custom z-10 h-full leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
+                    class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -340,7 +351,6 @@
                     type="password"
                     name="password_2"
                     placeholder="CONFERMA PASSWORD"
-                    required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
                   />
                 </div>
@@ -361,7 +371,8 @@
                 </div>
                 <div class="flex justify-center">
                   <button
-                    class="active w-1/3 p-2 mt-4 text-white text-lg rounded-full shadow focus:outline-none"
+                    @click="create()"
+                    class="active p-2 mt-4 text-white text-lg rounded-full shadow focus:outline-none"
                   >
                     REGISTRATI
                   </button>
@@ -372,7 +383,7 @@
         </div>
       </div>
     </div>
-    <div class="w-2/4 body-right bg-cover bg-center">
+    <div class="hidden lg:inline w-2/4 body-right bg-cover bg-center">
       <div class="flex justify-center mt-40">
         <img src="../assets/image.png" alt="" />
       </div>
@@ -415,6 +426,7 @@ export default {
   name: "Login",
   data() {
     return {
+      name: null,
       email: null,
       password: null,
       error: null,
@@ -431,6 +443,18 @@ export default {
           password: this.password,
         });
         this.$router.push("/");
+      } catch (error) {
+        this.error = "Email o password errate. Riprova.";
+      }
+    },
+    async create() {
+      try {
+        await this.$api.post("/users", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        });
+        this.$router.push("/login");
       } catch (error) {
         this.error = "Email o password errate. Riprova.";
       }
