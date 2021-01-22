@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -24,6 +25,7 @@ Route::post("/users", [UserController::class, "create"]);
 Route::get("/users", [UserController::class, "list"]);
 Route::get("/users/{id}", [UserController::class, "getUser"]);
 Route::put("/users/{id}", [UserController::class, "editUser"]);
+Route::post('/image/store', [ProjectController::class, "store"]);
 
 Route::group(["middleware"=> "auth.api"],function(){
     Route::post("/logout",[AuthController::class,"logout"]);
