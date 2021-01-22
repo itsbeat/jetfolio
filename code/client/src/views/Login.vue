@@ -9,8 +9,8 @@
                           <div class="m-5">
                         </div>
                         <div class="flex mb-8">
-                            <button class="w-1/3 p-3 mt-4 mr-3 bg-white text-indigo-600 border border-indigo-600 text-lg rounded-full   shadow focus:outline-none" @click="changeView('registrazione')" v-bind:class="currentView == 'login'? '' : 'active'">REGISTRATI</button>
-                            <button class="w-1/3 p-3 mt-4  text-indigo-600 border border-indigo-600 text-lg rounded-full shadow  focus:outline-none" @click="changeView('login')" v-bind:class="currentView == 'login'? 'active' : ''" >LOGIN</button>
+                            <button class=" p-3 mt-4 mr-3 bg-white text-indigo-600 border border-indigo-600 text-lg rounded-full   shadow focus:outline-none" @click="changeView('registrazione')" v-bind:class="currentView == 'login'? '' : 'active'">REGISTRATI</button>
+                            <button class=" p-3 mt-4  text-indigo-600 border border-indigo-600 text-lg rounded-full shadow  focus:outline-none" @click="changeView('login')" v-bind:class="currentView == 'login'? 'active' : ''" >LOGIN</button>
                         </div>
                             <form method="POST" class="" action="#" onsubmit="return false;" id="login" v-if="currentView === 'login'">
                                 <h1 class="font-bold text-3xl mb-3">Log In</h1>
@@ -105,7 +105,7 @@
                   </div>
               </div>
           </div>
-          <div class = "w-2/4 body-right bg-cover bg-center">
+          <div class = "hidden lg:inline hidden lg:w-2/4 body-right bg-cover bg-center">
             <div class="flex justify-center mt-40">
               <img  src="../assets/image.png" alt="">
             </div>
