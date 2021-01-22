@@ -1,7 +1,7 @@
 
 <template>
         <div class="wrapper flex h-screen">
-          <div class="w-2/4 bg-white font-sans text-gray-700">
+          <div class="lg:w-2/4 sm:w-full bg-white font-sans text-gray-700">
             <div class="container mx-auto p-8 flex">
                 <div class="max-w-md w-full mx-auto">
                     <div class="bg-white rounded-lg overflow-hidden "> <!--shadow-2xl-->
@@ -47,6 +47,7 @@
                                   <button class="active w-1/3 p-2 mt-4  text-white text-lg rounded-full shadow focus:outline-none">ACCEDI</button>
                                 </div>
                             </form>
+                      
                         <!--Fase di registrazione-->
                           <form method="POST" class="" action="#" onsubmit="return false;" id="registrazione" v-if="currentView === 'registrazione'">
                                 <h1 class="font-bold text-3xl mb-3">Registrati con </h1>
@@ -99,13 +100,14 @@
                                 <div class="flex justify-center">
                                   <button class="active w-1/3 p-2 mt-4 text-white text-lg rounded-full shadow focus:outline-none">REGISTRATI</button>
                                 </div>
+                              
                             </form>
                           </div>
                       </div>
                   </div>
               </div>
           </div>
-          <div class = "hidden lg:inline hidden lg:w-2/4 body-right bg-cover bg-center">
+          <div class = "hidden lg:inline w-1/2 body-right bg-cover bg-center ">
             <div class="flex justify-center mt-40">
               <img  src="../assets/image.png" alt="">
             </div>
@@ -121,6 +123,7 @@
 .color_custom{
   color: #383088;
 }
+
 </style>
 <script>
 
