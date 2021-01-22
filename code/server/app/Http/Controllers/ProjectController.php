@@ -56,4 +56,29 @@ class ProjectController extends Controller
             ->get();
         return $data;
     }
+
+    /**
+     * return project info based on $id
+     */
+    public function getProjectyId(Request $Request, $id) {
+        $data = DB::table('projects')
+            ->where('id', '=', $id)
+            ->get();
+
+        return $data;
+    }
+
+
+    /**
+     * return the 10 most popular projects by input $categoryId
+     */
+    public function getProjectsByCategory(Request $request, $categoryId) {
+        $data = DB::table('projects')
+            ->where('category_id', '=', $categoryId)
+            ->orderBy('like_count', 'DESC')
+            ->limit(10)
+            ->get();
+        
+        return $data;
+    }
 }

@@ -38,6 +38,10 @@ Route::get("/projects/popular/{num}", [ProjectController::class, "getPopularProj
 Route::get("/projects/recent", [ProjectController::class, "getAllRecentProjects"]);
 Route::get("/projects/recent/{num}", [ProjectController::class, "getRecentProjects"]);
 
+Route::get("/projects/{id}", [ProjectController::class, "getProjectById"]);
+
+Route::get("/projects/category/{categoryId}", [ProjectController::class, "getProjectsByCategory"]);
+
 
 // authentication required api
 Route::group(["middleware"=> "auth.api"],function(){
