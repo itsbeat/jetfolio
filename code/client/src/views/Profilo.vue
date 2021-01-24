@@ -1,29 +1,9 @@
-<style>
-.pb-full {
-  padding-bottom: 100%;
-}
-
-/* hide search icon on search focus */
-.search-bar:focus + .fa-search{
-  display: none;
-}
-
-@media screen and (min-width: 768px) {
-  .post:hover .overlay {
-    display: block;
-  }
-}
-
-</style>
-
-
-
 <template>
   <div class="home">
 
 <main class="bg-gray-100 bg-opacity-25">
 
-  <div class="lg:w-8/12 lg:mx-auto mb-8">
+  <div class="lg:w-6/12 lg:mx-auto mb-2">
 
     <header class="flex flex-wrap items-center p-4 md:py-8">
 
@@ -34,33 +14,33 @@
       </div>
 
       <!-- profile meta -->
-      <div class="w-8/12 md:w-7/12 ml-4">
-        <div class="md:flex md:flex-wrap md:items-center mb-4">
+      <div class="w-4/12 md:w-5/12 ml-2">
+        <div class="md:flex md:flex-wrap md:items-center mb-2 md_ml-4">
           <h3 class="text-2xl inline-block font-light md:mr-2 mb-2 sm:mb-0">
-            nome utente
+            Nome utente
           </h3>
         </div>
-        <div class="md:flex md:flex-wrap md:items-center mb-4">
+        <div class="md:flex md:flex-wrap md:items-center mb-2">
           <h3 class="text-2xl inline-block font-light md:mr-2 mb-2 sm:mb-0">
-            e-mail
+            E-mail
           </h3>
         </div>
-        <div class="md:flex md:flex-wrap md:items-center mb-4">
+        <div class="md:flex md:flex-wrap md:items-center mb-2">
           <h3 class="text-2xl inline-block font-light md:mr-2 mb-2 sm:mb-0">
-            numero di telefono
+            Numero di telefono
           </h3>
         </div>
       </div>
-
-      <div class="w-8/12 md:w-7/12 ml-4">
-        <textarea></textarea>
+      <div class="w-4/12 md:w-2/12 text-sm my-2">
+      <div class="p-1 border-4 rounded-xl border-indigo-600 border-opacity-0 bg-indigo-100">
+        <h1 class="font-semibold">Descrizione</h1>
+        <span>Provaaaaaa</span>
+        <p>lorem bla bla bla</p>
       </div>
-      <!-- user meta form small screens -->
-      <div class="md:hidden text-sm my-2">
-        <h1 class="font-semibold">Mr Travlerrr...</h1>
-        <span>Travel, Nature and Music</span>
-        <p>Lorem ipsum dolor sit amet consectetur</p>
       </div>
+     
+    
+      
 
     </header>
 
@@ -254,7 +234,23 @@
 
   </div>
 </template>
+<style>
+.pb-full {
+  padding-bottom: 100%;
+}
 
+/* hide search icon on search focus */
+.search-bar:focus + .fa-search{
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .post:hover .overlay {
+    display: block;
+  }
+}
+
+</style>
 
 
 
