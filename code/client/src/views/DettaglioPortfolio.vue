@@ -1,27 +1,37 @@
 <template>
   <div class="DettaglioPortfolio">
     <div class="m-10">
-
-      <div class="flex">
-        <div>
-          <img class="" src="https://via.placeholder.com/990x450" alt="">
+      <section class="text-gray-600 body-font">
+        <div class="container px-5 mx-auto">
+          <div class="flex flex-wrap -mx-4 -mb-10 text-center">
+            <div class="sm:w-2/3 mb-10 pr-4">
+              <div class="rounded-lg object-cover object-center overflow-hidden">
+                <agile>
+                    <div class="slide">
+                      <img alt="content" class="object-cover" src="https://dummyimage.com/1201x501">
+                        <h3>titolo</h3>
+                    </div>
+                    
+                    <div class="slide">
+                        <h3>slide n</h3>
+                    </div>
+                </agile>
+                <h2>Descrizione del progetto</h2>
+              </div>
+            </div>
+            <div class="sm:w-1/3 mb-10 px-4">
+              <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Nome Utente</h2>
+              <button class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Visualizza</button>
+              <button class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Like</button>
+            </div>
+          </div>
         </div>
-        <div class="mx-5">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
-          </svg>
-
-          <span class="flex justify-center">Nome Cognome hahaha</span><br>
-          
-          <button type="button" class="border-2 border-blue-600 text-blue-600 rounded-full px-9 py-2 m-2">Visualizza</button><br>
-          <button type="button" class="border-2 border-blue-600 text-blue-600 rounded-full px-14 py-2 m-2">Like</button><br>
-          
-        </div>
-      </div>
+      </section>
     </div>
 
-    <section class="text-gray-700 body-font">
-      <div class="container px-5 py mx-auto">
+    
+    <section class="text-gray-700 m-10 body-font">
+      <div class="container py mx-auto">
         <div class="flex flex-col text-left w-full">
           <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Progetti simili</h1>
         </div>
@@ -95,11 +105,12 @@
 </template>
 
 <script>
+import { VueAgile } from 'vue-agile'
 
 export default {
   name: 'DettaglioPortfolio',
   components: {
-
+    agile: VueAgile 
   }
 }
 </script>
