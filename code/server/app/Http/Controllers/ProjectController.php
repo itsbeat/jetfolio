@@ -38,7 +38,7 @@ class ProjectController extends Controller
     /**
      * return all projects sorted by creation date 
      */
-    public function getAllRecentProjects(Request $Request) {
+    public function getAllRecentProjects(Request $Request,$num) {
         $data = DB::table('projects')
             ->orderBy('created_at', 'DESC')
             ->limit($num)
@@ -54,6 +54,31 @@ class ProjectController extends Controller
             ->orderBy('created_at', 'DESC')
             ->limit($num)
             ->get();
+        return $data;
+    }
+
+    /**
+     * return project info based on $id
+     */
+    public function getProjectyId(Request $Request, $id) {
+        $data = DB::table('projects')
+            ->where('id', '=', $id)
+            ->get();
+
+        return $data;
+    }
+
+
+    /**
+     * return the 10 most popular projects by input $categoryId
+     */
+    public function getProjectsByCategory(Request $request, $categoryId) {
+        $data = DB::table('projects')
+            ->where('category_id', '=', $categoryId)
+            ->orderBy('like_count', 'DESC')
+            ->limit(10)
+            ->get();
+        
         return $data;
     }
 }

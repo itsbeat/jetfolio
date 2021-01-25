@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -40,5 +41,10 @@ class UserController extends Controller
 
     public function getUser($id) {
         return User::find($id);
+    }
+
+    public function userInfo($id){
+        $userInfo = User::with(["UserInfo"])->find($id);
+        return $userInfo;
     }
 }
