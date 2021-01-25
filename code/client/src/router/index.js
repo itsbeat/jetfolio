@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Homepage from '../views/Homepage.vue'
+import LandingPage from '../views/LandingPage.vue'
 import Login from '../views/Login.vue';
 import Profilo from '../views/Profilo.vue';
 import DettaglioPortfolio from '../views/DettaglioPortfolio.vue';
@@ -9,9 +10,14 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
-    name: 'Home',
-    component: Home
+    path: '/homepage',
+    name: 'Homepage',
+    component: Homepage
+  },
+  {
+    path: '/landingpage',
+    name: 'LandingPage',
+    component: LandingPage
   },
   {
     path: '/login',
@@ -35,7 +41,7 @@ const routes = [
   },
   {
     path: '*',
-    redirect: 'home'
+    redirect: 'homepage'
   },
 ]
 
