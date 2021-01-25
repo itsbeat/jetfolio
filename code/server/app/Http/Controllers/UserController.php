@@ -20,8 +20,8 @@ class UserController extends Controller
 
         $user = new User();
 
-        $password = $userData->password;  
-        
+        $password = $userData->password;
+
         $user->username = $userData->name;
         $user->email = $userData->email;
         $user->password = Hash::make($password);
