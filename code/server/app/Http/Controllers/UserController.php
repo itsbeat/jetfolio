@@ -47,14 +47,4 @@ class UserController extends Controller
         $userInfo = User::with(["UserInfo"])->find($id);
         return $userInfo;
     }
-    public function editInfo(Request $request){
-        $userInfo = json_decode($request->getContent());
-        $User = User::with(["UserInfo"])->find($userInfo->id);
-                $User->biography = $userInfo->biography;
-                $User->phone = $userInfo->phone;
-                $User->username = $userInfo->username;
-                $User->email = $userInfo->email;
-                
-                $User->save();
-    }
 }
