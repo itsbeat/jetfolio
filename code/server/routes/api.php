@@ -28,6 +28,11 @@ Route::get("/users", [UserController::class, "list"]);
 Route::get("/users/{id}", [UserController::class, "getUser"]);
 Route::put("/users/{id}", [UserController::class, "editUser"]);
 
+//User profile api
+
+Route::get("/users/profile/{id}",[UserController::class, "userInfo"]);
+Route::put('/users/edit', [UserController::class, 'editInfo']);
+
 
 // projects api
 Route::get("/projects", [ProjectController::class, "getProjects"]);

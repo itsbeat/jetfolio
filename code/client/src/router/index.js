@@ -5,6 +5,7 @@ import Login from '../views/Login.vue';
 import Profilo from '../views/Profilo.vue';
 import DettaglioPortfolio from '../views/DettaglioPortfolio.vue';
 import NewPortfolio from '../views/NewPortfolio.vue';
+import Edit from '../views/ChangeProfile.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -22,6 +23,11 @@ const routes = [
     path: '/profilo',
     name: 'Profilo',
     component: Profilo,
+  },
+  {
+    path: '/editprofile',
+    name: 'EditProfile',
+    component: Edit,
   },
   {
     path: '/dettaglioportfolio',
