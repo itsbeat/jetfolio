@@ -59,7 +59,7 @@
                     placeholder="EMAIL"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
-                    v-model="email"
+                    v-model="logEmail"
                     @focus="resetError()"
                   />
                 </div>
@@ -85,7 +85,7 @@
                     placeholder="PASSWORD"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
-                    v-model="password"
+                    v-model="logPassword"
                     @focus="resetError()"
                   />
                 </div>
@@ -106,7 +106,7 @@
                 </div>
 
                  <div class="text-center max-w-lg mx-auto text-red-600 text-sm">
-                  {{ error }}
+                  {{ logError }}
                 </div>
 
                 <div class="flex justify-center">
@@ -301,7 +301,7 @@
                     placeholder="EMAIL"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
-                    v-model="email"
+                    v-model="regEmail"
                     @focus="resetError()"
                   />
                 </div>
@@ -326,7 +326,7 @@
                     placeholder="PASSWORD"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
-                    v-model="password"
+                    v-model="regPassword"
                     @focus="resetError()"
                   />
                 </div>
@@ -369,6 +369,11 @@
                     ></span
                   >
                 </div>
+
+                <div class="text-center max-w-lg mx-auto text-red-600 text-sm">
+                  {{ regError }}
+                </div>
+
                 <div class="flex justify-center">
                   <button
                     @click="create()"
@@ -427,9 +432,12 @@ export default {
   data() {
     return {
       name: null,
-      email: null,
-      password: null,
-      error: null,
+      logEmail: null,
+      logPassword: null,
+      regEmail: null,
+      regPassword: null,
+      logError: null,
+      regError: null,
       currentView: "login",
       isActive: false,
     };
@@ -439,28 +447,29 @@ export default {
     async login() {
       try {
         await this.$api.post("/login", {
-          email: this.email,
-          password: this.password,
+          email: this.logEmail,
+          password: this.logPassword,
         });
         this.$router.push("/");
       } catch (error) {
-        this.error = "Email o password errate. Riprova.";
+        this.logError = "Email o password errate. Riprova.";
       }
     },
     async create() {
       try {
         await this.$api.post("/users", {
           name: this.name,
-          email: this.email,
-          password: this.password,
+          email: this.regEmail,
+          password: this.regPassword,
         });
-        this.$router.push("/login");
+        location.reload();
       } catch (error) {
-        this.error = "Email o password errate. Riprova.";
+        this.regError = "Errore.";
       }
     },
     resetError() {
-      this.error = null;
+      this.logError = null;
+      this.regError = null;
     },
     changeView(destinazione) {
       this.currentView = destinazione;
