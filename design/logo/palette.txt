@@ -1,0 +1,13 @@
+/* Coolors Exported Palette - https://coolors.co/3673b3-383088-543289-75368d */
+
+/* CSV */
+3673b3,383088,543289,75368d
+
+/* Array */
+["3673b3","383088","543289","75368d"]
+
+/* Object */
+{"Spanish Blue":"3673b3","Cosmic Cobalt":"383088","KSU Purple":"543289","Eminence":"75368d"}
+
+/* Extended Array */
+[{"name":"Spanish Blue","hex":"3673b3","rgb":[54,115,179],"cmyk":[70,36,0,30],"hsb":[211,70,70],"hsl":[211,54,46],"lab":[47,2,-40]},{"name":"Cosmic Cobalt","hex":"383088","rgb":[56,48,136],"cmyk":[59,65,0,47],"hsb":[245,65,53],"hsl":[245,48,36],"lab":[26,30,-48]},{"name":"KSU Purple","hex":"543289","rgb":[84,50,137],"cmyk":[39,64,0,46],"hsb":[263,64,54],"hsl":[263,47,37],"lab":[29,35,-43]},{"name":"Eminence","hex":"75368d","rgb":[117,54,141],"cmyk":[17,62,0,45],"hsb":[283,62,55],"hsl":[283,45,38],"lab":[35,42,-37]}]
