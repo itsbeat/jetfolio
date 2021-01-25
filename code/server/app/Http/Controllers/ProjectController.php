@@ -38,7 +38,7 @@ class ProjectController extends Controller
     /**
      * return all projects sorted by creation date 
      */
-    public function getAllRecentProjects(Request $Request) {
+    public function getAllRecentProjects(Request $Request,$num) {
         $data = DB::table('projects')
             ->orderBy('created_at', 'DESC')
             ->limit($num)
