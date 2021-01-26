@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\FollowController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,12 @@ Route::get("/projects/popular/{num}", [ProjectController::class, "getPopularProj
 
 Route::get("/projects/recent", [ProjectController::class, "getAllRecentProjects"]);
 Route::get("/projects/recent/{num}", [ProjectController::class, "getRecentProjects"]);
+
+// followers & follow api
+Route::get("/follow/{id}", [FollowController::class, "getFollowById"]);
+Route::get("/follower/{id}", [FollowController::class, "getFollowerById"]);
+Route::get("/add/follow/{id}", [FollowController::class, "getAddFollowById"]);
+Route::get("/add/follower/{id}", [FollowController::class, "getAddFollowerById"]);
 
 
 // authentication required api
