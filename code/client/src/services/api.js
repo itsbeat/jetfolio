@@ -27,7 +27,6 @@ api.interceptors.response.use(
         if (error.response.status) {
             switch (error.response.status) {
                 case 401:
-                    alert("session expired");
                     router.push('/login');
                     break;
   
