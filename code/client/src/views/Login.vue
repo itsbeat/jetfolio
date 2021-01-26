@@ -6,6 +6,7 @@
         <div class="max-w-md w-full mx-auto">
           <div class="bg-white rounded-lg overflow-hidden">
             <!--shadow-2xl-->
+
             <div class="p-8">
               <div class="m-5"></div>
               <div class="flex mb-8">
@@ -33,6 +34,9 @@
                 v-if="currentView === 'login'"
                 @submit.prevent="login()"
               >
+              
+              </form>
+              
                 <h1 class="font-bold text-3xl mb-3">Log In</h1>
                 <p class="mb-7 text-gray-400">
                   Bentornato.<br />Per favore, accedi al tuo account.
@@ -63,7 +67,7 @@
                     @focus="resetError()"
                   />
                 </div>
-
+                
                 <div class="mb-5">
                   <span
                     class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
@@ -105,10 +109,10 @@
                   </div>
                 </div>
 
-                 <div class="text-center max-w-lg mx-auto text-red-600 text-sm">
+                <div class="text-center max-w-lg mx-auto text-red-600 text-sm">
                   {{ logError }}
+                
                 </div>
-
                 <div class="flex justify-center">
                   <button
                     @click="login()"
@@ -117,6 +121,7 @@
                     ACCEDI
                   </button>
                 </div>
+                
                 <p class="color_custom divider mb-7">Oppure continua con</p>
                 <div class="flex justify-center">
                   <a href="#">
@@ -176,7 +181,9 @@
                     </svg>
                   </a>
                 </div>
-              </form>
+                
+                
+            
               <!--Fase di registrazione-->
               <form
                 method="POST"
@@ -386,11 +393,10 @@
                   </button>
                 </div>
               </form>
+          </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
     <div class="hidden lg:inline w-2/4 body-right bg-cover bg-center">
       <div class="flex justify-center mt-40">
         <img src="../assets/image.png" alt="" />
@@ -450,10 +456,12 @@ export default {
   methods: {
     async login() {
       try {
-        await this.$api.post("/login", {
+        const res = await this.$api.post("/login", {
           email: this.logEmail,
           password: this.logPassword,
         });
+
+        localStorage.setItem('user', JSON.stringify(res.data.logged_in_user));
         this.$router.push("/");
       } catch (error) {
         this.logError = "Email o password errate. Riprova.";

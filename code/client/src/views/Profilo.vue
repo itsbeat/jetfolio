@@ -10,24 +10,24 @@
       <div class="md:w-3/12 md:ml-1">
         <!-- profile image -->
         <img class="w-20 h-20 md:w-40 md:h-40 object-cover rounded-full
-                     border-2 border-indigo-600 p-1" src="../assets/stockprofile.jpg" alt="profile">
+                  border-2 border-indigo-600 p-1" src="../assets/stockprofile.jpg" alt="profile">
       </div>
 
       <!-- profile meta -->
       <div class="md:w-4/12 sm:6/12 md:ml-2 classe">
         <div class="md:flex md:flex-wrap md:items-center mb-2 md_ml-4 ">
           <h3 class="md:text-2xl sm:text-xl inline-block font-light md:mr-2 mb-2 sm:mb-0">
-            Nome utente
+            {{profile.username}}
           </h3>
         </div>
         <div class="md:flex md:flex-wrap md:items-center mb-2">
           <h3 class="md:text-2xl sm:text-xl inline-block font-light md:mr-2 mb-2 sm:mb-0">
-            E-mail
+            {{profile.email}}
           </h3>
         </div>
         <div class="md:flex md:flex-wrap md:items-center mb-2">
           <h3 class="md:text-2xl sm:text-xl inline-block font-light md:mr-2 mb-2 sm:mb-0">
-            Numero di telefono
+            {{profile.user_info.phone}}
           </h3>
         </div>
       </div>
@@ -35,11 +35,7 @@
       <div class="md:w-96 md:p-6 sm:w-34 text-center border-4 rounded-3xl border-indigo-600 border-opacity-0 bg-indigo-100">
         <h1 class="font-bold text-md  text-indigo-600">BIOGRAFIA</h1>
         <p class="text-left sm-text-sm">
-          Sono un professionista dell’esperienza utente,
-          con sede a Verona, In Italia.
-          Sono un programmatore informatico e 
-          Ho scritto un libro di successo sull’usabilità del Web.
-          Dirigo anche un società di consulenza di informatica.
+          {{profile.user_info.biography}}
         </p>
       </div>
       </div>
@@ -57,16 +53,16 @@
       <!-- user following for mobile only -->
       <ul class="flex justify-around space-x-8 border-t text-center p-1 text-gray-600 leading-snug text-sm md:bg-indigo-100 md:rounded-full md:mb-2">
         <li>
-          <span class="font-semibold text-gray-800 block">136</span>
+          <span class="font-semibold text-gray-800 block">{{profile.user_info.follower_count}}</span>
           Followers
         </li>
 
         <li>
-          <span class="font-semibold text-gray-800 block">40.5k</span>
+          <span class="font-semibold text-gray-800 block">{{profile.user_info.follow_count}}</span>
           Follow
         </li>
         <li>
-          <span class="font-semibold text-gray-800 block">302</span>
+          <span class="font-semibold text-gray-800 block">{{profile.user_info.prj_count}}</span>
           Portfolio
         </li>
       </ul>
@@ -236,7 +232,6 @@
       </div>
     </div>
   </div>
-  <button @click="profilo()">PROFILO</button>
 </main>
 
   </div>
@@ -266,23 +261,51 @@
 
 
 <script>
+import router from '../router'
+
 
 export default {
   name: 'Profilo',
   data() {
     return {
+      profile:{
       id: null,
-      info: null,
+      username: null,
+      email: null, 
+      user_info:{
+        biography: null,
+        image_url:null,
+        follow_count:null,
+        follower_count:null,
+        prj_count:null,
+        phone: null,
+      }
+      }
     };
   },
   components: {
     
 
   },
+  mounted() {
+   if(localStorage.getItem('user')) {
+       this.profilo();
+     } else {
+       router.push('/login');
+     }
+    
+  
+  },
   methods: {
     async profilo() {
       try {
-         this.info = await this.$api.get("/users/profile/1");
+        const ls = JSON.parse(localStorage.getItem('user'));
+        this.info = await this.$api.get(`/users/profile/${ls.id}`);
+
+        this.profile = this.info.data;
+        console.log(this.info.data);
+        console.log(this.profile);
+
           
       } catch (error) {
         this.error = "Email o password errate. Riprova.";
