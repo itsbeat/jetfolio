@@ -236,6 +236,7 @@
       </div>
     </div>
   </div>
+  <button @click="profilo()">PROFILO</button>
 </main>
 
   </div>
@@ -268,8 +269,26 @@
 
 export default {
   name: 'Profilo',
+  data() {
+    return {
+      id: null,
+      info: null,
+    };
+  },
   components: {
+    
 
-  }
+  },
+  methods: {
+    async profilo() {
+      try {
+         this.info = await this.$api.get("/users/profile/1");
+          
+      } catch (error) {
+        this.error = "Email o password errate. Riprova.";
+      }
+    },
+
+  },
 }
 </script>

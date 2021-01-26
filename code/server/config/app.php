@@ -2,6 +2,8 @@
 
 return [
 
+    'providers' => [Intervention\Image\ImageServiceProvider::class],
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
