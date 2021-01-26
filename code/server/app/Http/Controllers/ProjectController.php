@@ -12,7 +12,7 @@ class ProjectController extends Controller
      * returns all projects
      */
     public function getProjects(Request $Request) {
-        $data = DB::table('projects')->get();
+        $data = DB::table('projects')->limit(9)->get();
         return $data;
     }
 
