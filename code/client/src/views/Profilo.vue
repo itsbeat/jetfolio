@@ -1,73 +1,151 @@
 <template>
   <div class="home">
+    <main class="bg-gray-100 bg-opacity-25">
+      <div class="lg:w-8/12 lg:mx-auto mb-2">
+        <header class="flex flex-wrap items-center p-4 md:py-8">
+          <div class="md:w-3/12 md:ml-1">
+            <!-- profile image -->
+            <img
+              class="w-20 h-20 md:w-40 md:h-40 object-cover rounded-full
+                  border-2 border-indigo-600 p-1"
+              src="../assets/stockprofile.jpg"
+              alt="profile"
+            />
+          </div>
 
-<main class="bg-gray-100 bg-opacity-25">
-
-  <div class="lg:w-8/12 lg:mx-auto mb-2">
-
-    <header class="flex flex-wrap items-center p-4 md:py-8">
-
-      <div class="md:w-3/12 md:ml-1">
-        <!-- profile image -->
-        <img class="w-20 h-20 md:w-40 md:h-40 object-cover rounded-full
-                  border-2 border-indigo-600 p-1" src="../assets/stockprofile.jpg" alt="profile">
-      </div>
-
-      <!-- profile meta -->
-      <div class="md:w-4/12 sm:6/12 md:ml-2 classe">
-        <div class="md:flex md:flex-wrap md:items-center mb-2 md_ml-4 ">
-          <h3 class="md:text-2xl sm:text-xl inline-block font-light md:mr-2 mb-2 sm:mb-0">
-            {{profile.username}}
-          </h3>
+          <!-- profile meta -->
+          <div class="md:w-4/12 sm:6/12 md:ml-2 classe">
+            <div class="md:flex md:flex-wrap md:items-center mb-2 md_ml-4 ">
+              <div class="mb-5">
+                <span
+                  class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <h3
+                  type="text"
+                  name="username"
+                  placeholder="USERNAME"
+                  required
+                  class="px-3 py-3 block w-full p-2.5    relative focus:outline-none focus:shadow-outline w-full pl-10"
+                >
+                  {{ profile.username }}
+                </h3>
+              </div>
+            </div>
+            <div class="md:flex md:flex-wrap md:items-center mb-2">
+              <div class="mb-5">
+                <span
+                  class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                    />
+                    <path
+                      d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                    />
+                  </svg>
+                </span>
+                <h3
+                  type="text"
+                  name="username"
+                  placeholder="USERNAME"
+                  required
+                  class="px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
+                >
+                  {{ profile.email }}
+                </h3>
+              </div>
+            </div>
+            <div class="md:flex md:flex-wrap md:items-center mb-2">
+              <div class="mb-5">
+                <span
+                  class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                    />
+                  </svg>
+                </span>
+                <h3
+                  type="text"
+                  name="username"
+                  placeholder="USERNAME"
+                  required
+                  class="px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
+                >
+                  {{ profile.user_info.phone }}
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div class="md:w-4/12 sm:w-12/12 text-sm my-2">
+            <div
+              class="md:w-96 md:p-6 sm:w-34 text-center border-4 rounded-3xl border-indigo-600 border-opacity-0 bg-indigo-100"
+            >
+              <h1 class="font-bold text-md  color_custom">BIOGRAFIA</h1>
+              <p class="text-left sm-text-sm">
+                {{ profile.user_info.biography }}
+              </p>
+            </div>
+          </div>
+        </header>
+        <div class="flex justify-start ...">
+          <button
+            class="p-2 mb-4 focus:outline-none border-2 border-indigo-300 border-opacity-100 rounded-3xl uppercase color_custom"
+          >
+            modifica
+          </button>
         </div>
-        <div class="md:flex md:flex-wrap md:items-center mb-2">
-          <h3 class="md:text-2xl sm:text-xl inline-block font-light md:mr-2 mb-2 sm:mb-0">
-            {{profile.email}}
-          </h3>
-        </div>
-        <div class="md:flex md:flex-wrap md:items-center mb-2">
-          <h3 class="md:text-2xl sm:text-xl inline-block font-light md:mr-2 mb-2 sm:mb-0">
-            {{profile.user_info.phone}}
-          </h3>
-        </div>
-      </div>
-      <div class="md:w-4/12 sm:w-12/12 text-sm my-2">
-      <div class="md:w-96 md:p-6 sm:w-34 text-center border-4 rounded-3xl border-indigo-600 border-opacity-0 bg-indigo-100">
-        <h1 class="font-bold text-md  text-indigo-600">BIOGRAFIA</h1>
-        <p class="text-left sm-text-sm">
-          {{profile.user_info.biography}}
-        </p>
-      </div>
-      </div>
-     
-    
-      
 
-    </header>
-    <div class="flex justify-start ...">
-  <button class="p-2 mb-4 focus:outline-none border-2 border-indigo-300 border-opacity-100 rounded-3xl uppercase text-indigo-600">modifica</button>
-</div>
+        <!-- posts -->
+        <div class="px-px md:px-3 ">
+          <!-- user following for mobile only -->
+          <ul
+            class="flex justify-around space-x-8 border-t text-center p-1 text-gray-600 leading-snug text-sm md:bg-indigo-100 md:rounded-full md:mb-2"
+          >
+            <li>
+              <span class="font-semibold text-gray-800 block">{{
+                profile.user_info.follower_count
+              }}</span>
+              Followers
+            </li>
 
-    <!-- posts -->
-    <div class="px-px md:px-3 ">
-      <!-- user following for mobile only -->
-      <ul class="flex justify-around space-x-8 border-t text-center p-1 text-gray-600 leading-snug text-sm md:bg-indigo-100 md:rounded-full md:mb-2">
-        <li>
-          <span class="font-semibold text-gray-800 block">{{profile.user_info.follower_count}}</span>
-          Followers
-        </li>
+            <li>
+              <span class="font-semibold text-gray-800 block">{{
+                profile.user_info.follow_count
+              }}</span>
+              Follow
+            </li>
+            <li>
+              <span class="font-semibold text-gray-800 block">{{
+                profile.user_info.prj_count
+              }}</span>
+              Portfolio
+            </li>
+          </ul>
 
-        <li>
-          <span class="font-semibold text-gray-800 block">{{profile.user_info.follow_count}}</span>
-          Follow
-        </li>
-        <li>
-          <span class="font-semibold text-gray-800 block">{{profile.user_info.prj_count}}</span>
-          Portfolio
-        </li>
-      </ul>
-
-      <!-- insta freatures 
+          <!-- insta freatures 
       <ul class="flex md:hidden items-center justify-around md:justify-center space-x-12 uppercase tracking-widest font-semibold text-xs text-gray-600
                     border-t">
 
@@ -92,157 +170,203 @@
         </li>
       </ul>
       -->
-      <!-- flexbox grid -->
-      <div class="flex flex-wrap -mx-px md:-mx-3">
+          <!-- flexbox grid -->
+          <div class="flex flex-wrap -mx-px md:-mx-3">
+            <!-- column -->
+            <div class="w-1/3 p-px md:px-3 ">
+              <!-- post 1-->
+              <a href="#">
+                <article
+                  class="post bg-gray-100 text-white relative pb-full md:mb-6"
+                >
+                  <!-- post image-->
+                  <img
+                    class="w-full h-full absolute left-0 top-0 object-cover"
+                    src="https://images.unsplash.com/photo-1502791451862-7bd8c1df43a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    alt="image"
+                  />
 
-        <!-- column -->
-        <div class="w-1/3 p-px md:px-3 ">
-          <!-- post 1-->
-          <a href="#">
-            <article class="post bg-gray-100 text-white relative pb-full md:mb-6">
-              <!-- post image-->
-              <img class="w-full h-full absolute left-0 top-0 object-cover" src="https://images.unsplash.com/photo-1502791451862-7bd8c1df43a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="image">
+                  <i class="fas fa-square absolute right-0 top-0 m-1"></i>
+                  <!-- overlay-->
+                  <div
+                    class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
+                                left-0 top-0 hidden"
+                  >
+                    <div
+                      class="flex justify-center items-center 
+                                    space-x-4 h-full"
+                    >
+                      <span class="p-2">
+                        <i class="fas fa-heart"></i>
+                        412K
+                      </span>
 
-              <i class="fas fa-square absolute right-0 top-0 m-1"></i>
-              <!-- overlay-->
-              <div class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
-                                left-0 top-0 hidden">
-                <div class="flex justify-center items-center 
-                                    space-x-4 h-full">
-                  <span class="p-2">
-                    <i class="fas fa-heart"></i>
-                    412K
-                  </span>
+                      <span class="p-2">
+                        <i class="fas fa-comment"></i>
+                        2,909
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            </div>
 
-                  <span class="p-2">
-                    <i class="fas fa-comment"></i>
-                    2,909
-                  </span>
-                </div>
-              </div>
+            <div class="w-1/3 p-px md:px-3">
+              <a href="#">
+                <!-- post 2 -->
+                <article
+                  class="post bg-gray-100 text-white relative pb-full md:mb-6"
+                >
+                  <img
+                    class="w-full h-full absolute left-0 top-0 object-cover"
+                    src="https://images.unsplash.com/photo-1498409570040-05bf6d3dd5b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    alt="image"
+                  />
 
-            </article>
-          </a>
+                  <!-- overlay-->
+                  <div
+                    class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
+                                left-0 top-0 hidden"
+                  >
+                    <div
+                      class="flex justify-center items-center 
+                                    space-x-4 h-full"
+                    >
+                      <span class="p-2">
+                        <i class="fas fa-heart"></i>
+                        412K
+                      </span>
+
+                      <span class="p-2">
+                        <i class="fas fa-comment"></i>
+                        1,993
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            </div>
+
+            <div class="w-1/3 p-px md:px-3">
+              <a href="#">
+                <article
+                  class="post bg-gray-100 text-white relative pb-full  md:mb-6"
+                >
+                  <img
+                    class="w-full h-full absolute left-0 top-0 object-cover"
+                    src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    alt="image"
+                  />
+                  <!-- overlay-->
+                  <div
+                    class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
+                                left-0 top-0 hidden"
+                  >
+                    <div
+                      class="flex justify-center items-center 
+                                    space-x-4 h-full"
+                    >
+                      <span class="p-2">
+                        <i class="fas fa-heart"></i>
+                        112K
+                      </span>
+
+                      <span class="p-2">
+                        <i class="fas fa-comment"></i>
+                        2,090
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            </div>
+
+            <div class="w-1/3 p-px md:px-3">
+              <a href="#">
+                <article
+                  class="post bg-gray-100 text-white relative pb-full md:mb-6"
+                >
+                  <img
+                    class="w-full h-full absolute left-0 top-0 object-cover"
+                    src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    alt="image"
+                  />
+
+                  <i class="fas fa-video absolute right-0 top-0 m-1"></i>
+
+                  <!-- overlay-->
+                  <div
+                    class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
+                                left-0 top-0 hidden"
+                  >
+                    <div
+                      class="flex justify-center items-center 
+                                    space-x-4 h-full"
+                    >
+                      <span class="p-2">
+                        <i class="fas fa-heart"></i>
+                        841K
+                      </span>
+
+                      <span class="p-2">
+                        <i class="fas fa-comment"></i>
+                        909
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            </div>
+
+            <div class="w-1/3 p-px md:px-3">
+              <a href="#">
+                <article
+                  class="post bg-gray-100 text-white relative pb-full md:mb-6"
+                >
+                  <img
+                    class="w-full h-full absolute left-0 top-0 object-cover"
+                    src="https://images.unsplash.com/photo-1475688621402-4257c812d6db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"
+                    alt="image"
+                  />
+                  <!-- overlay-->
+                  <div
+                    class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
+                                left-0 top-0 hidden"
+                  >
+                    <div
+                      class="flex justify-center items-center 
+                                    space-x-4 h-full"
+                    >
+                      <span class="p-2">
+                        <i class="fas fa-heart"></i>
+                        120K
+                      </span>
+
+                      <span class="p-2">
+                        <i class="fas fa-comment"></i>
+                        3,909
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            </div>
+          </div>
         </div>
-
-        <div class="w-1/3 p-px md:px-3">
-          <a href="#">
-            <!-- post 2 -->
-            <article class="post bg-gray-100 text-white relative pb-full md:mb-6">
-              <img class="w-full h-full absolute left-0 top-0 object-cover" src="https://images.unsplash.com/photo-1498409570040-05bf6d3dd5b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="image">
-
-              <!-- overlay-->
-              <div class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
-                                left-0 top-0 hidden">
-                <div class="flex justify-center items-center 
-                                    space-x-4 h-full">
-                  <span class="p-2">
-                    <i class="fas fa-heart"></i>
-                    412K
-                  </span>
-
-                  <span class="p-2">
-                    <i class="fas fa-comment"></i>
-                    1,993
-                  </span>
-                </div>
-              </div>
-
-            </article>
-          </a>
-        </div>
-
-        <div class="w-1/3 p-px md:px-3">
-          <a href="#">
-            <article class="post bg-gray-100 text-white relative pb-full  md:mb-6">
-              <img class="w-full h-full absolute left-0 top-0 object-cover" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="image">
-              <!-- overlay-->
-              <div class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
-                                left-0 top-0 hidden">
-                <div class="flex justify-center items-center 
-                                    space-x-4 h-full">
-                  <span class="p-2">
-                    <i class="fas fa-heart"></i>
-                    112K
-                  </span>
-
-                  <span class="p-2">
-                    <i class="fas fa-comment"></i>
-                    2,090
-                  </span>
-                </div>
-              </div>
-            </article>
-          </a>
-        </div>
-
-        <div class="w-1/3 p-px md:px-3">
-          <a href="#">
-            <article class="post bg-gray-100 text-white relative pb-full md:mb-6">
-              <img class="w-full h-full absolute left-0 top-0 object-cover" src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="image">
-
-              <i class="fas fa-video absolute right-0 top-0 m-1"></i>
-
-              <!-- overlay-->
-              <div class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
-                                left-0 top-0 hidden">
-                <div class="flex justify-center items-center 
-                                    space-x-4 h-full">
-                  <span class="p-2">
-                    <i class="fas fa-heart"></i>
-                    841K
-                  </span>
-
-                  <span class="p-2">
-                    <i class="fas fa-comment"></i>
-                    909
-                  </span>
-                </div>
-              </div>
-
-            </article>
-          </a>
-        </div>
-
-        <div class="w-1/3 p-px md:px-3">
-          <a href="#">
-            <article class="post bg-gray-100 text-white relative pb-full md:mb-6">
-              <img class="w-full h-full absolute left-0 top-0 object-cover" src="https://images.unsplash.com/photo-1475688621402-4257c812d6db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80" alt="image">
-              <!-- overlay-->
-              <div class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
-                                left-0 top-0 hidden">
-                <div class="flex justify-center items-center 
-                                    space-x-4 h-full">
-                  <span class="p-2">
-                    <i class="fas fa-heart"></i>
-                    120K
-                  </span>
-
-                  <span class="p-2">
-                    <i class="fas fa-comment"></i>
-                    3,909
-                  </span>
-                </div>
-              </div>
-
-            </article>
-          </a>
-        </div>
-
       </div>
-    </div>
-  </div>
-</main>
-
+    </main>
   </div>
 </template>
 <style>
 .pb-full {
   padding-bottom: 100%;
 }
+.color_custom {
+  color: #383088;
+}
 
 /* hide search icon on search focus */
-.search-bar:focus + .fa-search{
+.search-bar:focus + .fa-search {
   display: none;
 }
 
@@ -252,66 +376,55 @@
   }
 }
 @media screen and (max-width: 500px) {
-  .classe{
+  .classe {
     margin-left: 15%;
   }
-  }
-
+}
 </style>
 
-
 <script>
-import router from '../router'
-
+import router from "../router";
 
 export default {
-  name: 'Profilo',
+  name: "Profilo",
   data() {
     return {
-      profile:{
-      id: null,
-      username: null,
-      email: null, 
-      user_info:{
-        biography: null,
-        image_url:null,
-        follow_count:null,
-        follower_count:null,
-        prj_count:null,
-        phone: null,
-      }
-      }
+      profile: {
+        id: null,
+        username: null,
+        email: null,
+        user_info: {
+          biography: null,
+          image_url: null,
+          follow_count: null,
+          follower_count: null,
+          prj_count: null,
+          phone: null,
+        },
+      },
     };
   },
-  components: {
-    
-
-  },
+  components: {},
   mounted() {
-   if(localStorage.getItem('user')) {
-       this.profilo();
-     } else {
-       router.push('/login');
-     }
-    
-  
+    if (localStorage.getItem("user")) {
+      this.profilo();
+    } else {
+      router.push("#");
+    }
   },
   methods: {
     async profilo() {
       try {
-        const ls = JSON.parse(localStorage.getItem('user'));
+        const ls = JSON.parse(localStorage.getItem("user"));
         this.info = await this.$api.get(`/users/profile/${ls.id}`);
 
         this.profile = this.info.data;
         console.log(this.info.data);
         console.log(this.profile);
-
-          
       } catch (error) {
         this.error = "Email o password errate. Riprova.";
       }
     },
-
   },
-}
+};
 </script>
