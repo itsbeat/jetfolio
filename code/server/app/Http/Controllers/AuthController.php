@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Laravel\Passport\Bridge\AccessToken;
 use Laravel\Passport\Token;
+use Laravel\Passport\PassportServiceProvider;
 
 class AuthController extends Controller
 {
