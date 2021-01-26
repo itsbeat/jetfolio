@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectContent extends Model
 {
     use HasFactory;
+
+    public function Project()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
 }

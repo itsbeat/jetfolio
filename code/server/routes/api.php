@@ -28,11 +28,24 @@ Route::get("/users", [UserController::class, "list"]);
 Route::get("/users/{id}", [UserController::class, "getUser"]);
 Route::put("/users/{id}", [UserController::class, "editUser"]);
 
+//User profile api
+
+Route::get("/users/profile/{id}",[UserController::class, "userInfo"]);
+Route::put('/users/edit', [UserController::class, 'editInfo']);
+
 
 // projects api
 Route::get("/projects", [ProjectController::class, "getProjects"]);
+
+Route::get("/projects/popular", [ProjectController::class, "getAllPopularProjects"]);
 Route::get("/projects/popular/{num}", [ProjectController::class, "getPopularProjects"]);
+
+Route::get("/projects/recent", [ProjectController::class, "getAllRecentProjects"]);
 Route::get("/projects/recent/{num}", [ProjectController::class, "getRecentProjects"]);
+
+Route::get("/projects/{id}", [ProjectController::class, "getProjectById"]);
+
+Route::get("/projects/category/{categoryId}", [ProjectController::class, "getProjectsByCategory"]);
 
 
 // authentication required api
