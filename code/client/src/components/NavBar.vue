@@ -2,12 +2,14 @@
   <div class="font-sans antialiased" id="app">
     <nav class="flex items-center justify-between flex-wrap bg-teal p-6">
       <div class="flex items-center flex-no-shrink text-white">
+        <a href="/home">
         <img
           src="../assets/logo-jet.png"
           class="fill-current absolue md:ml-10 sm:ml-0"
           width="80"
           height="100"
         />
+        </a>
       </div>
       <div class="block sm:hidden">
         <button
