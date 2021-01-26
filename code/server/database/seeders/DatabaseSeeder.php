@@ -3,9 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
+
+
+
     /**
      * Seed the application's database.
      *
@@ -13,6 +17,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        function ranString($length = 10) {
+            return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ,.:!', ceil($length/strlen($x)) )),1,$length);
+        }
+
+        for ($i=0; $i < 10000; $i++) { 
+
+            DB::table('projects')->insert(
+                array(
+                    'title' => ranString(25),
+                    'description' => ranString(200),
+                    'like_count' => random_int(0, 1000),
+                    
+                )
+            );
+        }
+        
     }
 }
