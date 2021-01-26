@@ -350,8 +350,11 @@
                   <input
                     type="password"
                     name="password_2"
+                    required
                     placeholder="CONFERMA PASSWORD"
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
+                    v-model="regConfirmPassword"
+                    @focus="resetError()"
                   />
                 </div>
 
@@ -436,6 +439,7 @@ export default {
       logPassword: null,
       regEmail: null,
       regPassword: null,
+      regConfirmPassword: null,
       logError: null,
       regError: null,
       currentView: "login",
@@ -456,16 +460,22 @@ export default {
       }
     },
     async create() {
-      try {
-        await this.$api.post("/users", {
-          name: this.name,
-          email: this.regEmail,
-          password: this.regPassword,
-        });
-        location.reload();
-      } catch (error) {
-        this.regError = "Errore.";
-      }
+          if(this.regPassword == this.regConfirmPassword)
+            {
+                try {
+                await this.$api.post("/users", {
+                  name: this.name,
+                  email: this.regEmail,
+                  password: this.regPassword,
+                });
+                location.reload();
+              } catch (error) {
+                this.regError = "Errore.";
+              }
+            }
+            else{
+              this.regError = "Compilare tutti i campi correttamente. Riprovare";
+            }
     },
     resetError() {
       this.logError = null;
