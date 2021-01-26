@@ -33,6 +33,9 @@ class AuthController extends Controller
 
                 );
         }
+        return response()->json([
+            "error" => "invalid-credentials"
+        ], 422);
     }
 
     public function logout (Request $request){ 
