@@ -13,12 +13,18 @@ const routes = [
   {
     path: '/homepage',
     name: 'Homepage',
-    component: Homepage
+    component: Homepage,
+    meta: {
+      label: "Home",
+    },
   },
   {
     path: '/landingpage',
     name: 'LandingPage',
-    component: LandingPage
+    component: LandingPage,
+    meta: {
+      label: "Landing",
+    },
   },
   {
     path: '/login',
