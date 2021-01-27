@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Homepage from '../views/Homepage.vue'
+import LandingPage from '../views/LandingPage.vue'
 import Login from '../views/Login.vue';
 import Profilo from '../views/Profilo.vue';
 import DettaglioPortfolio from '../views/DettaglioPortfolio.vue';
@@ -10,19 +11,36 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
-    name: 'Home',
-    component: Home
+    path: '/homepage',
+    name: 'Homepage',
+    component: Homepage,
+    meta: {
+      label: "Home",
+    },
+  },
+  {
+    path: '/landingpage',
+    name: 'LandingPage',
+    component: LandingPage,
+    meta: {
+      label: "Landing",
+    },
   },
   {
     path: '/login',
     name: 'Login',
     component: Login,
+    meta: {
+      label: "Login",
+    },
   },
   {
     path: '/profilo',
     name: 'Profilo',
     component: Profilo,
+    meta: {
+      label: "Profilo",
+    },
   },
   {
     path: '/editprofile',
@@ -33,15 +51,21 @@ const routes = [
     path: '/dettaglioportfolio',
     name: 'DettaglioPortfolio',
     component: DettaglioPortfolio,
+    meta:{
+      label: "Dettaglio",
+    }
   },
   {
     path: '/newportfolio',
     name: 'NewPortfolio',
     component: NewPortfolio,
+    meta:{
+      label: "NewPortfolio",
+    }
   },
   {
     path: '*',
-    redirect: 'home'
+    redirect: 'homepage'
   },
 ]
 
