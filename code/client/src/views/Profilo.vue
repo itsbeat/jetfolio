@@ -409,7 +409,7 @@ export default {
     if (localStorage.getItem("user")) {
       this.profilo();
     } else {
-      router.push("#");
+      router.push("/login");
     }
   },
   methods: {
