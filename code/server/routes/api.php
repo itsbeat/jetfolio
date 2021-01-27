@@ -44,6 +44,8 @@ Route::get("/follow/{id}", [FollowController::class, "getFollowById"]);
 Route::get("/follower/{id}", [FollowController::class, "getFollowerById"]);
 Route::get("/add/follow/{id}", [FollowController::class, "getAddFollowById"]);
 Route::get("/add/follower/{id}", [FollowController::class, "getAddFollowerById"]);
+Route::get("/rmv/follow/{id}", [FollowController::class, "getRmvFollowById"]);
+Route::get("/rmv/follower/{id}", [FollowController::class, "getRmvFollowerById"]);
 
 
 // authentication required api
