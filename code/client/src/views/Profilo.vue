@@ -16,7 +16,7 @@
           <!-- profile meta -->
           <div class="md:w-4/12 sm:6/12 md:ml-2 classe">
             <div class="md:flex md:flex-wrap md:items-center mb-2 md_ml-4 ">
-              <div class="mb-5">
+              <div>
                 <span
                   class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
                 >
@@ -32,19 +32,18 @@
                     />
                   </svg>
                 </span>
-                <h3
+                <input
                   type="text"
                   name="username"
-                  placeholder="USERNAME"
-                  required
-                  class="px-3 py-3 block w-full p-2.5    relative focus:outline-none focus:shadow-outline w-full pl-10"
+                  :value=" profile.username"
+                  :disabled="!edit"
+                  v-bind:class="edit===true ? 'modifica': 'null'"
+                  class="px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
                 >
-                  {{ profile.username }}
-                </h3>
               </div>
             </div>
             <div class="md:flex md:flex-wrap md:items-center mb-2">
-              <div class="mb-5">
+              <div>
                 <span
                   class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
                 >
@@ -73,7 +72,7 @@
               </div>
             </div>
             <div class="md:flex md:flex-wrap md:items-center mb-2">
-              <div class="mb-5">
+              <div>
                 <span
                   class="color_custom z-10 h-10 leading-snug font-normal absolute text-center absolute bg-transparent rounded text-base items-center justify-center w-9 pl-3 py-3"
                 >
@@ -110,11 +109,12 @@
             </div>
           </div>
         </header>
-        <div class="flex justify-start ...">
+        <div class="flex justify-center ...">
           <button
-            class="p-2 mb-4 focus:outline-none border-2 border-indigo-300 border-opacity-100 rounded-3xl uppercase color_custom"
+            class="p-2 mb-4 focus:outline-none border-2 border-indigo-300 border-opacity-100 rounded-3xl  color_custom"
+            @click="edit=!edit"
           >
-            modifica
+            Modifica Profilo
           </button>
         </div>
 
@@ -122,7 +122,7 @@
         <div class="px-px md:px-3 ">
           <!-- user following for mobile only -->
           <ul
-            class="flex justify-around space-x-8 border-t text-center p-1 text-gray-600 leading-snug text-sm md:bg-indigo-100 md:rounded-full md:mb-2"
+            class="flex justify-around space-x-8 border-t text-center p-1 text-gray-600 leading-snug text-sm md:bg-indigo-100 md:rounded-full md:mb-6 mt-7"
           >
             <li>
               <span class="font-semibold text-gray-800 block">{{
@@ -380,6 +380,9 @@
     margin-left: 15%;
   }
 }
+.modifica{
+  border-bottom:2px solid  #383088 ;
+}
 </style>
 
 <script>
@@ -389,6 +392,7 @@ export default {
   name: "Profilo",
   data() {
     return {
+      edit:false,
       profile: {
         id: null,
         username: null,
