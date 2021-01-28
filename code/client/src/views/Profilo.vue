@@ -15,6 +15,9 @@
 
           <!-- profile meta -->
           <div class="md:w-4/12 sm:6/12 md:ml-2 classe">
+            <h1 class="text-2xl text-center mb-6 modificaprof" :hidden="!edit">
+              Stai modificando il tuo profilo
+            </h1>
             <div class="md:flex md:flex-wrap md:items-center mb-2 md_ml-4 ">
               <div>
                 <span
@@ -35,11 +38,11 @@
                 <input
                   type="text"
                   name="username"
-                  :value=" profile.username"
+                  :value="profile.username"
                   :disabled="!edit"
-                  v-bind:class="edit===true ? 'modifica': 'null'"
+                  v-bind:class="edit === true ? 'modifica' : 'null'"
                   class="px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
-                >
+                />
               </div>
             </div>
             <div class="md:flex md:flex-wrap md:items-center mb-2">
@@ -60,15 +63,14 @@
                     />
                   </svg>
                 </span>
-                <h3
+                <input
                   type="text"
                   name="username"
-                  placeholder="USERNAME"
-                  required
+                  :value="profile.email"
+                  :disabled="!edit"
+                  v-bind:class="edit === true ? 'modifica' : 'null'"
                   class="px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
                 >
-                  {{ profile.email }}
-                </h3>
               </div>
             </div>
             <div class="md:flex md:flex-wrap md:items-center mb-2">
@@ -86,15 +88,14 @@
                     />
                   </svg>
                 </span>
-                <h3
+                <input
                   type="text"
-                  name="username"
-                  placeholder="USERNAME"
-                  required
+                  name="numero"
+                  :value="profile.user_info.phone"
+                  :disabled="!edit"
+                  v-bind:class="edit === true ? 'modifica' : 'null'"
                   class="px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
                 >
-                  {{ profile.user_info.phone }}
-                </h3>
               </div>
             </div>
           </div>
@@ -112,9 +113,23 @@
         <div class="flex justify-center ...">
           <button
             class="p-2 mb-4 focus:outline-none border-2 border-indigo-300 border-opacity-100 rounded-3xl  color_custom"
-            @click="edit=!edit"
+            @click="edit = !edit"
+            :hidden="edit"
           >
             Modifica Profilo
+          </button>
+          <button
+            class="p-2 mb-4 focus:outline-none border-2 border-gray-600 border-opacity-100 rounded-3xl mr-3"
+            :hidden="!edit"
+            @click="edit = !edit"
+          >
+            Annulla
+          </button>
+          <button
+            class="p-2 mb-4 focus:outline-none border-2 border-green-600 border-opacity-100 rounded-3xl "
+            :hidden="!edit"
+          >
+            Salva
           </button>
         </div>
 
@@ -380,8 +395,11 @@
     margin-left: 15%;
   }
 }
-.modifica{
-  border-bottom:2px solid  #383088 ;
+.modifica {
+  border-bottom: 2px solid #383088;
+}
+.modificaprof {
+  border-bottom: 2px solid red;
 }
 </style>
 
@@ -392,7 +410,7 @@ export default {
   name: "Profilo",
   data() {
     return {
-      edit:false,
+      edit: false,
       profile: {
         id: null,
         username: null,
