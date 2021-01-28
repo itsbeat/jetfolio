@@ -40,7 +40,7 @@ export default {
   },
   methods: {
   async editInfo() {
-     await this.$api.put("/users/edit",
+     await this.$api.post("/users/edit",
         this.profile,
         console.log(this.profile)
         );
