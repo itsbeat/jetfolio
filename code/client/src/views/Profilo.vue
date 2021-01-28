@@ -16,7 +16,7 @@
           <!-- profile meta -->
           <div class="md:w-4/12 sm:6/12 md:ml-2 classe">
             <h1 class="text-2xl text-center mb-6 modificaprof" :hidden="!edit">
-              Stai modificando il tuo profilo
+              Modifica del profilo
             </h1>
             <div class="md:flex md:flex-wrap md:items-center mb-2 md_ml-4 ">
               <div>
@@ -41,7 +41,7 @@
                   :value="profile.username"
                   :disabled="!edit"
                   v-bind:class="edit === true ? 'modifica' : 'null'"
-                  class="px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
+                  class="bg-transparent px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
                 />
               </div>
             </div>
@@ -69,7 +69,7 @@
                   :value="profile.email"
                   :disabled="!edit"
                   v-bind:class="edit === true ? 'modifica' : 'null'"
-                  class="px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
+                  class="bg-transparent px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline pl-10"
                 >
               </div>
             </div>
@@ -94,17 +94,17 @@
                   :value="profile.user_info.phone"
                   :disabled="!edit"
                   v-bind:class="edit === true ? 'modifica' : 'null'"
-                  class="px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
+                  class="bg-transparent px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
                 >
               </div>
             </div>
           </div>
-          <div class="md:w-4/12 sm:w-12/12 text-sm my-2">
+          <div class="md:w-4/12 sm:w-12/12 text-sm my-2 mx-auto">
             <div
               class="md:w-96 md:p-6 sm:w-34 text-center border-4 rounded-3xl border-indigo-600 border-opacity-0 bg-indigo-100"
             >
-              <h1 class="font-bold text-md  color_custom">BIOGRAFIA</h1>
-              <p class="text-left sm-text-sm">
+              <h1 class="font-bold text-md color_custom">BIOGRAFIA</h1>
+              <p class="md:text-left sm:text-center sm-text-sm">
                 {{ profile.user_info.biography }}
               </p>
             </div>
@@ -119,14 +119,14 @@
             Modifica Profilo
           </button>
           <button
-            class="p-2 mb-4 focus:outline-none border-2 border-gray-600 border-opacity-100 rounded-3xl mr-3"
+            class="p-2 mb-4 focus:outline-none border-none text-gray-400 rounded-3xl mr-3 hover: text-gray-600"
             :hidden="!edit"
             @click="edit = !edit"
           >
             Annulla
           </button>
           <button
-            class="p-2 mb-4 focus:outline-none border-2 border-green-600 border-opacity-100 rounded-3xl "
+            class="p-2 mb-4 focus:outline-none border-2 border-green-600 bg-green-600 text-white border-opacity-100 rounded-3xl "
             :hidden="!edit"
           >
             Salva
@@ -396,7 +396,8 @@
   }
 }
 .modifica {
-  border-bottom: 2px solid #383088;
+  border: 1px solid gray;
+  padding:10px 220px 10px 40px;
 }
 .modificaprof {
   border-bottom: 2px solid red;
