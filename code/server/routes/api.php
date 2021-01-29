@@ -32,6 +32,8 @@ Route::put("/users/{id}", [UserController::class, "editUser"]);
 
 Route::get("/users/profile/{id}",[UserController::class, "userInfo"]);
 Route::post('/users/edit', [UserController::class, 'editInfo']);
+Route::get('image', 'ImageController@index');
+Route::post('save', 'ImageController@save');
 
 
 // projects api
