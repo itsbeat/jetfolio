@@ -276,7 +276,7 @@
 
 
 .scrolling-wrapper, .scrolling-wrapper-flexbox {
-  height: 380px;
+  height: 420px;
   margin-bottom: 20px;
   width: 100%;
   -webkit-overflow-scrolling: touch;
