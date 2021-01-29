@@ -38,6 +38,7 @@
                 <input
                   type="text"
                   name="username"
+                  size="26"
                   :value="profile.username"
                   :disabled="!edit"
                   v-bind:class="edit === true ? 'modifica' : 'null'"
@@ -66,6 +67,7 @@
                 <input
                   type="text"
                   name="username"
+                  size="26"
                   :value="profile.email"
                   :disabled="!edit"
                   v-bind:class="edit === true ? 'modifica' : 'null'"
@@ -91,6 +93,7 @@
                 <input
                   type="text"
                   name="numero"
+                  size="26"
                   :value="profile.user_info.phone"
                   :disabled="!edit"
                   v-bind:class="edit === true ? 'modifica' : 'null'"
@@ -104,9 +107,14 @@
               class="md:w-96 md:p-6 sm:w-34 text-center border-4 rounded-3xl border-indigo-600 border-opacity-0 bg-indigo-100"
             >
               <h1 class="font-bold text-md color_custom">BIOGRAFIA</h1>
-              <p class="md:text-left sm:text-center sm-text-sm">
-                {{ profile.user_info.biography }}
-              </p>
+              <textarea 
+              :value="profile.user_info.biography"
+              v-bind:class="edit === true ? 'custom' : 'null'"
+              rows="5"
+              :disabled="!edit"
+              class="md:text-left md:w-full md:bg-indigo-100 sm:text-center sm-text-sm"
+                >
+              </textarea>
             </div>
           </div>
         </header>
@@ -397,11 +405,16 @@
 }
 .modifica {
   border: 1px solid gray;
-  padding:10px 220px 10px 40px;
+  width: 120%;
 }
 .modificaprof {
   border-bottom: 2px solid red;
 }
+.custom{
+  background-color:rgba(255, 255, 255, 0.8);
+  outline: none;
+}
+
 </style>
 
 <script>
