@@ -110,7 +110,7 @@
       </h1>
   <div class="scrolling-wrapper">
      <div
-          class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 inline-block"
+          class="my-1 px-1 w-full md:w-1/5 lg:my-4 lg:px-4 lg:w-1/5 sm:1/ inline-block"
           v-for="project in recentProjects"
           :key="project.id"
         >
@@ -127,7 +127,7 @@
             <header
               class="flex items-center justify-between leading-tight p-2 md:p-4"
             >
-              <h1 class="text-lg">
+              <h1 class="text-sm">
                 <a class="no-underline hover:underline text-black" href="#">
                   {{ project.title }}
                 </a>
@@ -187,7 +187,7 @@
       </h1>
   <div class="scrolling-wrapper">
      <div
-          class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 inline-block"
+          class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/5 inline-block"
           v-for="project in recentProjects"
           :key="project.id"
         >
@@ -204,7 +204,7 @@
             <header
               class="flex items-center justify-between leading-tight p-2 md:p-4"
             >
-              <h1 class="text-lg">
+              <h1 class="text-sm">
                 <a class="no-underline hover:underline text-black" href="#">
                   {{ project.title }}
                 </a>
@@ -276,7 +276,7 @@
 
 
 .scrolling-wrapper, .scrolling-wrapper-flexbox {
-  height: 700px;
+  height: 380px;
   margin-bottom: 20px;
   width: 100%;
   -webkit-overflow-scrolling: touch;
