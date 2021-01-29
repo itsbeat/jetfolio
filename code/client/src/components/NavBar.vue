@@ -126,6 +126,7 @@
               <a
                 href="#"
                 class="block text-gray-600 font-semibold px-4 py-2 | hover:text-indigo-600"
+                @click="logout()"
                 >Log out</a
               >
             </div>
@@ -166,6 +167,10 @@ export default {
     toggle() {
       this.open = !this.open;
     },
+     async logout() {
+      localStorage.removeItem('user');
+        return await this.$api.post("/logout");
+      },
   },
   computed: {
     visibleRoutes() {

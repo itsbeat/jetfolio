@@ -7,7 +7,7 @@ import "./components";
 
 Vue.config.productionTip = false;
 Vue.prototype.$api = api;
-Vue.use(VueAgile)
+//Vue.use(VueAgile)
 
 new Vue({
   router,
