@@ -31,7 +31,7 @@ Route::post('/image/store', [ProjectController::class, "store"]);
 //User profile api
 
 Route::get("/users/profile/{id}",[UserController::class, "userInfo"]);
-Route::put('/users/edit', [UserController::class, 'editInfo']);
+Route::post('/users/edit', [UserController::class, 'editInfo']);
 
 
 // projects api

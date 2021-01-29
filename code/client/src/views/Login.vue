@@ -1,4 +1,3 @@
-
 <template>
   <div class="wrapper flex h-screen" v-on:submit.prevent>
     <div class="lg:w-2/4 sm:w-full bg-white font-sans text-gray-700">

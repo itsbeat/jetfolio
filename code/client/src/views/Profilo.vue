@@ -136,6 +136,7 @@
           <button
             class="p-2 mb-4 focus:outline-none border-2 border-green-600 bg-green-600 text-white border-opacity-100 rounded-3xl "
             :hidden="!edit"
+            @click="editInfo()"
           >
             Salva
           </button>
@@ -458,9 +459,15 @@ export default {
         console.log(this.info.data);
         console.log(this.profile);
       } catch (error) {
-        this.error = "Email o password errate. Riprova.";
+        this.error = "Errore generico.";
       }
     },
+  },
+   async editInfo() {
+     await this.$api.post("/users/edit",
+        this.profile,
+        );
+        return this.profile;
   },
 };
 </script>
