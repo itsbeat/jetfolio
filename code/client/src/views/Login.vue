@@ -1,7 +1,10 @@
-
 <template>
   <div class="wrapper flex h-screen" v-on:submit.prevent>
+<<<<<<< HEAD
     <div class="lg:w-2/4 sm:w-full bg-white font-sans text-gray-700">
+=======
+    <div class="w-2/4 bg-white font-sans text-gray-700 bg-opacity-0">
+>>>>>>> master
       <div class="container mx-auto p-8 flex">
         <div class="max-w-md w-full mx-auto">
           <div class="bg-white rounded-lg overflow-hidden">
