@@ -15,7 +15,8 @@ L’utente potrà interagire con i progetti degli altri, inoltre avrà anche la 
 
 ## Descrizione
 
-Applicazione realizzata in Laravel e VueJS con database SQL.
+Applicazione realizzata in Laravel e VueJS con database SQL.  
+Mockup della versione finale: [qua](https://www.figma.com/file/810KHmk41A0XMEpoyyJLlX/JetFolio?node-id=0%3A1)
 
 ## Istruzioni:
 ### Primo download repo
