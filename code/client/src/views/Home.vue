@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     async logout() {
+        localStorage.removeItem('user');
         return await this.$api.post("/logout");
       },
     async getProjects() {
