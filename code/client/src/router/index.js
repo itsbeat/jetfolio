@@ -38,9 +38,6 @@ const routes = [
     path: '/profilo',
     name: 'Profilo',
     component: Profilo,
-    meta: {
-      label: "Profilo",
-    },
   },
   {
     path: '/editprofile',

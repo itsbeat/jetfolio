@@ -456,7 +456,8 @@ export default {
         this.profile,
         console.log(this.profile),
         );
-        return this.profile
+        return this.profile,
+        window.location.reload();
   },
     async profilo() {
       try {

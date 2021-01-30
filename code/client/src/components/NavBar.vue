@@ -114,7 +114,7 @@
           >
             <div class="bg-white rounded-lg shadow-lg py-2 w-48">
               <a
-                href="#"
+                href="/profilo"
                 class="block text-gray-600 font-semibold px-4 py-2 | hover:text-indigo-600"
                 >Profilo</a
               >
