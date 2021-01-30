@@ -1,8 +1,9 @@
 <template>
   <div class="home">
     <!-- HOME SEARCH -->
-    <div class="hero-search h-80 bg-gray-200 flex justify-center items-center">
-      <div class="search-bar relative w-6/12">
+    <section class="search-sec">
+       <div class="flex justify-center mb-5">
+       <div class="flex justify-center search-bar  relative w-6/12">
         <input
           class="w-full p-3 rounded-3xl pl-36 border-2 border-indigo-600"
           placeholder="Scopri nuovi portfolio!"
@@ -23,7 +24,17 @@
           <img src="../assets/search.svg" />
         </button>
       </div>
-    </div>
+      </div>
+    <agile class="main" ref="main" :options="options1" :as-nav-for="asNavFor1">
+        <div class="slide" v-for="(slide, index) in slides" :key="index" :class="`slide--${index}`">
+
+          <img :src="slide"/>
+
+        </div>
+        <template slot="prevButton"><i class="fas fa-chevron-left"></i></template>
+        <template slot="nextButton"><i class="fas fa-chevron-right"></i></template>
+      </agile>
+    </section>
      <h1
         class="ml-12 mb-0 mt-6 text-3xl font-bold uppercase tracking-wide text-indigo-800"
       >
@@ -183,7 +194,7 @@
    <h1
         class="ml-12 mb-0 mt-0 text-3xl font-bold uppercase tracking-wide text-indigo-800"
       >
-        I piu visti
+        I più visti
       </h1>
   <div class="scrolling-wrapper">
      <div
@@ -273,8 +284,6 @@
   
   
 }
-
-
 .scrolling-wrapper, .scrolling-wrapper-flexbox {
   height: 420px;
   margin-bottom: 20px;
@@ -285,18 +294,113 @@
 :hover::-webkit-scrollbar {
     display: none;
   }
+  #app {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 30px;
+}
+
+.main {
+  margin-bottom: 30px;
+}
+
+.agile__nav-button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition-duration: 0.3s;
+  width: 80px;
+}
+.agile__nav-button--prev {
+  left: 0;
+}
+.agile__nav-button--next {
+  right: 0;
+}
+.agile__dots {
+  bottom: 10px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+.agile__dot {
+  margin: 0 10px;
+}
+.agile__dot button {
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  height: 10px;
+  font-size: 0;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  transition-duration: 0.3s;
+  width: 10px;
+}
+.agile__dot--current button, .agile__dot:hover button {
+  background-color: #fff;
+}
+
+.slide {
+  align-items: center;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  height: 450px;
+  justify-content: center;
+}
+.slide img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  width: 100%;
+}
 </style>
 
 <script>
+import { VueAgile } from 'vue-agile'
 export default {
   name: "Home",
-  components: {},
+  components: {
+    agile: VueAgile,
+  },
+  
   data() {
     return {
       error: null,
       recentProjects: [],
       popularProjects: [],
-    };
+			asNavFor1: [],
+			options1: {
+				dots: true,
+				fade: true,
+        autoplay:true,
+				navButtons: true,
+        changeDelay:"2000",
+      autoplaySpeed:"4300",
+      },
+      slides: [
+					'https://images.unsplash.com/photo-1544256718-3bcf237f3974?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80',
+					'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+					'https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80',
+					'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+					'https://images.unsplash.com/photo-1483782817618-9804403024ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1546&q=80',
+					'https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+					'https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1498&q=80'
+				]
+		}
   },
   methods: {
     async logout() {
@@ -317,7 +421,9 @@ export default {
   mounted() {
     this.getPopularProjects();
     this.getRecentProjects();
+    this.asNavFor1.push(this.$refs.main)
   },
+  
 };
 </script>
 
