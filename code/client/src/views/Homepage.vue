@@ -294,17 +294,9 @@
 :hover::-webkit-scrollbar {
     display: none;
   }
-  #app {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  margin: 0 auto;
-  max-width: 100%;
-  padding: 30px;
-}
-
-.main {
-  margin-bottom: 30px;
-}
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
 .agile__nav-button {
   background: transparent;
