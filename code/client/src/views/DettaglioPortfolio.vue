@@ -5,27 +5,17 @@
         <div class="container px-5 mx-auto">
           <div class="flex flex-wrap -mx-4 -mb-10 ">
             <div class="sm:w-2/3 mb-10 pr-4">
-              <div class="rounded-3xl object-cover object-center overflow-hidden">
-                <agile :navButtons="false" ref="carousel">
-                    <div class="slide">
-                      <img alt="content" class="object-cover object-center" src="https://dummyimage.com/1201x501">
-                    </div>
-                    <div class="slide">
-                      <img alt="content" class="object-cover object-center" src="../assets/foto.jpg">
-                    </div>
-                    <div class="slide">
-                      <img alt="content" class="object-cover object-center" src="../assets/foto.jpg">
-                    </div>
-                    <div class="slide">
-                      <img alt="content" class="object-cover object-center" src="../assets/foto.jpg">
-                    </div>
-                </agile>
-                
-                
-              </div>
-              <button class="button back" @click="$refs.carousel.goToPrev()">Back</button>
-              <button class="button next" @click="$refs.carousel.goToNext()">Next</button>
+              <div class="rounded-3xl mb-10 object-cover object-center overflow-hidden">
+                <agile class="main" ref="main" :options="options1" :as-nav-for="asNavFor1">
+                  <div class="slide" v-for="(slide, index) in slides" :key="index" :class="`slide--${index}`">
 
+                    <img :src="slide"/>
+
+                  </div>
+                  <template slot="prevButton"><i class="fas fa-chevron-left"></i></template>
+                  <template slot="nextButton"><i class="fas fa-chevron-right"></i></template>
+                </agile>
+              </div>
               <h1 class="text-4xl font-bold text-black	">Local Taste</h1>
               <p class="pt-2">Un e-commerce per prodotti artigianali di qualità, per incentivare il km 0. Scopri un nuovo di modo per conoscere le nostre tradizioni.</p>
             </div>
@@ -69,6 +59,26 @@
   </div>
 </template>
 
+<style>
+
+.slide {
+  align-items: center;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  height: 450px;
+  justify-content: center;
+}
+.slide img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  width: 100%;
+}
+</style>
+
 <script>
 import { VueAgile } from 'vue-agile'
 
@@ -91,6 +101,24 @@ export default {
           like_count: null,
           user_id: null
         },
+        asNavFor1: [],
+        options1: {
+          dots: true,
+          fade: true,
+          autoplay:true,
+          navButtons: true,
+          changeDelay:"2000",
+        autoplaySpeed:"4300",
+        },
+        slides: [
+            'https://images.unsplash.com/photo-1544256718-3bcf237f3974?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80',
+            'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+            'https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80',
+            'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+            'https://images.unsplash.com/photo-1483782817618-9804403024ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1546&q=80',
+            'https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+            'https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1498&q=80'
+          ]
       }
       
   },
@@ -105,6 +133,3 @@ export default {
   
 }
 </script>
-<style>
-
-</style>
