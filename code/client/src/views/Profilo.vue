@@ -409,6 +409,21 @@
   border: 1px solid gray;
   width: 120%;
 }
+@media screen and (min-width: 768px) {
+  .modifica {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .modifica {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .modifica {
+    width: 60%;
+  }
+}
 .modificaprof {
   border-bottom: 2px solid red;
 }
@@ -454,7 +469,6 @@ export default {
     async editInfo() {
      await this.$api.post("/users/edit",
         this.profile,
-        console.log(this.profile),
         );
         return this.profile,
         window.location.reload();
@@ -465,8 +479,6 @@ export default {
         this.info = await this.$api.get(`/users/profile/${ls.id}`);
 
         this.profile = this.info.data;
-        console.log(this.info.data);
-        console.log(this.profile);
       } catch (error) {
         this.error = "Errore generico.";
       }
