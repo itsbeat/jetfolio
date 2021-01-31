@@ -39,7 +39,7 @@
                   type="text"
                   name="username"
                   size="26"
-                  :value="profile.username"
+                  v-model="profile.username"
                   :disabled="!edit"
                   v-bind:class="edit === true ? 'modifica' : 'null'"
                   class="bg-transparent px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
@@ -68,7 +68,7 @@
                   type="text"
                   name="username"
                   size="26"
-                  :value="profile.email"
+                  v-model="profile.email"
                   :disabled="!edit"
                   v-bind:class="edit === true ? 'modifica' : 'null'"
                   class="bg-transparent px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline pl-10"
@@ -94,7 +94,7 @@
                   type="text"
                   name="numero"
                   size="26"
-                  :value="profile.user_info.phone"
+                  v-model="profile.user_info.phone"
                   :disabled="!edit"
                   v-bind:class="edit === true ? 'modifica' : 'null'"
                   class="bg-transparent px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
@@ -108,7 +108,7 @@
             >
               <h1 class="font-bold text-md color_custom">BIOGRAFIA</h1>
               <textarea 
-              :value="profile.user_info.biography"
+              v-model="profile.user_info.biography"
               v-bind:class="edit === true ? 'custom' : 'null'"
               rows="5"
               :disabled="!edit"
@@ -133,6 +133,7 @@
           >
             Annulla
           </button>
+
           <button
             class="p-2 mb-4 focus:outline-none border-2 border-green-600 bg-green-600 text-white border-opacity-100 rounded-3xl "
             :hidden="!edit"
@@ -450,6 +451,14 @@ export default {
     }
   },
   methods: {
+    async editInfo() {
+     await this.$api.post("/users/edit",
+        this.profile,
+        console.log(this.profile),
+        );
+        return this.profile,
+        window.location.reload();
+  },
     async profilo() {
       try {
         const ls = JSON.parse(localStorage.getItem("user"));
@@ -462,12 +471,6 @@ export default {
         this.error = "Errore generico.";
       }
     },
-  },
-   async editInfo() {
-     await this.$api.post("/users/edit",
-        this.profile,
-        );
-        return this.profile;
   },
 };
 </script>

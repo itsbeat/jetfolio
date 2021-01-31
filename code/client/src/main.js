@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueAgile from 'vue-agile'
 import App from './App.vue'
 import router from './router'
 import api from './services/api'
