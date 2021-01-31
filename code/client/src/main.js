@@ -3,7 +3,7 @@ import VueAgile from 'vue-agile'
 import App from './App.vue'
 import router from './router'
 import api from './services/api'
-import "slick-carousel"
+
 import "./components";
 
 Vue.config.productionTip = false;
