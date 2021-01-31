@@ -27,7 +27,7 @@ Route::post("/users", [UserController::class, "create"]);
 Route::get("/users", [UserController::class, "list"]);
 Route::get("/users/{id}", [UserController::class, "getUser"]);
 Route::put("/users/{id}", [UserController::class, "editUser"]);
-
+Route::post('/image/store', [ProjectController::class, "store"]);
 //User profile api
 
 Route::get("/users/profile/{id}",[UserController::class, "userInfo"]);

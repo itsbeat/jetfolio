@@ -114,7 +114,7 @@
           >
             <div class="bg-white rounded-lg shadow-lg py-2 w-48">
               <a
-                href="#"
+                href="/profilo"
                 class="block text-gray-600 font-semibold px-4 py-2 | hover:text-indigo-600"
                 >Profilo</a
               >
@@ -126,6 +126,7 @@
               <a
                 href="#"
                 class="block text-gray-600 font-semibold px-4 py-2 | hover:text-indigo-600"
+                @click="logout()"
                 >Log out</a
               >
             </div>
@@ -153,7 +154,6 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$router.options.routes);
     this.selectRouteIndex = 0;
   },
   methods: {
@@ -166,6 +166,10 @@ export default {
     toggle() {
       this.open = !this.open;
     },
+     async logout() {
+      localStorage.removeItem('user');
+        return await this.$api.post("/logout");
+      },
   },
   computed: {
     visibleRoutes() {
