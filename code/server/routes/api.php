@@ -34,6 +34,9 @@ Route::get("/users/profile/{id}",[UserController::class, "userInfo"]);
 Route::post('/users/edit', [UserController::class, 'editInfo']);
 
 
+//like api
+Route::post("/like", [LikeController::class, "eventLike"]);
+
 // projects api
 Route::get("/projects", [ProjectController::class, "getProjects"]);
 

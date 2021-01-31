@@ -7,6 +7,7 @@ import Profilo from '../views/Profilo.vue';
 import DettaglioPortfolio from '../views/DettaglioPortfolio.vue';
 import NewPortfolio from '../views/NewPortfolio.vue';
 import Edit from '../views/ChangeProfile.vue';
+import LikeProject from '../views/LikeProject.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -32,6 +33,14 @@ const routes = [
     component: Login,
     meta: {
       label: "Login",
+    },
+  },
+  {
+    path: '/likeproject',
+    name: 'LikeProject',
+    component: LikeProject,
+    meta: {
+      label: "LikeProject",
     },
   },
   {
