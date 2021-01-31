@@ -2,25 +2,24 @@
   <div class="home">
     <!-- HOME SEARCH -->
     <section class="search-sec">
-       <div class="flex justify-center mb-5">
-       <div class="flex justify-center search-bar  relative w-6/12">
+       <div class="md:flex md:justify-center sm:justify-none mb-5">
+       <div class="flex md:justify-center sm:justify-start search-bar  relative md:w-6/12 sm:w-1">
         <input
-          class="w-full p-3 rounded-3xl pl-36 border-2 border-indigo-600"
+          class="w-full p-3 rounded-3xl md:pl-40 pl-28 border-2 border-indigo-600 focus:outline-none"
           placeholder="Scopri nuovi portfolio!"
           type="text"
           id="search"
         />
         <select
           id="category"
-          class="absolute left-6 p-1 rounded-2xl border-2 border-indigo-600"
-          style="top: 15%"
+          class="absolute lg:left-6 md_left-6 left-2 md:mt-4 mt-4 rounded-2xl border-2 border-indigo-600 focus:outline-none"
         >
           <option value="design">Artworks</option>
           <option value="design">Design</option>
           <option value="coding">Coding</option>
           <option value="IOT">IOT</option>
         </select>
-        <button id="btn-search" class="absolute right-6" style="top: 25%">
+        <button id="btn-search" class="absolute right-6 focus:outline-none" style="top: 25%">
           <img src="../assets/search.svg" />
         </button>
       </div>
