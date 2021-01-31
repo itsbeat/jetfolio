@@ -16,20 +16,26 @@ class UserController extends Controller
         $userData = json_decode($request->getContent());
 
         $request->validate([
-            "email" => "required|unique:users",
             "name" => "required",
-            "surname" => "required",
+            "email" => "required|unique:users",
+            "password" => "required",
         ]);
 
         $user = new User();
 
-        $user->name = $userData->name;
+        $password = $userData->password;
+
+        $user->username = $userData->name;
         $user->email = $userData->email;
-        $user->password = Hash::make("password");
+        $user->password = Hash::make($password);
 
         $user->save();
 
-        return $user;
+        return response()
+                ->json([
+                    "registered_user" => $user
+                ], 200);
+
     }
 
     public function editUser(Request $request, $id) {
