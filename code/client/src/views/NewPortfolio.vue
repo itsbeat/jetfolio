@@ -79,10 +79,12 @@
                 let vm = this;
                 reader.onload = (e) => {
                     vm.image = e.target.result;
+                    console.log(vm.image);
                 };
                 reader.readAsDataURL(file);
             },
             uploadImage(){
+                console.log(this.image);
                 this.$api.post('/image/store',{image: this.image}).then(response => {
                    console.log(response);
                 });
