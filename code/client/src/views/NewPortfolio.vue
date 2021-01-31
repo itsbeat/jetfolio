@@ -54,7 +54,7 @@
           </form>
           </div>
           <div class="box-border h-1   w-28 p-6 m-8  md:box-content bg-blue-200 rounded-3xl text-center row place-self-center">
-            <h1 class="text-center">PUBBLICA </h1>
+            <h1 class="text-center" @click="dammiTutto()">PUBBLICA </h1>
           </div>
       </div>
     </div>
@@ -64,7 +64,8 @@
     export default {
         data(){
             return {
-                image: ''
+                image: '',
+                id:null
             }
         },
         methods: {
@@ -84,10 +85,14 @@
                 reader.readAsDataURL(file);
             },
             uploadImage(){
-                console.log(this.image);
-                this.$api.post('/image/store',{image: this.image}).then(response => {
+                var id = JSON.parse(localStorage.getItem("user")).id;
+                this.$api.post('/image/store',{image: this.image, id:id}).then(response => {
                    console.log(response);
+            
                 });
+            },
+            dammiTutto() {
+                console.log(JSON.parse(localStorage.getItem("user")).id)
             }
         }
     }
