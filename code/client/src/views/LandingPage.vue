@@ -79,52 +79,6 @@
   </div>
 </template>
 
-<script>
-import { VueAgile } from 'vue-agile'
-
-export default {
-
-  name: 'Home',
-  components: {
-    agile: VueAgile,
-  },
-  data(){
-      return {
-        error: null,
-        projects: [],
-        asNavFor1: [],
-        options1: {
-          dots: true,
-          fade: true,
-          autoplay:true,
-          navButtons: true,
-          changeDelay:"2000",
-        autoplaySpeed:"4300",
-        },
-        slides: [
-            'https://images.unsplash.com/photo-1544256718-3bcf237f3974?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80',
-            'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-            'https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80',
-            'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-            'https://images.unsplash.com/photo-1483782817618-9804403024ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1546&q=80',
-            'https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-            'https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1498&q=80'
-          ]
-      }
-  },
-  methods: {
-    async logout() {
-        return await this.$api.post("/logout");
-      },
-    async getProjects() {
-      return await this.$api.get('/projects');
-    }
-  },
-  mounted() {
-    console.log(this.getProjects());
-  }
-}  
-</script>
 <style>
 .agile__nav-button {
   background: transparent;
@@ -188,4 +142,51 @@ export default {
   width: 100%;
 }
 </style>
+
+<script>
+import { VueAgile } from 'vue-agile'
+
+export default {
+
+  name: 'Home',
+  components: {
+    agile: VueAgile,
+  },
+  data(){
+      return {
+        error: null,
+        projects: [],
+        asNavFor1: [],
+        options1: {
+          dots: true,
+          fade: true,
+          autoplay:true,
+          navButtons: true,
+          changeDelay:"2000",
+        autoplaySpeed:"4300",
+        },
+        slides: [
+            'https://images.unsplash.com/photo-1544256718-3bcf237f3974?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80',
+            'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+            'https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80',
+            'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+            'https://images.unsplash.com/photo-1483782817618-9804403024ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1546&q=80',
+            'https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+            'https://images.unsplash.com/photo-1562813733-b31f71025d54?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1498&q=80'
+          ]
+      }
+  },
+  methods: {
+    async logout() {
+        return await this.$api.post("/logout");
+      },
+    async getProjects() {
+      return await this.$api.get('/projects');
+    }
+  },
+  mounted() {
+    console.log(this.getProjects());
+  }
+}  
+</script>
 
