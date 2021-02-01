@@ -12,7 +12,7 @@
         />
         <select
           id="category"
-          class="absolute lg:left-6 md:left-6 left-2 md:mt-4 mt-4 rounded-2xl border-2 border-indigo-600 focus:outline-none"
+          class="absolute lg:left-6 md:left-6 left-2 md:mt-3 mt-3 rounded-2xl border-2 border-indigo-600 focus:outline-none"
         >
           <option value="design">Artworks</option>
           <option value="design">Design</option>

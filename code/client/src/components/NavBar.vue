@@ -46,6 +46,7 @@
             {{ route.meta.label }}
           </a>
         </div>
+        <!--
         <div class="flex justify-center m-8">
           <a href="#">
             <span class="relative inline-block">
@@ -92,15 +93,15 @@
             </svg>
           </a>
         </div>
-
+        -->
         <div class="flex justify-end mr-16">
           <button
-            class="rounded-full overflow-hidden border-2 border-teal-500 w-14 h-14 flex justify-center items-center| hover:border-white focus:outline-none focus:border-white"
+            class="rounded-full overflow-hidden border-4 border-indigo-400 border-teal-500 w-14 h-14 flex justify-center items-center| hover:border-white focus:outline-none focus:border-white"
             @click="isOpen2 = true"
           >
-            <img src="https://i.pravatar.cc/150?u=1" alt="" />
+            <img src="https://www.noleggiomagnetoterapia.it/dir/wp-content/plugins/schema-and-structured-data-for-wp//admin_section/images/default_user.jpg" alt="" />
             <span
-              class="absolute bottom-1 right-0 inline-block w-3 h-3 bg-green-600 border-2 border-white rounded-full invisible"
+              class="absolute bottom-1 right-0 inline-block w-3 h-3 bg-green-600 border-2 border-white rounded-full invisible pt-50"
             ></span>
           </button>
           <div
@@ -118,11 +119,13 @@
                 class="block text-gray-600 font-semibold px-4 py-2 | hover:text-indigo-600"
                 >Profilo</a
               >
+              <!--
               <a
                 href="#"
                 class="block text-gray-600 font-semibold px-4 py-2 | hover:text-indigo-600"
                 >Impostazioni</a
               >
+              -->
               <a
                 href="#"
                 class="block text-gray-600 font-semibold px-4 py-2 | hover:text-indigo-600"
