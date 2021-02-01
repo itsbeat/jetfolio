@@ -1,6 +1,8 @@
 import Vue from 'vue';
 
-import HelloWorld from './HelloWorld.vue';
+import Footer from './Footer.vue';
 import NavBar from "./NavBar.vue"
-Vue.component("hello-world", HelloWorld);
+
+
+Vue.component("back-footer", Footer);
 Vue.component("nav-bar", NavBar);
