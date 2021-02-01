@@ -5,14 +5,38 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
     /**
      * returns all projects
      */
+    public function store(Request $request)
+    {
+        if ($request->get('image')) {
+            $imageData = $request->get('image');
+
+            $imageTokens = explode(",", $imageData);
+
+            $imageInfo = $imageTokens[0];
+            $imageContent = $imageTokens[1];
+
+            $imageExtension = explode(";", explode("/", $imageInfo)[1])[0];
+
+            $filePath ="cover_" . time() . "." . $imageExtension;
+
+            Storage::disk("local")->put("public/images/$filePath", base64_decode($imageContent));
+        }
+
+        return response()->json([
+            'success' => 'You have successfully uploaded an image',
+            'filePath'=> "images/$filePath",
+        ], 200);
+    }
+    
     public function getProjects(Request $Request) {
-        $data = DB::table('projects')->get();
+        $data = DB::table('projects')->limit(9)->get();
         return $data;
     }
 

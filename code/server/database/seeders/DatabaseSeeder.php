@@ -47,6 +47,5 @@ class DatabaseSeeder extends Seeder
 
             $new->save(); 
         }
-        
     }
 }
