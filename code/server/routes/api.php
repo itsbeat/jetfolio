@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +34,7 @@ Route::put("/users/{id}", [UserController::class, "editUser"]);
 //User profile api
 
 Route::get("/users/profile/{id}",[UserController::class, "userInfo"]);
-Route::post('/users/edit', [UserController::class, 'editInfo']);
+Route::post("/users/edit", [UserController::class, "editInfo"]);
 
 
 // projects api
@@ -46,6 +49,15 @@ Route::get("/projects/recent/{num}", [ProjectController::class, "getRecentProjec
 Route::get("/projects/{id}", [ProjectController::class, "getProjectById"]);
 
 Route::get("/projects/category/{categoryId}", [ProjectController::class, "getProjectsByCategory"]);
+
+
+// follower api
+
+Route::get("/followers", [FollowerController::class, "getAllFollowers"]);
+Route::get("/followers/{id}", [FollowerController::class, "getAllFollowersById"]);
+
+Route::post("/follow", [FollowerController::class, "postFollower"]);
+Route::get("/unfollow", [FollowerController::class, "removeFollower"]);
 
 
 // authentication required api

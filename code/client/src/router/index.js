@@ -7,6 +7,7 @@ import Profilo from '../views/Profilo.vue';
 import DettaglioPortfolio from '../views/DettaglioPortfolio.vue';
 import NewPortfolio from '../views/NewPortfolio.vue';
 import Edit from '../views/ChangeProfile.vue';
+import TestFollowers from '../views/TestFollowers.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -61,6 +62,14 @@ const routes = [
     component: NewPortfolio,
     meta:{
       label: "NewPortfolio",
+    }
+  },
+  {
+    path: '/test',
+    name: 'TestFollow',
+    component: TestFollowers,
+    meta:{
+      label: "TestFollowers",
     }
   },
   {

@@ -425,10 +425,11 @@ export default {
   methods: {
     async login() {
       try {
-        await this.$api.post("/login", {
+        let result = await this.$api.post("/login", {
           email: this.email,
           password: this.password,
         });
+        localStorage.setItem('user', JSON.stringify(result.data.logged_in_user))
         this.$router.push("/");
       } catch (error) {
         this.error = "Email o password errate. Riprova.";
