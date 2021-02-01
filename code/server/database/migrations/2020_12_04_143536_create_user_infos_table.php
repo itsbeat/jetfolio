@@ -20,7 +20,7 @@ class CreateUserInfosTable extends Migration
             $table->string('biography');
             $table->integer('follower_count');
             $table->integer('follow_count');
-            $table->string('image_url');
+            $table->string('image_url')->default("images/iconastandard.jpg");
             $table->timestamps();
         });
     }
