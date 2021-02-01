@@ -327,8 +327,11 @@
                   <button
                     @click="create()"
                     class="active p-2 mt-4 text-white text-lg rounded-full shadow focus:outline-none"
+
+                  
                   >
                     REGISTRATI
+                    
                   </button>
                 </div>
               </form>
@@ -416,7 +419,7 @@ export default {
                   email: this.regEmail,
                   password: this.regPassword,
                 });
-            
+                location.reload();
               } catch (error) {
                 
                 if (!error.data.email) {
@@ -429,6 +432,7 @@ export default {
             else{
               this.regError = "Compilare tutti i campi correttamente. Riprovare";
             }
+            
     },
     resetError() {
       this.logError = null;
