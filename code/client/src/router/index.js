@@ -6,6 +6,7 @@ import Login from '../views/Login.vue';
 import Profilo from '../views/Profilo.vue';
 import DettaglioPortfolio from '../views/DettaglioPortfolio.vue';
 import NewPortfolio from '../views/NewPortfolio.vue';
+import NuovoPortfolio from '../views/creaportfolio.vue';
 import Edit from '../views/ChangeProfile.vue';
 Vue.use(VueRouter)
 
@@ -34,6 +35,15 @@ const routes = [
       label: "Login",
     },
   },
+  {
+    path: '/nuovoportfolio',
+    name: 'NuocoPortfolio',
+    component: NuovoPortfolio,
+    meta: {
+      label: "NuovoPortfolio",
+    },
+  },
+  
   {
     path: '/profilo',
     name: 'Profilo',
