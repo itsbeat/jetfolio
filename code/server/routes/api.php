@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
@@ -62,6 +63,15 @@ Route::get("/followers/{id}", [FollowerController::class, "getAllFollowersById"]
 Route::post("/follow", [FollowerController::class, "postFollower"]);
 Route::get("/unfollow", [FollowerController::class, "removeFollower"]);
 
+
+// like's api
+
+Route::get("/likes", [LikeController::class, "getLikeTable"]);
+
+Route::post("/like/{project_id}", [LikeController::class, "postLike"]);
+Route::delete("/like/{project_id}", [LikeController::class, "deleteLike"]);
+
+Route::get("/likes/user",  [LikeController::class, "getUserLikes"]);
 
 // authentication required api
 Route::group(["middleware"=> "auth.api"],function(){
