@@ -1,6 +1,6 @@
 <template>
   <div class="footer bg-gray-600 py-4 sm:py-2">
-        <div class="container mx-auto px-4">
+        <div class="container py-8 mx-auto px-4">
             <div class="sm:flex sm:flex-wrap">
             <div class="sm:w-full px-4 md:w-1/6">
                 <img
@@ -43,6 +43,6 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Footer',
 }
 </script>

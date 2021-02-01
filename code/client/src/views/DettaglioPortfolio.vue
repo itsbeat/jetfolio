@@ -30,8 +30,8 @@
                 </div>
               </div>
               <div class="flex flex-col">
-                <button class="mx-auto w-1/2 mt-3 rounded-full py-3 px-6 text-blue-500 text-center border-2 border-blue-500">Follow</button>
-                <button class="mx-auto w-1/2 mt-3 rounded-full py-3 px-6 text-blue-500 text-center border-2 border-blue-500">Like</button>
+                <button @click="follower()" class="mx-auto focus:outline-none w-1/2 mt-3 rounded-full py-3 px-6 text-blue-500 text-center border-2 border-blue-500">{{follow}}</button>
+                <button class="mx-auto w-1/2 mt-3 focus:outline-none rounded-full py-3 px-6 text-blue-500 text-center border-2 border-blue-500">Like</button>
               </div>
                 
             </div>
@@ -103,6 +103,7 @@ export default {
           like_count: null,
           user_id: null
         },
+        follow: "Follow",
         asNavFor1: [],
         options1: {
           dots: true,
@@ -135,25 +136,34 @@ export default {
     this.projects = projectsprofile.data;
   },
   methods: {
+
+    follower(){
+      if(this.follow == "Follow") {
+        this.follow = "Unfollow";
+      } else {
+        this.follow = "Follow";
+      }
+    },
+
     async editInfo() {
      await this.$api.post("/users/edit",
         this.profile,
         );
         return this.profile,
         window.location.reload();
-  },
-  async profilo() {
-    try {
-      const ls = JSON.parse(localStorage.getItem("user"));
-      this.info = await this.$api.get(`/users/profile/${ls.id}`);
+    },
+    async profilo() {
+      try {
+        const ls = JSON.parse(localStorage.getItem("user"));
+        this.info = await this.$api.get(`/users/profile/${ls.id}`);
 
-      this.profile = this.info.data;
-    } catch (error) {
-      this.error = "Errore generico.";
-    }
-  },
+        this.profile = this.info.data;
+      } catch (error) {
+        this.error = "Errore generico.";
+      }
+    },
   
-},
+  },
 
 }
 
