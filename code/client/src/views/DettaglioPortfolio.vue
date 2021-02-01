@@ -46,9 +46,11 @@
         <div class="flex flex-wrap -m-4">
           <div v-for="p of projects" :key="p.id" class="xl:w-1/3 md:w-1/2 p-4">
             <div class="rounded-lg">
-              <img class="h-50 rounded-3xl w-full object-cover object-center mb-6" src="https://dummyimage.com/600x360" alt="content">
-              <h3>{{p.title}}</h3>
-              <p>{{p.id}} </p>
+              <a href="#">
+                <img class="h-50 rounded-3xl w-full object-cover object-center mb-6" src="https://dummyimage.com/600x360" alt="content">
+                <h3>{{p.title}}</h3>
+                <p>{{p.id}} </p>
+              </a>
             </div>
           </div>
         </div>
@@ -81,13 +83,14 @@
 
 <script>
 import { VueAgile } from 'vue-agile'
+import router from '../router';
 
 export default {
   name: 'DettaglioPortfolio',
   components: {
     agile: VueAgile 
   },
-  data(){
+  data() {
       return{
         profile: {
             id: null,
@@ -122,14 +125,38 @@ export default {
       }
       
   },
-  async mounted() {
-    let response = await this.$api.get(`/users/profile/1`);
-    this.profile = response.data;
 
+  async mounted() {
+    if (localStorage.getItem("user")) {
+      this.profilo();
+    } else {
+      router.push("/login");
+    }
     let projectsprofile = await this.$api.get(`/projects`);
     this.projects = projectsprofile.data;
-    console.log('ciaoooo',this.projects)
-  }
+  },
+  methods: {
+    async editInfo() {
+     await this.$api.post("/users/edit",
+        this.profile,
+        );
+        return this.profile,
+        window.location.reload();
+  },
+  async profilo() {
+    try {
+      const ls = JSON.parse(localStorage.getItem("user"));
+      this.info = await this.$api.get(`/users/profile/${ls.id}`);
+
+      this.profile = this.info.data;
+    } catch (error) {
+      this.error = "Errore generico.";
+    }
+  },
   
+},
+
 }
+
+
 </script>

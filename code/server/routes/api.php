@@ -52,4 +52,3 @@ Route::get("/projects/category/{categoryId}", [ProjectController::class, "getPro
 Route::group(["middleware"=> "auth.api"],function(){
     Route::post("/logout",[AuthController::class,"logout"]);
 });
-
