@@ -8,9 +8,13 @@
             <img
               class="w-20 h-20 md:w-40 md:h-40 object-cover rounded-full
                   border-2 border-indigo-600 p-1"
-              src="../assets/stockprofile.jpg"
+              :src="imageUrlSrc"
               alt="profile"
+              v-if="this.profile.info.image_url"
             />
+            <div class="col-md-6">
+              <input type="file" v-on:change="onImageChange" class="form-control">
+            </div>
           </div>
 
           <!-- profile meta -->
@@ -94,7 +98,7 @@
                   type="text"
                   name="numero"
                   size="26"
-                  v-model="profile.user_info.phone"
+                  v-model="profile.info.phone"
                   :disabled="!edit"
                   v-bind:class="edit === true ? 'modifica' : 'null'"
                   class="bg-transparent px-3 py-3 block w-full p-2.5 relative focus:outline-none focus:shadow-outline w-full pl-10"
@@ -108,7 +112,7 @@
             >
               <h1 class="font-bold text-md color_custom">BIOGRAFIA</h1>
               <textarea 
-              v-model="profile.user_info.biography"
+              v-model="profile.info.biography"
               v-bind:class="edit === true ? 'custom' : 'null'"
               rows="5"
               :disabled="!edit"
@@ -151,20 +155,20 @@
           >
             <li>
               <span class="font-semibold text-gray-800 block">{{
-                profile.user_info.follower_count
+                profile.info.follower_count
               }}</span>
               Followers
             </li>
 
             <li>
               <span class="font-semibold text-gray-800 block">{{
-                profile.user_info.follow_count
+                profile.info.follow_count
               }}</span>
               Follow
             </li>
             <li>
               <span class="font-semibold text-gray-800 block">{{
-                profile.user_info.prj_count
+                profile.info.prj_count
               }}</span>
               Portfolio
             </li>
@@ -441,12 +445,13 @@ export default {
   name: "Profilo",
   data() {
     return {
+      image:'',
       edit: false,
       profile: {
         id: null,
         username: null,
         email: null,
-        user_info: {
+        info: {
           biography: null,
           image_url: null,
           follow_count: null,
@@ -457,7 +462,6 @@ export default {
       },
     };
   },
-  components: {},
   mounted() {
     if (localStorage.getItem("user")) {
       this.profilo();
@@ -465,13 +469,35 @@ export default {
       router.push("/login");
     }
   },
+  computed:{
+    imageUrlSrc(){
+        return "http://localhost:8000/storage/"+ this.profile.info.image_url;
+    },
+  },
   methods: {
+    onImageChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      if (!files.length)
+          return;
+      this.createImage(files[0]);
+    },
+    createImage(file) {
+        let reader = new FileReader();
+        let vm = this;
+        reader.onload = (e) => {
+            vm.image = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    },
     async editInfo() {
-     await this.$api.post("/users/edit",
-        this.profile,
-        );
-        return this.profile,
-        window.location.reload();
+        let response = await this.$api.post("/users/edit", {
+          profile: this.profile,
+          image: this.image
+        });
+
+        this.profile = response.data.profile;
+        this.edit = false
+        console.log(this.profile);
   },
     async profilo() {
       try {

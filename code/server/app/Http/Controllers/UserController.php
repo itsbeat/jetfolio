@@ -52,12 +52,27 @@ class UserController extends Controller
     }
 
     public function userInfo($id){
-        $userInfo = User::with(["UserInfo"])->find($id);
+        $userInfo = User::with(["info"])->find($id);
         return $userInfo;
     }
 
     public function editInfo(Request $request) {
-        $userInfo = json_decode($request->getContent());
+        $imageData = $request->get("image");
+        $userInfo = json_decode(json_encode($request->get("profile")));
+        $filePath = null;
+
+        if ($imageData) {
+            $imageTokens = explode(",", $imageData);
+
+            $imageInfo = $imageTokens[0];
+            $imageContent = $imageTokens[1];
+
+            $imageExtension = explode(";", explode("/", $imageInfo)[1])[0];
+
+            $filePath ="cover_" . time() . "." . $imageExtension;
+
+            Storage::disk("local")->put("public/images/$filePath", base64_decode($imageContent));
+        }
 
         $user = User::find($userInfo->id);
 
@@ -67,14 +82,25 @@ class UserController extends Controller
         $user->save();
 
 
-        $info = UserInfo::find($userInfo->user_info->id);
+        $info = UserInfo::find($userInfo->info->id);
 
-        $info->phone = $userInfo->user_info->phone;
-        $info->biography = $userInfo->user_info->biography;
+        $info->phone = $userInfo->info->phone;
+        $info->biography = $userInfo->info->biography;
+        
+        // Update image_url only when reuploading
+        if ($filePath) {
+            $info->image_url = "images/$filePath";
+        }
 
         $info->save();
 
-        return;
+        $updatedUser = User::where("id", $userInfo->id)
+            // TODO: fix relted model UserInfo in User
+            ->with("info")
+            ->first();
 
+        return response()->json([
+            "profile" => $updatedUser,
+        ]);
     }
 }

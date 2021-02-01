@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\UserInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -26,7 +27,12 @@ class ProjectController extends Controller
 
             $filePath ="cover_" . time() . "." . $imageExtension;
 
+            $user =UserInfo::find($request->id);
+
             Storage::disk("local")->put("public/images/$filePath", base64_decode($imageContent));
+
+            $user->image_url = "images/$filePath";
+            $user->save();
         }
 
         return response()->json([

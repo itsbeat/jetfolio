@@ -29,14 +29,12 @@ Route::get("/users/{id}", [UserController::class, "getUser"]);
 Route::put("/users/{id}", [UserController::class, "editUser"]);
 
 // Upload image api
-Route::post('/image/store', [ProjectController::class, "store"]);
+Route::post('/imageP/store', [ProjectController::class, "store"]);
 
 //User profile api
 
 Route::get("/users/profile/{id}",[UserController::class, "userInfo"]);
 Route::post('/users/edit', [UserController::class, 'editInfo']);
-Route::get('image', 'ImageController@index');
-Route::post('save', 'ImageController@save');
 
 
 // projects api
