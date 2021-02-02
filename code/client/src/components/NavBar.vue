@@ -96,7 +96,7 @@
         -->
         <div class="flex justify-end mr-16">
           <button
-            class="rounded-full overflow-hidden border-4 border-teal-500 w-14 h-14 flex justify-center items-center| hover:border-white focus:outline-none focus:border-white"
+            class="rounded-full overflow-hidden border-4 border-indigo-400 border-teal-500 w-14 h-14 flex justify-center items-center| hover:border-white focus:outline-none focus:border-white"
             @click="isOpen2 = true"
           >
             <img src="https://www.noleggiomagnetoterapia.it/dir/wp-content/plugins/schema-and-structured-data-for-wp//admin_section/images/default_user.jpg" alt="" />
