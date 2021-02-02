@@ -406,6 +406,7 @@ export default {
 
         localStorage.setItem('user', JSON.stringify(res.data.logged_in_user));
         this.$router.push("/");
+        location.reload();
       } catch (error) {
         this.logError = "Email o password errate. Riprova.";
       }

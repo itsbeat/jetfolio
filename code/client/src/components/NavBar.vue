@@ -114,6 +114,8 @@
             :class="{ hidden: !isOpen2 }"
           >
             <div class="bg-white rounded-lg shadow-lg py-2 w-48">
+              <i>Sei loggato come:</i>
+              <p class="py-1 font-bold">{{this.profile.username}}</p>
               <a
                 href="/profilo"
                 class="block text-gray-600 font-semibold px-4 py-2 | hover:text-indigo-600"
@@ -145,6 +147,7 @@
 }
 </style>
 <script>
+import router from '../router';
 export default {
   name: "bla",
   data() {
@@ -154,10 +157,23 @@ export default {
       routes: [],
       selectRouteIndex: -1,
       open: false,
+      profile: {
+            id: null,
+            username: null,
+            email: null,
+      }
     };
   },
-  mounted() {
+  async mounted() {
     this.selectRouteIndex = 0;
+
+    if (localStorage.getItem("user")) {
+      this.profilo();
+
+      console.log(this.profilo());
+    } else {
+      router.push("/login");
+    }
   },
   methods: {
     gotoSection(route, index) {
@@ -173,6 +189,17 @@ export default {
       localStorage.removeItem('user');
         return await this.$api.post("/logout");
       },
+
+      async profilo() {
+      try {
+        const ls = JSON.parse(localStorage.getItem("user"));
+        this.info = await this.$api.get(`/users/profile/${ls.id}`);
+
+        this.profile = this.info.data;
+      } catch (error) {
+        this.error = "Errore generico.";
+      }
+    }
   },
   computed: {
     visibleRoutes() {
