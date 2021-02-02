@@ -3,8 +3,8 @@
     <div class="wrapper flex mb-36">
       <div class="lg:w-2/4 sm:w-full bg-white font-sans text-gray-700 ml-16">
         <div class="container mx-auto p-8 flex"></div>
-            <h1 class="text-indigo-600 text-3xl text-center mb-3">Carica il tuo portfolio</h1>
-        <div class="container m-auto bg-indigo-100 rounded-2xl p-6">
+            <h1 class="text-indigo-600 text-3xl text-center mb-3">Carica le immagini del tuo portfolio</h1>
+        <div class="container overflow-hidden bg-indigo-100 rounded-md shadow-lg p-6">
           <div class="col-md-5 text-center inline">
             <label for="my-file" class="text-indigo-600 block mb-6"
               >Scegli o trascina un'immagine</label
@@ -20,7 +20,7 @@
                   id="my-file"
                 />
 
-                <div class="border p-2 mt-3 w-full flex">
+                <div class="border-none p-2 mt-3 w-full flex">
                   <template v-if="preview_list.length">
                     <div
                       class="flex flex-col mx-8"
@@ -62,7 +62,7 @@
             >
               <!-- Card container -->
               <form
-                class="px-8 py-6 space-y-6 overflow-hidden bg-white rounded-md shadow-lg"
+                class="px-8 py-6 space-y-6 overflow-hidden bg-white rounded-md shadow-lg mt-6"
               >
                 <!-- Card heading -->
                 <div class="flex justify-between">
