@@ -453,7 +453,7 @@ export default {
         email: null,
         info: {
           biography: null,
-          image_url: null,
+          image_url: "",
           follow_count: null,
           follower_count: null,
           prj_count: null,
