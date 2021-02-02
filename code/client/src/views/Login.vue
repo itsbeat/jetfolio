@@ -327,8 +327,11 @@
                   <button
                     @click="create()"
                     class="active p-2 mt-4 text-white text-lg rounded-full shadow focus:outline-none"
+
+                  
                   >
                     REGISTRATI
+                    
                   </button>
                 </div>
               </form>
@@ -403,6 +406,7 @@ export default {
 
         localStorage.setItem('user', JSON.stringify(res.data.logged_in_user));
         this.$router.push("/");
+        location.reload();
       } catch (error) {
         this.logError = "Email o password errate. Riprova.";
       }
@@ -416,7 +420,7 @@ export default {
                   email: this.regEmail,
                   password: this.regPassword,
                 });
-            
+                location.reload();
               } catch (error) {
                 
                 if (!error.data.email) {
@@ -429,6 +433,7 @@ export default {
             else{
               this.regError = "Compilare tutti i campi correttamente. Riprovare";
             }
+            
     },
     resetError() {
       this.logError = null;

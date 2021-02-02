@@ -46,6 +46,7 @@
             {{ route.meta.label }}
           </a>
         </div>
+        <!--
         <div class="flex justify-center m-8">
           <a href="#">
             <span class="relative inline-block">
@@ -92,15 +93,15 @@
             </svg>
           </a>
         </div>
-
+        -->
         <div class="flex justify-end mr-16">
           <button
-            class="rounded-full overflow-hidden border-2 border-teal-500 w-14 h-14 flex justify-center items-center| hover:border-white focus:outline-none focus:border-white"
+            class="rounded-full overflow-hidden border-4 border-indigo-400 border-teal-500 w-14 h-14 flex justify-center items-center| hover:border-white focus:outline-none focus:border-white"
             @click="isOpen2 = true"
           >
-            <img src="https://i.pravatar.cc/150?u=1" alt="" />
+            <img src="https://www.noleggiomagnetoterapia.it/dir/wp-content/plugins/schema-and-structured-data-for-wp//admin_section/images/default_user.jpg" alt="" />
             <span
-              class="absolute bottom-1 right-0 inline-block w-3 h-3 bg-green-600 border-2 border-white rounded-full invisible"
+              class="absolute bottom-1 right-0 inline-block w-3 h-3 bg-green-600 border-2 border-white rounded-full invisible pt-50"
             ></span>
           </button>
           <div
@@ -113,16 +114,20 @@
             :class="{ hidden: !isOpen2 }"
           >
             <div class="bg-white rounded-lg shadow-lg py-2 w-48">
+              <i>Sei loggato come:</i>
+              <p class="py-1 font-bold">{{this.profile.username}}</p>
               <a
                 href="/profilo"
                 class="block text-gray-600 font-semibold px-4 py-2 | hover:text-indigo-600"
                 >Profilo</a
               >
+              <!--
               <a
                 href="#"
                 class="block text-gray-600 font-semibold px-4 py-2 | hover:text-indigo-600"
                 >Impostazioni</a
               >
+              -->
               <a
                 href="#"
                 class="block text-gray-600 font-semibold px-4 py-2 | hover:text-indigo-600"
@@ -142,6 +147,7 @@
 }
 </style>
 <script>
+import router from '../router';
 export default {
   name: "bla",
   data() {
@@ -151,10 +157,23 @@ export default {
       routes: [],
       selectRouteIndex: -1,
       open: false,
+      profile: {
+            id: null,
+            username: null,
+            email: null,
+      }
     };
   },
-  mounted() {
+  async mounted() {
     this.selectRouteIndex = 0;
+
+    if (localStorage.getItem("user")) {
+      this.profilo();
+
+      console.log(this.profilo());
+    } else {
+      router.push("/login");
+    }
   },
   methods: {
     gotoSection(route, index) {
@@ -170,6 +189,17 @@ export default {
       localStorage.removeItem('user');
         return await this.$api.post("/logout");
       },
+
+      async profilo() {
+      try {
+        const ls = JSON.parse(localStorage.getItem("user"));
+        this.info = await this.$api.get(`/users/profile/${ls.id}`);
+
+        this.profile = this.info.data;
+      } catch (error) {
+        this.error = "Errore generico.";
+      }
+    }
   },
   computed: {
     visibleRoutes() {
