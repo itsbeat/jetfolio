@@ -58,6 +58,7 @@ const routes = [
     component: NewPortfolio,
     meta:{
       label: "NewPortfolio",
+      requiresAuth: true,
     }
   },
   {
@@ -71,5 +72,29 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+// Auth based guard
+router.beforeEach((to, from, next) => {
+
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+
+    // if route requires auth
+    if (localStorage.getItem('user')) {
+      
+      // if user is logged in
+      console.log('auth: OK, vai pure')
+      next()
+
+    } else {
+      // if user is not logged in
+      console.log('auth: NO, rilogga')
+
+      router.push('/login');
+      next(false);
+    }
+  } else {
+    next();
+  }
+});
 
 export default router
