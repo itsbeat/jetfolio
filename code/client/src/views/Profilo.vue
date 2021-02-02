@@ -12,7 +12,7 @@
               alt="profile"
               v-if="this.profile.info.image_url"
             />
-            <div class="col-md-6">
+            <div class="col-md-6" :hidden="!edit">
               <input type="file" v-on:change="onImageChange" class="form-control">
             </div>
           </div>
@@ -492,12 +492,11 @@ export default {
     async editInfo() {
         let response = await this.$api.post("/users/edit", {
           profile: this.profile,
-          image: this.image
+          image: this.image,
         });
-
         this.profile = response.data.profile;
         this.edit = false
-        console.log(this.profile);
+        location.reload();
   },
     async profilo() {
       try {

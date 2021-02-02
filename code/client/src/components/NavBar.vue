@@ -96,10 +96,10 @@
         -->
         <div class="flex justify-end mr-16">
           <button
-            class="rounded-full overflow-hidden border-4 border-indigo-400 border-teal-500 w-14 h-14 flex justify-center items-center| hover:border-white focus:outline-none focus:border-white"
+            class="rounded-full overflow-hidden  w-16 h-16 flex justify-center items-center| hover:border-white focus:outline-none focus:border-white"
             @click="isOpen2 = true"
           >
-            <img src="https://www.noleggiomagnetoterapia.it/dir/wp-content/plugins/schema-and-structured-data-for-wp//admin_section/images/default_user.jpg" alt="" />
+            <img :src="imageUrlSrc" alt="" />
             <span
               class="absolute bottom-1 right-0 inline-block w-3 h-3 bg-green-600 border-2 border-white rounded-full invisible pt-50"
             ></span>
@@ -161,6 +161,9 @@ export default {
             id: null,
             username: null,
             email: null,
+            info:{
+              image_url: null,
+            }  
       }
     };
   },
@@ -210,6 +213,9 @@ export default {
         }
         return false;
       });
+    },
+    imageUrlSrc(){
+        return "http://localhost:8000/storage/"+ this.profile.info.image_url;
     },
   },
 };

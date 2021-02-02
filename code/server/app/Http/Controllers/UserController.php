@@ -98,7 +98,7 @@ class UserController extends Controller
         $info->save();
 
         $updatedUser = User::where("id", $userInfo->id)
-            // TODO: fix relted model UserInfo in User
+            
             ->with("info")
             ->first();
 
