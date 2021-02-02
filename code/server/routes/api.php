@@ -60,8 +60,8 @@ Route::get("/projects/category/{categoryId}", [ProjectController::class, "getPro
 Route::get("/followers", [FollowerController::class, "getAllFollowers"]);
 Route::get("/followers/{id}", [FollowerController::class, "getAllFollowersById"]);
 
-Route::post("/follow", [FollowerController::class, "postFollower"]);
-Route::get("/unfollow", [FollowerController::class, "removeFollower"]);
+Route::post("/follow", [FollowerController::class, "postFollow"]);
+Route::get("/unfollow", [FollowerController::class, "removeFollow"]);
 
 
 // like's api
