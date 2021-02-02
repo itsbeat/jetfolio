@@ -4,6 +4,8 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/vue-fontawesome": "^2.0.2",
-    "save": "^2.4.0"
+    "filepond": "^4.25.1",
+    "save": "^2.4.0",
+    "vue-filepond": "^6.0.3"
   }
 }
