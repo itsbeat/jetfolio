@@ -3,14 +3,14 @@
     <div class="md:wrapper md:flex sm:inline-block mb-36">
       <div class="lg:w-2/4 sm:w-full bg-white font-sans text-gray-700 md:ml-16 ml-0">
         <div class="container mx-auto p-8 flex"></div>
-        <h1 class="text-indigo-600 text-3xl text-center mb-3">
+        <h1 class="color_custom text-3xl text-center mb-3">
           Carica le immagini del tuo portfolio
         </h1>
         <div
           class="container overflow-hidden bg-indigo-100 rounded-md shadow-lg p-6"
         >
           <div class="col-md-5 text-center inline">
-            <label for="my-file" class="text-indigo-600 block mb-6"
+            <label for="my-file" class="color_custom block mb-6"
               >Scegli o trascina un'immagine</label
             >
             <form>
@@ -164,7 +164,7 @@
               <div class="max-w-md flex justify-center">
                 <button
                   type="button"
-                  class="px-4 py-3 border border-transparent rounded text-white bg-indigo-600 hover:bg-indigo-500 transition duration-300 ease-in-out"
+                  class="bg_custom px-4 py-3 border border-transparent rounded text-white transition duration-300 ease-in-out"
                 >
                   Pubblica
                 </button>
@@ -183,6 +183,12 @@
 .img-fluid {
   max-width: 30%;
   max-height: 100px;
+}
+.color_custom {
+  color: #383088;
+}
+.bg_custom{
+  background-color: #383088;
 }
 </style>
 <script>
