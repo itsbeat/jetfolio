@@ -26,55 +26,57 @@ use Illuminate\Support\Facades\Route;
 // auth api
 Route::post("/login",[AuthController::class,"login"]);
 
-// users api
-Route::post("/users", [UserController::class, "create"]);
-Route::get("/users", [UserController::class, "list"]);
-Route::get("/users/{id}", [UserController::class, "getUser"]);
-Route::put("/users/{id}", [UserController::class, "editUser"]);
 
-// Upload image api
-Route::post('/image/store', [ProjectController::class, "store"]);
-
-//User profile api
-
-Route::get("/users/profile/{id}",[UserController::class, "userInfo"]);
-Route::post("/users/edit", [UserController::class, "editInfo"]);
-
-
-// projects api
-Route::get("/projects", [ProjectController::class, "getProjects"]);
-
-Route::get("/projects/popular", [ProjectController::class, "getAllPopularProjects"]);
-Route::get("/projects/popular/{num}", [ProjectController::class, "getPopularProjects"]);
-
-Route::get("/projects/recent", [ProjectController::class, "getAllRecentProjects"]);
-Route::get("/projects/recent/{num}", [ProjectController::class, "getRecentProjects"]);
-
-Route::get("/projects/{id}", [ProjectController::class, "getProjectById"]);
-
-Route::get("/projects/category/{categoryId}", [ProjectController::class, "getProjectsByCategory"]);
-
-
-// follower api
-
-Route::get("/followers", [FollowerController::class, "getAllFollowers"]);
-Route::get("/followers/{id}", [FollowerController::class, "getAllFollowersById"]);
-
-Route::post("/follow", [FollowerController::class, "postFollow"]);
-Route::get("/unfollow", [FollowerController::class, "removeFollow"]);
-
-
-// like's api
-
-Route::get("/likes", [LikeController::class, "getLikeTable"]);
-
-Route::post("/like/{project_id}", [LikeController::class, "postLike"]);
-Route::delete("/like/{project_id}", [LikeController::class, "deleteLike"]);
-
-Route::get("/likes/user",  [LikeController::class, "getUserLikes"]);
 
 // authentication required api
 Route::group(["middleware"=> "auth.api"],function(){
     Route::post("/logout",[AuthController::class,"logout"]);
+
+    // users api
+    Route::post("/users", [UserController::class, "create"]);
+    Route::get("/users", [UserController::class, "list"]);
+    Route::get("/users/{id}", [UserController::class, "getUser"]);
+    Route::put("/users/{id}", [UserController::class, "editUser"]);
+
+    // Upload image api
+    Route::post('/image/store', [ProjectController::class, "store"]);
+
+    //User profile api
+
+    Route::get("/users/profile/{id}",[UserController::class, "userInfo"]);
+    Route::post("/users/edit", [UserController::class, "editInfo"]);
+
+
+    // projects api
+    Route::get("/projects", [ProjectController::class, "getProjects"]);
+
+    Route::get("/projects/popular", [ProjectController::class, "getAllPopularProjects"]);
+    Route::get("/projects/popular/{num}", [ProjectController::class, "getPopularProjects"]);
+
+    Route::get("/projects/recent", [ProjectController::class, "getAllRecentProjects"]);
+    Route::get("/projects/recent/{num}", [ProjectController::class, "getRecentProjects"]);
+
+    Route::get("/projects/{id}", [ProjectController::class, "getProjectById"]);
+
+    Route::get("/projects/category/{categoryId}", [ProjectController::class, "getProjectsByCategory"]);
+
+
+    // follower api
+
+    Route::get("/followers", [FollowerController::class, "getAllFollowers"]);
+    Route::get("/followers/{id}", [FollowerController::class, "getAllFollowersById"]);
+
+    Route::post("/follow", [FollowerController::class, "postFollow"]);
+    Route::get("/unfollow", [FollowerController::class, "removeFollow"]);
+
+
+    // like's api
+
+    Route::get("/likes", [LikeController::class, "getLikeTable"]);
+
+    Route::post("/like/{project_id}", [LikeController::class, "postLike"]);
+    Route::delete("/like/{project_id}", [LikeController::class, "deleteLike"]);
+
+    Route::get("/likes/user",  [LikeController::class, "getUserLikes"]);
 });
 
