@@ -15,11 +15,11 @@ class CreateUserInfosTable extends Migration
     {
         Schema::create('user_infos', function (Blueprint $table) {
             $table->id();
-            $table->integer('prj_count');
-            $table->string('phone');
-            $table->string('biography');
-            $table->integer('follower_count');
-            $table->integer('follow_count');
+            $table->integer('prj_count')->default(0);
+            $table->string('phone')->default("");
+            $table->string('biography')->default("Ciao racconta qui chi sei");
+            $table->integer('follower_count')->default(0);
+            $table->integer('follow_count')->default(0);
             $table->string('image_url')->default("images/iconastandard.jpg");
             $table->timestamps();
         });

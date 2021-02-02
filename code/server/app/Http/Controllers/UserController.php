@@ -30,6 +30,9 @@ class UserController extends Controller
         $user->password = Hash::make($password);
 
         $user->save();
+        $info = new UserInfo();
+        $info->user_id = $user->id;
+        $info->save();
 
         return response()
                 ->json([

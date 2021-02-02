@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\UserInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -17,7 +18,7 @@ class ProjectController extends Controller
     {
         if ($request->get('image')) {
             $imageData = $request->get('image');
-
+            
             $imageTokens = explode(",", $imageData);
 
             $imageInfo = $imageTokens[0];
@@ -31,8 +32,6 @@ class ProjectController extends Controller
 
             Storage::disk("local")->put("public/images/$filePath", base64_decode($imageContent));
 
-            $user->image_url = "images/$filePath";
-            $user->save();
         }
 
         return response()->json([

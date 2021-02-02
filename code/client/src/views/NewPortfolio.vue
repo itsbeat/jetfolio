@@ -38,23 +38,27 @@
           <div class="box-border h-1/4 w-9/12 p-6 m-8    md:box-content bg-blue-200 rounded-3xl text-center row place-self-center">
           <h5>TITOLO</h5>
           <form  >
-            <input type ="text"   class="bg-blue-200 rounded-3xl  h-8 w-9/12 text-center row "> 
+            <input type ="text" v-model="profile.project.title"  class="bg-blue-200 rounded-3xl  h-8 w-9/12 text-center row "> 
           </form>
           </div>
           <div class="box-border h-2/4 w-9/12 p-6 m-8    md:box-content bg-blue-200 rounded-3xl text-center  row place-self-center">
+           <h5>DESCRIZIONE</h5>
            <form>
-            <input type ="text" class="bg-blue-200 h-20 w-3/4 rounded-3xl text-center row ">
+            <input type ="text" v-model="profile.project.description" class="bg-blue-200 h-20 w-3/4 rounded-3xl text-center row ">
           </form>
           </div>
           
           <div class="box-border h-1/4 w-9/12 p-6 m-8    md:box-content bg-blue-200 rounded-3xl text-center row  place-self-center">
           <h5>CATEGORIA</h5>
-           <form>
-            <input type ="text" class="bg-blue-200 rounded-3xl h-8 w-9/12 text-center row " >
-          </form>
+            <select id="categoria" name="categoria" v-model="profile.project.category_id">
+                <option value="BackEnd">BackEnd</option>
+                <option value="FrontEnd">FrontEnd</option>
+                <option value="Grafica">Grafica</option>
+                <option value="User Experience">User Experience</option>
+            </select>
           </div>
           <div class="box-border h-1   w-28 p-6 m-8  md:box-content bg-blue-200 rounded-3xl text-center row place-self-center">
-            <h1 class="text-center" @click="dammiTutto()">PUBBLICA </h1>
+            <button class="text-center" @click="publicProject()">INVIA</button>
           </div>
       </div>
     </div>
@@ -65,7 +69,20 @@
         data(){
             return {
                 image: '',
-                id:null
+                profile: {
+                    id:null,
+                    project:{
+                        id:null,
+                        title: null,
+                        description:null,
+                        like_count: null,
+                        category_id: null,
+                        project_content:{
+                            id:null,
+                            image_url:null,
+                        }
+                    }
+                }
             }
         },
         methods: {
@@ -85,16 +102,6 @@
                 };
                 reader.readAsDataURL(file);
             },
-            uploadImage(){
-                var id = JSON.parse(localStorage.getItem("user")).id;
-                this.$api.post('/image/store',{image: this.image, id:id}).then(response => {
-                   console.log(response);
-            
-                });
-            },
-            dammiTutto() {
-                console.log(JSON.parse(localStorage.getItem("user")).id)
-            }
         }
     }
 </script>
