@@ -202,28 +202,44 @@ export default {
       preview_list: [],
       image_list: [],
 
+      data: [],
       flowType: {
         selected: "",
       },
     };
+  },
+  mounted() {
+    
   },
   methods: {
     previewMultiImage: function(event) {
       var input = event.target;
       var count = input.files.length;
       var index = 0;
-      if (input.files) {
-        while (count--) {
-          var reader = new FileReader();
-          reader.onload = (e) => {
-            this.preview_list.push(e.target.result);
-          };
-          this.image_list.push(input.files[index]);
 
-          reader.readAsDataURL(input.files[index]);
+      if (input.files) {
+        // for every photo added
+        while (count--) {
+
+          // generate a new FileReader instance
+          var reader = new FileReader();
+
+          // load the file data
+          reader.onload = (e) => {
+            // and then push into this.preview_list
+            this.preview_list.push(e.target.result);
+            console.log('preview list => ', this.preview_list);
+          };
+
+          this.image_list.push(input.files[index]);
+          console.log('image list => ', this.image_list);
+
+          reader.readAsDataURL(input.files[index])
+
           index++;
         }
       }
+      console.log('DATI PER MATTIA! => ',this.preview_list);
     },
     reset: function() {
       this.image = null;

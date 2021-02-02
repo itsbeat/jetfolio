@@ -220,7 +220,7 @@
                     placeholder="USERNAME"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
-                    v-model="name"
+                    v-model="regForm.name"
                     @focus="resetError()"
                   />
                 </div>
@@ -247,7 +247,7 @@
                     placeholder="EMAIL"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
-                    v-model="regEmail"
+                    v-model="regForm.email"
                     @focus="resetError()"
                   />
                 </div>
@@ -272,7 +272,7 @@
                     placeholder="PASSWORD"
                     required
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
-                    v-model="regPassword"
+                    v-model="regForm.password"
                     @focus="resetError()"
                   />
                 </div>
@@ -299,7 +299,7 @@
                     required
                     placeholder="CONFERMA PASSWORD"
                     class="px-3 py-3 block w-full p-2.5 rounded-full bg-white border border-indigo-600 relative focus:outline-none focus:shadow-outline w-full pl-10"
-                    v-model="regConfirmPassword"
+                    v-model="regForm.confirmPassword"
                     @focus="resetError()"
                   />
                 </div>
@@ -309,6 +309,7 @@
                     type="checkbox"
                     required
                     class="form-checkbox h-5 w-5 text-gray-600 z-50"
+                    v-model="regForm.privacy"
                   /><span class="ml-3 text-gray-700"
                     >Accetto i
                     <a href="#"
@@ -327,8 +328,8 @@
                   <button
                     @click="create()"
                     class="active p-2 mt-4 text-white text-lg rounded-full shadow focus:outline-none"
-
-                  
+                    :class="{'disabled': !validateReg()}"
+                    :disabled="!validateReg()"
                   >
                     REGISTRATI
                     
@@ -377,22 +378,32 @@
   margin-left: 0.5em;
   margin-right: -50%;
 }
+
+.disabled{
+  background: blueviolet;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 </style>
 <script>
 export default {
   name: "Login",
   data() {
     return {
-      name: null,
       logEmail: null,
       logPassword: null,
-      regEmail: null,
-      regPassword: null,
-      regConfirmPassword: null,
       logError: null,
       regError: null,
       currentView: "login",
       isActive: false,
+
+      regForm: {
+        name: undefined,
+        email: undefined,
+        password: undefined,
+        confirmPassword: undefined,
+        privacy: false,
+      }
     };
   },
   mounted() {},
@@ -414,11 +425,11 @@ export default {
     async create() {
           if(this.regPassword == this.regConfirmPassword)
             {
-                try {
+              try {
                 await this.$api.post("/users", {
-                  name: this.name,
-                  email: this.regEmail,
-                  password: this.regPassword,
+                  name: this.regForm.name,
+                  email: this.regForm.email,
+                  password: this.regForm.password,
                 });
                 location.reload();
               } catch (error) {
@@ -442,6 +453,16 @@ export default {
     changeView(destinazione) {
       this.currentView = destinazione;
     },
+
+    /**
+     * validator for register button
+     */
+    validateReg() {
+      //check if every field in the form exists
+      const x = this.regForm.name && this.regForm.email && this.regForm.privacy !== false && this.regForm.password === this.regForm.confirmPassword;
+      console.log(x);
+      return x;
+    }
   },
   computed: {},
 };
