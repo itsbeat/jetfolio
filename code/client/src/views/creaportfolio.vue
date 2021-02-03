@@ -17,24 +17,24 @@
               <div class="form-group">
                 <input
                   type="file"
-                  accept="image/*"
+                  accept=".jpg, .jpeg, .png"
                   multiple="multiple"
                   @change="previewMultiImage"
                   class="custom-file-input"
                   id="my-file"
                 />
 
-                <div class="border-none p-2 mt-3 w-full flex">
+                <div class="lg:flex lg:flex-wrap lg:mx-auto md:inline-block sm:inline-block border-none p-2 mt-2 w-full ">
                   <template v-if="preview_list.length">
                     <div
-                      class="flex flex-col mx-8"
+                      class="md:flex md:flex-col md:justify-center justify-center  mx-8"
                       v-for="(item, index) in preview_list"
                       :key="index"
                     >
-                      <img :src="item" class="img-fluid ml-16" />
-                      <div class="flex flex-col justify-start">
-                        <p>Nome file: {{ image_list[index].name }}</p>
-                        <p>
+                      <img :src="item" class="img-fluid mx-auto" />
+                      <div class="flex flex-col justify-start mt-2">
+                        <p class="text-sm">Nome file: {{ image_list[index].name }}</p>
+                        <p class="text-sm">
                           Dimensione file:
                           {{ (image_list[index].size / 1024).toFixed(3) }}KB
                         </p>
@@ -181,8 +181,22 @@
   visibility: hidden;
 }
 .img-fluid {
-  max-width: 30%;
-  max-height: 100px;
+  max-width: 300px;
+  max-height: 200px;
+}
+@media screen and (min-width: 1100px) {
+  .img-fluid {
+    max-width: 240px;
+    max-height: 200px;
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 500px) {
+  .img-fluid {
+    max-width: 200px;
+    height: 120px;
+    text-align: center;
+  }
 }
 .color_custom {
   color: #383088;
