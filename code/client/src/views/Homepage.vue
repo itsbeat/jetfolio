@@ -103,6 +103,8 @@
                     clipRule="evenodd"
                   />
                 </svg>
+                <span>{{ project.like_count
+                  }}</span>
               </a>
             </footer>
           </article>
@@ -163,14 +165,10 @@
                 class="no-underline text-grey-darker hover:text-red-dark"
                 href="#"
               >
-                <span class="hidden"
-                  >{{ project.like_count
-                  }}<img class="w-5 inline ml-3" src="../assets/like.svg"
-                /></span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  class="w-8 h-8 color_custom"
+                  class="w-8 h-8 color_custom ml-2"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
@@ -180,6 +178,8 @@
                     clipRule="evenodd"
                   />
                 </svg>
+                <span>{{ project.like_count
+                  }}</span>
               </a>
             </footer>
           </article>
@@ -247,7 +247,7 @@
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  class="w-8 h-8 color_custom"
+                  class="w-8 h-8 color_custom ml-2"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
@@ -257,6 +257,8 @@
                     clipRule="evenodd"
                   />
                 </svg>
+                <span>{{ project.like_count
+                  }}</span>
               </a>
             </footer>
           </article>
@@ -324,7 +326,7 @@
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  class="w-8 h-8 color_custom"
+                  class="w-8 h-8 color_custom ml-2"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
@@ -334,6 +336,8 @@
                     clipRule="evenodd"
                   />
                 </svg>
+                <span>{{ project.like_count
+                  }}</span>
               </a>
             </footer>
           </article>
