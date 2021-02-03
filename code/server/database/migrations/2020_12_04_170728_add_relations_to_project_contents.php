@@ -18,7 +18,7 @@ class AddRelationsToProjectContents extends Migration
             $table
                 ->foreign("project_id")
                 ->references("id")
-                ->on("categories")
+                ->on("projects")
                 ->onDelete("cascade");
         });
     }
