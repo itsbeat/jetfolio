@@ -29,7 +29,7 @@ Route::get("/users/{id}", [UserController::class, "getUser"]);
 Route::put("/users/{id}", [UserController::class, "editUser"]);
 
 // Upload image api
-Route::post('/image/store', [ProjectController::class, "store"]);
+Route::post("/project/upload", [ProjectController::class, "store"]);
 
 //User profile api
 

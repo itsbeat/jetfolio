@@ -11,35 +11,39 @@ use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
+    public function store(Request $request)
+    {
+        $imageData = $request->get("images");
+        $project_info = json_decode(json_encode($request->get("project_info")));
+       
+        
+        $project = new Project();
+        $project->title = $project_info->titolo;
+        $project->description = $project_info->descrizione;
+        $project->user_id = $project_info->id;
+        $project->like_count = 0;
+        $project->category_id = 1;
+        $project->save();
+
+        foreach($imageData as $image){
+            if ($image) {
+                $imageTokens = explode(",", $image);
+
+                $imageInfo = $imageTokens[0];
+                $imageContent = $imageTokens[1];
+
+                $imageExtension = explode(";", explode("/", $imageInfo)[1])[0];
+
+                $filePath ="cover_" . time() . "." . $imageExtension;
+
+                Storage::disk("local")->put("public/images/$filePath", base64_decode($imageContent));
+            }
+        }
+        }
+
     /**
      * returns all projects
      */
-    public function store(Request $request)
-    {
-        if ($request->get('image')) {
-            $imageData = $request->get('image');
-            
-            $imageTokens = explode(",", $imageData);
-
-            $imageInfo = $imageTokens[0];
-            $imageContent = $imageTokens[1];
-
-            $imageExtension = explode(";", explode("/", $imageInfo)[1])[0];
-
-            $filePath ="cover_" . time() . "." . $imageExtension;
-
-            $user =UserInfo::find($request->id);
-
-            Storage::disk("local")->put("public/images/$filePath", base64_decode($imageContent));
-
-        }
-
-        return response()->json([
-            'success' => 'You have successfully uploaded an image',
-            'filePath'=> "images/$filePath",
-        ], 200);
-    }
-    
     public function getProjects(Request $Request) {
         $data = DB::table('projects')->limit(9)->get();
         return $data;

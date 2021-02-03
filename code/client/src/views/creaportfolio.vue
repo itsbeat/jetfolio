@@ -68,9 +68,9 @@
               <!-- Card heading -->
               <div class="flex justify-between">
                 <div class="space-y-2">
-                  <h2 class="font-bold text-gray-900">Nome</h2>
+                  <h2 class="font-bold text-gray-900">Titolo</h2>
                   <p class="text-sm font-medium leading-5 text-gray-500">
-                    <input type="text" placeholder="Inserisci il tuo nome" />
+                    <input type="text" v-model="project_info.titolo" placeholder="Inserisci il titolo del progetto" />
                   </p>
                 </div>
                 <div></div>
@@ -86,6 +86,7 @@
                     <textarea
                       rows="5"
                       class="md:text-left w-full bg-indigo-100 sm:text-center sm-text-sm"
+                      v-model="project_info.descrizione"
                     >
                     </textarea>
                   </label>
@@ -165,6 +166,7 @@
                 <button
                   type="button"
                   class="bg_custom px-4 py-3 border border-transparent rounded text-white transition duration-300 ease-in-out"
+                  @click="createProject()"
                 >
                   Pubblica
                 </button>
@@ -201,7 +203,11 @@ export default {
       advancedSettings: false,
       preview_list: [],
       image_list: [],
-
+      project_info:{
+        titolo:null,
+        descrizione:null,
+        id:null,
+      },
       data: [],
       flowType: {
         selected: "",
@@ -212,6 +218,17 @@ export default {
     
   },
   methods: {
+    async createProject(){
+      console.log(this.project_info);
+      const ls = JSON.parse(localStorage.getItem("user"));
+      this.project_info.id = ls.id;
+
+      const invio = await this.$api.post("/project/upload", {
+          project_info: this.project_info,
+          //images: this.preview_list,
+      })
+      console.log(invio)
+    },
     previewMultiImage: function(event) {
       var input = event.target;
       var count = input.files.length;
