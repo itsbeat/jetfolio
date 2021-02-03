@@ -8,6 +8,7 @@ import DettaglioPortfolio from '../views/DettaglioPortfolio.vue';
 import NewPortfolio from '../views/NewPortfolio.vue';
 import NuovoPortfolio from '../views/creaportfolio.vue';
 import Edit from '../views/ChangeProfile.vue';
+
 Vue.use(VueRouter)
 
 const routes = [
