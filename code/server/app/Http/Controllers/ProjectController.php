@@ -84,7 +84,7 @@ class ProjectController extends Controller
     /**
      * return project info based on $id
      */
-    public function getProjectyId(Request $Request, $id) {
+    public function getProjectById(Request $Request, $id) {
         $data = DB::table('projects')
             ->where('id', '=', $id)
             ->get();

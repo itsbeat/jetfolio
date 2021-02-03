@@ -157,6 +157,7 @@ export default {
     };
   },
   mounted() {
+    // console.log(this.$router.options.routes);
     this.selectRouteIndex = 0;
   },
   methods: {
