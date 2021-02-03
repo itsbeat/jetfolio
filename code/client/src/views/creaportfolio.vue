@@ -239,7 +239,7 @@ export default {
 
       const invio = await this.$api.post("/project/upload", {
           project_info: this.project_info,
-          //images: this.preview_list,
+          images: this.preview_list,
       })
       console.log(invio)
     },
