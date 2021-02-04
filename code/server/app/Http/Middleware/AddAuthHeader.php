@@ -21,11 +21,13 @@ class AddAuthHeader
 
     public function handle(Request $request, Closure $next)
     {   
+        Log::info("Mattia Moretto falla per tutti");
         Log::info($request->hasCookie("sessionToken"));
 
 
         if ($request->hasCookie("sessionToken")){
             $token = Cookie::get("sessionToken");
+            Log::info("Ma esistelo sto mona?");
             Log::info($token);
             $request ->headers->add([
                 "Authorization" => "Bearer ".$token 

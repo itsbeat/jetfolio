@@ -71,7 +71,7 @@
               <img
                 alt="Placeholder"
                 class="block h-auto w-full"
-                src="https://picsum.photos/600/400/?random"
+                :src="'http://localhost:8000/storage/' + project.project_content[0].image_url"
               />
             </a>
 
@@ -83,7 +83,7 @@
                   {{ project.title }}
                 </a>
               </h1>
-              <p class="text-grey-darker text-sm">Creato: 11/1/19</p>
+              <p class="text-grey-darker text-sm">{{project.created_at.slice(0,10)}}</p>
             </header>
 
             <footer
@@ -98,7 +98,7 @@
                   class="block rounded-full"
                   src="https://picsum.photos/32/32/?random"
                 />
-                <p class="ml-2 text-sm">Author Name</p>
+                <p class="ml-2 text-sm">{{project.user.username}}</p>
               </a>
               <a
                 class="flex items-center justify-between leading-none "
@@ -120,9 +120,8 @@
                   
                 </svg>
                 <p class=" text-md">
-                      {{ project.like_count
-                  }}
-                  </p>
+                      {{ project.like_count}}
+                </p>
               </a>
             </footer>
           </article>
@@ -149,7 +148,7 @@
               <img
                 alt="Placeholder"
                 class="block h-auto w-full"
-                src="https://picsum.photos/600/400/?random"
+                :src="'http://localhost:8000/storage/' + project.project_content[0].image_url"
               />
             </a>
 
@@ -161,7 +160,7 @@
                   {{ project.title }}
                 </a>
               </h1>
-              <p class="text-grey-darker text-sm">Creato: 11/1/19</p>
+              <p class="text-grey-darker text-sm">{{project.created_at.slice(0,10)}}</p>
             </header>
 
             <footer
@@ -176,7 +175,7 @@
                   class="block rounded-full"
                   src="https://picsum.photos/32/32/?random"
                 />
-                <p class="ml-2 text-sm">Author Name</p>
+                <p class="ml-2 text-sm">{{project.user.username}}</p>
               </a>
               <a
                 class="flex items-center justify-between leading-none "
@@ -206,11 +205,12 @@
       </div>
       <!--Progetti 3-->
     </section>
+
     <section class="content">
       <h1
         class="ml-12 mb-0 mt-0 text-3xl font-bold uppercase tracking-wide text-indigo-800"
       >
-        I più visti
+        Lista progetti
       </h1>
       <div class="scrolling-wrapper">
         <div
@@ -236,7 +236,7 @@
                   {{ project.title }}
                 </a>
               </h1>
-              <p class="text-grey-darker text-sm">Creato: 11/1/19</p>
+              <p class="text-grey-darker text-sm">{{project.created_at.slice(0,10)}}</p>
             </header>
 
             <footer
@@ -251,81 +251,7 @@
                   class="block rounded-full"
                   src="https://picsum.photos/32/32/?random"
                 />
-                <p class="ml-2 text-sm">Author Name</p>
-              </a>
-              <a
-                class="flex items-center justify-between leading-none "
-                href="#"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  class="w-8 h-8 color_custom ml-2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <p class=" text-md">
-                  {{ project.like_count }}
-                </p>
-              </a>
-            </footer>
-          </article>
-          <!-- END Article -->
-        </div>
-      </div>
-    </section>
-    <section class="content">
-      <h1
-        class="ml-12 mb-0 mt-0 text-3xl font-bold uppercase tracking-wide text-indigo-800"
-      >
-        d'ispirazione
-      </h1>
-      <div class="scrolling-wrapper">
-        <div
-          class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/5 inline-block"
-          v-for="project in recentProjects"
-          :key="project.id"
-        >
-          <!-- Article -->
-          <article class="overflow-hidden rounded-lg shadow-lg">
-            <a href="#">
-              <img
-                alt="Placeholder"
-                class="block h-auto w-full"
-                src="https://picsum.photos/600/400/?random"
-              />
-            </a>
-
-            <header
-              class="flex items-center justify-between leading-tight p-2 md:p-4"
-            >
-              <h1 class="text-sm">
-                <a class="no-underline hover:underline text-black" href="#">
-                  {{ project.title }}
-                </a>
-              </h1>
-              <p class="text-grey-darker text-sm">Creato: 11/1/19</p>
-            </header>
-
-            <footer
-              class="flex items-center justify-between leading-none p-2 md:p-4"
-            >
-              <a
-                class="flex items-center no-underline hover:underline text-black"
-                href="#"
-              >
-                <img
-                  alt="Placeholder"
-                  class="block rounded-full"
-                  src="https://picsum.photos/32/32/?random"
-                />
-                <p class="ml-2 text-sm">Author Name</p>
+                <p class="ml-2 text-sm">Author name</p>
               </a>
 
               <a
@@ -457,9 +383,11 @@ export default {
 
   data() {
     return {
+      image_url:'',
       error: null,
       recentProjects: [],
       popularProjects: [],
+      randomProjects:[],
       asNavFor1: [],
       options1: {
         dots: true,
@@ -484,9 +412,6 @@ export default {
     async logout() {
       return await this.$api.post("/logout");
     },
-    // async getProjects() {
-    //   return await this.$api.get('/projects');
-    // },
     async getPopularProjects() {
       let response = await this.$api.get("/projects/recent/6");
       this.popularProjects = response.data;
@@ -495,11 +420,39 @@ export default {
       let response = await this.$api.get("/projects/popular/12");
       this.recentProjects = response.data;
     },
+    // async getRandomProjects() {
+    //   let response = await this.$api.get("/projects/random/12");
+    //   this.randomProjects = response.data;
+    //   console.log('mattia bravo => ', this.randomProjects);
+    // },
   },
   mounted() {
     this.getPopularProjects();
     this.getRecentProjects();
+    // this.getRandomProjects();
     this.asNavFor1.push(this.$refs.main);
+    
   },
+  computed:{
+    // imagePopularProject(){
+    //   console.log(this.popularProjects)
+    //   if(this.popularProjects.length > 0){
+    //     return "http://localhost:8000/storage/"+ this.popularProjects[0].project_content[0].image_url;
+    //   } else{
+    //     return "https://picsum.photos/600/400/?random"
+    //   }
+    // },
+    // imageRecentProgect(){
+    //   console.log(this.recentProjects)
+    //   if(this.recentProjects){
+    //     // var i;
+    //     // for ( i = 0; i <= this.recentProjects.length; i++){
+    //       return "http://localhost:8000/storage/"+ this.recentProjects[0].project_content[0].image_url;
+    //     // };
+    //   } else{
+    //     return "https://picsum.photos/600/400/?random"
+    //   }
+    // }
+  }
 };
 </script>

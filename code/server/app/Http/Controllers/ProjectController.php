@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\ProjectContent;
 use App\Models\User;
 use App\Models\UserInfo;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -62,11 +63,12 @@ class ProjectController extends Controller
     }
 
     /**
-     * returns all projects
+     * returns some random projects
      */
-    public function getProjects(Request $Request, $num) {
+    public function getRandomProjects(Request $Request, $max) {
         $data = Project::with("User","ProjectContent")
-        ->limit($num)
+        ->random()
+        ->limit($max)
         ->get();
         return $data;
     }

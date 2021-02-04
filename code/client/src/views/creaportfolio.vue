@@ -237,11 +237,11 @@ export default {
       const ls = JSON.parse(localStorage.getItem("user"));
       this.project_info.id = ls.id;
 
-      const invio = await this.$api.post("/project/upload", {
+      await this.$api.post("/project/upload", {
           project_info: this.project_info,
           images: this.preview_list,
       })
-      console.log(invio)
+      location.reload();
     },
     previewMultiImage: function(event) {
       var input = event.target;

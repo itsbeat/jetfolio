@@ -52,7 +52,8 @@ Route::group(["middleware"=> "auth.api"],function(){
 
 
     // projects api
-    Route::get("/projects/{num}", [ProjectController::class, "getProjects"]);
+    
+    Route::get("/projects/random/{max}", [ProjectController::class, "getRandomProjects"]);
 
     Route::get("/projects/popular", [ProjectController::class, "getAllPopularProjects"]);
     Route::get("/projects/popular/{num}", [ProjectController::class, "getPopularProjects"]);

@@ -167,220 +167,45 @@
               Follow
             </li>
             <li>
-              <span class="font-semibold text-gray-800 block">{{
-                profile.info.prj_count
-              }}</span>
+              <span class="font-semibold text-gray-800 block">{{this.projectId.length}}</span>
               Portfolio
             </li>
           </ul>
 
-          <!-- insta freatures 
-      <ul class="flex md:hidden items-center justify-around md:justify-center space-x-12 uppercase tracking-widest font-semibold text-xs text-gray-600
-                    border-t">
+          <div class="container my-12 mx-auto px-4 md:px-12">
+      <div class="flex flex-wrap -mx-1 lg:-mx-4">
+        <!-- Column -->
+        <div
+          class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3"
+          v-for="p in projectId"
+          :key="p.id"
+        >
+          <!-- Article -->
+          <article class="overflow-hidden rounded-lg shadow-lg">
+            <a href="#">
+              <img
+                alt="Placeholder"
+                class="block h-auto w-full"
+                :src="'http://localhost:8000/storage/' + p.project_content[0].image_url"
+              />
+            </a>
 
-        <li class="md:border-t md:border-gray-700 md:-mt-px md:text-gray-700">
-          <a class="inline-block p-3" href="#">
-            <i class="fas fa-th-large text-xl md:text-xs"></i>
-            <span class="hidden md:inline">post</span>
-          </a>
-        </li>
-        <li>
-          <a class="inline-block p-3" href="#">
-            <i class="far fa-square text-xl md:text-xs"></i>
-            <span class="hidden md:inline">igtv</span>
-          </a>
-        </li>
-        <li>
-          <a class="inline-block p-3" href="#">
-            <i class="fas fa-user border border-gray-500
-                             px-1 pt-1 rounded text-xl md:text-xs"></i>
-            <span class="hidden md:inline">tagged</span>
-          </a>
-        </li>
-      </ul>
-      -->
-          <!-- flexbox grid -->
-          <div class="flex flex-wrap -mx-px md:-mx-3">
-            <!-- column -->
-            <div class="w-1/3 p-px md:px-3 ">
-              <!-- post 1-->
-              <a href="#">
-                <article
-                  class="post bg-gray-100 text-white relative pb-full md:mb-6"
-                >
-                  <!-- post image-->
-                  <img
-                    class="w-full h-full absolute left-0 top-0 object-cover"
-                    src="https://images.unsplash.com/photo-1502791451862-7bd8c1df43a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                    alt="image"
-                  />
-
-                  <i class="fas fa-square absolute right-0 top-0 m-1"></i>
-                  <!-- overlay-->
-                  <div
-                    class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
-                                left-0 top-0 hidden"
-                  >
-                    <div
-                      class="flex justify-center items-center 
-                                    space-x-4 h-full"
-                    >
-                      <span class="p-2">
-                        <i class="fas fa-heart"></i>
-                        412K
-                      </span>
-
-                      <span class="p-2">
-                        <i class="fas fa-comment"></i>
-                        2,909
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              </a>
-            </div>
-
-            <div class="w-1/3 p-px md:px-3">
-              <a href="#">
-                <!-- post 2 -->
-                <article
-                  class="post bg-gray-100 text-white relative pb-full md:mb-6"
-                >
-                  <img
-                    class="w-full h-full absolute left-0 top-0 object-cover"
-                    src="https://images.unsplash.com/photo-1498409570040-05bf6d3dd5b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                    alt="image"
-                  />
-
-                  <!-- overlay-->
-                  <div
-                    class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
-                                left-0 top-0 hidden"
-                  >
-                    <div
-                      class="flex justify-center items-center 
-                                    space-x-4 h-full"
-                    >
-                      <span class="p-2">
-                        <i class="fas fa-heart"></i>
-                        412K
-                      </span>
-
-                      <span class="p-2">
-                        <i class="fas fa-comment"></i>
-                        1,993
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              </a>
-            </div>
-
-            <div class="w-1/3 p-px md:px-3">
-              <a href="#">
-                <article
-                  class="post bg-gray-100 text-white relative pb-full  md:mb-6"
-                >
-                  <img
-                    class="w-full h-full absolute left-0 top-0 object-cover"
-                    src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                    alt="image"
-                  />
-                  <!-- overlay-->
-                  <div
-                    class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
-                                left-0 top-0 hidden"
-                  >
-                    <div
-                      class="flex justify-center items-center 
-                                    space-x-4 h-full"
-                    >
-                      <span class="p-2">
-                        <i class="fas fa-heart"></i>
-                        112K
-                      </span>
-
-                      <span class="p-2">
-                        <i class="fas fa-comment"></i>
-                        2,090
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              </a>
-            </div>
-
-            <div class="w-1/3 p-px md:px-3">
-              <a href="#">
-                <article
-                  class="post bg-gray-100 text-white relative pb-full md:mb-6"
-                >
-                  <img
-                    class="w-full h-full absolute left-0 top-0 object-cover"
-                    src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                    alt="image"
-                  />
-
-                  <i class="fas fa-video absolute right-0 top-0 m-1"></i>
-
-                  <!-- overlay-->
-                  <div
-                    class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
-                                left-0 top-0 hidden"
-                  >
-                    <div
-                      class="flex justify-center items-center 
-                                    space-x-4 h-full"
-                    >
-                      <span class="p-2">
-                        <i class="fas fa-heart"></i>
-                        841K
-                      </span>
-
-                      <span class="p-2">
-                        <i class="fas fa-comment"></i>
-                        909
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              </a>
-            </div>
-
-            <div class="w-1/3 p-px md:px-3">
-              <a href="#">
-                <article
-                  class="post bg-gray-100 text-white relative pb-full md:mb-6"
-                >
-                  <img
-                    class="w-full h-full absolute left-0 top-0 object-cover"
-                    src="https://images.unsplash.com/photo-1475688621402-4257c812d6db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"
-                    alt="image"
-                  />
-                  <!-- overlay-->
-                  <div
-                    class="overlay bg-gray-800 bg-opacity-25 w-full h-full absolute 
-                                left-0 top-0 hidden"
-                  >
-                    <div
-                      class="flex justify-center items-center 
-                                    space-x-4 h-full"
-                    >
-                      <span class="p-2">
-                        <i class="fas fa-heart"></i>
-                        120K
-                      </span>
-
-                      <span class="p-2">
-                        <i class="fas fa-comment"></i>
-                        3,909
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              </a>
-            </div>
-          </div>
+            <header
+              class="flex items-center justify-between leading-tight p-2 md:p-4"
+            >
+              <h1 class="text-lg">
+                <a class="no-underline hover:underline text-black" href="#">
+                  {{ p.title }}
+                </a>
+              </h1>
+              <p class="text-grey-darker text-sm">{{p.created_at.slice(0,10)}}</p>
+            </header>
+          </article>
+          <!-- END Article -->
+        </div>
+        <!-- END Column -->
+      </div>
+    </div>
         </div>
       </div>
     </main>
@@ -445,6 +270,7 @@ export default {
   name: "Profilo",
   data() {
     return {
+      projectId: [],
       image:'',
       edit: false,
       profile: {
@@ -462,7 +288,13 @@ export default {
       },
     };
   },
-  mounted() {
+  async mounted() {
+    const ls = JSON.parse(localStorage.getItem("user"));
+    let response = await this.$api.get(`/projects/${ls.id}`);
+    this.projectId = response.data;
+    console.log(this.projectId);
+    this.profile.info.prj_count = this.projectId.length;
+    console.log(this.profile.info.prj_count);
     if (localStorage.getItem("user")) {
       this.profilo();
     } else {
@@ -471,8 +303,13 @@ export default {
   },
   computed:{
     imageUrlSrc(){
-        return "http://localhost:8000/storage/"+ this.profile.info.image_url;
+      return "http://localhost:8000/storage/"+ this.profile.info.image_url;
     },
+    // imageUrlId(){
+    //   console.log(this.projectId);
+      
+    //     return "http://localhost:8000/storage/"+ this.projectId[0].project_content[0].image_url;
+    // },
   },
   methods: {
     onImageChange(e) {

@@ -5,7 +5,6 @@ import LandingPage from '../views/LandingPage.vue'
 import Login from '../views/Login.vue';
 import Profilo from '../views/Profilo.vue';
 import DettaglioPortfolio from '../views/DettaglioPortfolio.vue';
-import NewPortfolio from '../views/NewPortfolio.vue';
 import NuovoPortfolio from '../views/creaportfolio.vue';
 import Edit from '../views/ChangeProfile.vue';
 
@@ -24,17 +23,11 @@ const routes = [
     path: '/landingpage',
     name: 'LandingPage',
     component: LandingPage,
-    meta: {
-      label: "Landing",
-    },
   },
   {
     path: '/login',
     name: 'Login',
     component: Login,
-    meta: {
-      label: "Login",
-    },
   },
   {
     path: '/nuovoportfolio',
@@ -59,18 +52,6 @@ const routes = [
     path: '/dettaglioportfolio',
     name: 'DettaglioPortfolio',
     component: DettaglioPortfolio,
-    meta:{
-      label: "Dettaglio",
-    }
-  },
-  {
-    path: '/newportfolio',
-    name: 'NewPortfolio',
-    component: NewPortfolio,
-    meta:{
-      label: "NewPortfolio",
-      requiresAuth: true,
-    }
   },
   {
     path: '*',

@@ -32,6 +32,8 @@ class UserController extends Controller
         $user->save();
         $info = new UserInfo();
         $info->user_id = $user->id;
+        $info->follower_count = random_int(10,2000);
+        $info->follow_count = random_int(10,2000);
         $info->save();
 
         return response()
