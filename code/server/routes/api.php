@@ -52,7 +52,7 @@ Route::group(["middleware"=> "auth.api"],function(){
 
 
     // projects api
-    Route::get("/projects", [ProjectController::class, "getProjects"]);
+    Route::get("/projects/{num}", [ProjectController::class, "getProjects"]);
 
     Route::get("/projects/popular", [ProjectController::class, "getAllPopularProjects"]);
     Route::get("/projects/popular/{num}", [ProjectController::class, "getPopularProjects"]);

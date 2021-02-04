@@ -25,7 +25,7 @@ class ProjectController extends Controller
         $project->title = $project_info->titolo;
         $project->description = $project_info->descrizione;
         $project->user_id = $project_info->id;
-        $project->like_count = 0;
+        $project->like_count = random_int(1,500);
         $project->category_id = 1;
         $project->save();
 
@@ -64,8 +64,10 @@ class ProjectController extends Controller
     /**
      * returns all projects
      */
-    public function getProjects(Request $Request) {
-        $data = DB::table('projects')->limit(9)->get();
+    public function getProjects(Request $Request, $num) {
+        $data = Project::with("User","ProjectContent")
+        ->limit($num)
+        ->get();
         return $data;
     }
 
@@ -73,7 +75,8 @@ class ProjectController extends Controller
      * return all projects sorted by 'like counter'
      */
     public function getAllPopularProjects(Request $Request) {
-        $data = DB::table('projects')->get();
+        $data = Project::with("User","ProjectContent")
+        ->get();
         return $data;
     }
 
@@ -81,7 +84,7 @@ class ProjectController extends Controller
      * return $num projects sorted by 'like counter' 
      */
     public function getPopularProjects(Request $Request, $num) {
-        $data = DB::table('projects')
+        $data = Project::with("User","ProjectContent")
             ->orderBy('like_count', 'DESC')
             ->limit($num)
             ->get();
@@ -92,7 +95,7 @@ class ProjectController extends Controller
      * return all projects sorted by creation date 
      */
     public function getAllRecentProjects(Request $Request,$num) {
-        $data = DB::table('projects')
+        $data = Project::with("User","ProjectContent")
             ->orderBy('created_at', 'DESC')
             ->limit($num)
             ->get();
@@ -103,7 +106,7 @@ class ProjectController extends Controller
      * return $num projects sorted by creation date 
      */
     public function getRecentProjects(Request $Request, $num) {
-        $data = DB::table('projects')
+        $data = Project::with("User","ProjectContent")
             ->orderBy('created_at', 'DESC')
             ->limit($num)
             ->get();
@@ -126,7 +129,7 @@ class ProjectController extends Controller
      * return the 10 most popular projects by input $categoryId
      */
     public function getProjectsByCategory(Request $request, $categoryId) {
-        $data = DB::table('projects')
+        $data = Project::with("User","ProjectContent")
             ->where('category_id', '=', $categoryId)
             ->orderBy('like_count', 'DESC')
             ->limit(10)
