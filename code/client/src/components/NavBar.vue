@@ -167,7 +167,8 @@ export default {
       }
     };
   },
-  async mounted() {
+  mounted() {
+    // console.log(this.$router.options.routes);
     this.selectRouteIndex = 0;
 
     if (localStorage.getItem("user")) {
