@@ -149,7 +149,7 @@
 <script>
 import router from '../router';
 export default {
-  name: "bla",
+  name: "navbar",
   data() {
     return {
       isOpen1: true,
