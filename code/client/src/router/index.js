@@ -31,7 +31,7 @@ const routes = [
   },
   {
     path: '/nuovoportfolio',
-    name: 'NuocoPortfolio',
+    name: 'NuovoPortfolio',
     component: NuovoPortfolio,
     meta: {
       label: "NuovoPortfolio",
@@ -49,8 +49,8 @@ const routes = [
     component: Edit,
   },
   {
-    path: '/dettaglioportfolio',
-    name: 'DettaglioPortfolio',
+    path: '/projectdetail',
+    name: 'projectdetail',
     component: DettaglioPortfolio,
   },
   {

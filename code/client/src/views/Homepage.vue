@@ -67,7 +67,7 @@
         >
           <!-- Article -->
           <article class="overflow-hidden rounded-lg shadow-lg">
-            <a href="#">
+            <a @click="goProjectDetail(project.id)">
               <img
                 alt="Placeholder"
                 class="block h-auto w-full"
@@ -79,7 +79,7 @@
               class="flex items-center justify-between leading-tight p-2 md:p-4"
             >
               <h1 class="text-lg">
-                <a class="no-underline hover:underline text-black" href="#">
+                <a class="no-underline hover:underline text-black" @click="goProjectDetail(project.id)">
                   {{ project.title }}
                 </a>
               </h1>
@@ -102,7 +102,7 @@
               </a>
               <a
                 class="flex items-center justify-between leading-none "
-                href="#"
+               href="#"
               >
                   <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +144,7 @@
         >
           <!-- Article -->
           <article class="overflow-hidden rounded-lg shadow-lg">
-            <a href="#">
+            <a @click="goProjectDetail(project.id)">
               <img
                 alt="Placeholder"
                 class="block h-auto w-full"
@@ -156,7 +156,7 @@
               class="flex items-center justify-between leading-tight p-2 md:p-4"
             >
               <h1 class="text-sm">
-                <a class="no-underline hover:underline text-black" href="#">
+                <a class="no-underline hover:underline text-black" @click="goProjectDetail(project.id)">
                   {{ project.title }}
                 </a>
               </h1>
@@ -168,7 +168,7 @@
             >
               <a
                 class="flex items-center no-underline hover:underline text-black"
-                href="#"
+                @click="goProjectDetail(project.id)"
               >
                 <img
                   alt="Placeholder"
@@ -220,7 +220,7 @@
         >
           <!-- Article -->
           <article class="overflow-hidden rounded-lg shadow-lg">
-            <a href="#">
+            <a @click="goProjectDetail(project.id)">
               <img
                 alt="Placeholder"
                 class="block h-auto w-full"
@@ -232,7 +232,7 @@
               class="flex items-center justify-between leading-tight p-2 md:p-4"
             >
               <h1 class="text-sm">
-                <a class="no-underline hover:underline text-black" href="#">
+                <a class="no-underline hover:underline text-black" @click="goProjectDetail(project.id)">
                   {{ project.title }}
                 </a>
               </h1>
@@ -244,7 +244,7 @@
             >
               <a
                 class="flex items-center no-underline hover:underline text-black"
-                href="#"
+                @click="goProjectDetail(project.id)"
               >
                 <img
                   alt="Placeholder"
@@ -375,6 +375,8 @@
 
 <script>
 import { VueAgile } from "vue-agile";
+
+
 export default {
   name: "Home",
   components: {
@@ -425,6 +427,15 @@ export default {
     //   this.randomProjects = response.data;
     //   console.log('mattia bravo => ', this.randomProjects);
     // },
+
+    goProjectDetail(val){
+      this.$router.push({
+        name: 'projectdetail',
+        params:{
+          id: val,
+        },
+      });
+    }
   },
   mounted() {
     this.getPopularProjects();

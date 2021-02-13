@@ -17,7 +17,7 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-// //carousel landing
+// //carousel landing - dunno what this is
 
 // $('.landing-carousel').slick({
 //   centerMode: true,
